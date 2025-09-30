@@ -53,9 +53,9 @@ int main()
 ```
 
 > Output
-> ![Screenshot bagian x](output/{4DA43ED0-6A8D-46FE-81D3-DE2FEA7D5A3C}.png)
+> ![Screenshot bagian x](output/{B47A6CB0-7B5E-45EC-AB42-0D78A05D830E}.png)
 
-Program ini akan mengambil huruf awal/char awal dari char-char yang diinput dengan menggunakan getchar()
+Program ini 
 
 ## Unguided
 
