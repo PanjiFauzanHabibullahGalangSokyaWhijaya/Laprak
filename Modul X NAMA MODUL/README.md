@@ -9,11 +9,10 @@ Awalnya, C++ dirancang untuk berjalan di sistem Unix. Seiring perkembangannya, s
 
 Stroustrup mulai mengembangkan C++ pada awal 1980-an di Bell Labs dengan menambahkan efisiensi dan dukungan untuk pemrograman tingkat rendah. Bahasa ini juga memperkenalkan konsep baru seperti class, inheritance, dan overloading. Perbedaan utama antara C dan C++ adalah dukungan penuh C++ terhadap paradigma pemrograman berorientasi objek (OOP).
 
-## Unguided
+## Guided
 
 ### soal 1
-
-aku mengerjakan perulangan
+TEST.cpp
 
 ```go
 #include <iostream>
