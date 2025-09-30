@@ -33,6 +33,30 @@ int main()
 
 Program ini akan mengambil huruf awal/char awal dari char-char yang diinput dengan menggunakan getchar()
 
+### soal 2
+aritmatika.cpp
+
+```go
+#include <iostream>
+using namespace std;
+int main()
+{
+    int W, X, Y;
+    float Z;
+    X = 7;
+    Y = 3;
+    W = 1;
+    Z = (X + Y) / (Y + W);
+    cout << "Nilai z = " << Z << endl;
+    return 0;
+}
+```
+
+> Output
+> ![Screenshot bagian x](output/{4DA43ED0-6A8D-46FE-81D3-DE2FEA7D5A3C}.png)
+
+Program ini akan mengambil huruf awal/char awal dari char-char yang diinput dengan menggunakan getchar()
+
 ## Unguided
 
 ### Soal 1
