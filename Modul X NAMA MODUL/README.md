@@ -31,6 +31,8 @@ int main()
 > Output
 > ![Screenshot bagian x](output/{4DA43ED0-6A8D-46FE-81D3-DE2FEA7D5A3C}.png)
 
+Program ini akan mengambil huruf awal dari inputanmu dengan menggunakan getchar()
+
 ## Unguided
 
 ### Soal 1
