@@ -94,6 +94,45 @@ int main()
 > Output
 > ![Screenshot bagian x](output/{157EDC01-3D35-454C-AFCF-4FB44D980C5D}.png)
 
+Ini adalah program perulangan do while. Program ini akan mengulang kalimat "bahlil ke-[n]" sebanyak n(angka yang anda input).
+
+### soal 4
+perulangan.cpp
+
+```go
+#include <iostream>
+using namespace std;
+// int main()
+// {
+//     int jum;
+//     cout << "jumlah perulangan: ";
+//     cin >> jum;
+//     for (int i = 0; i < jum; i++)
+//     {
+//         cout << "saya sahroni\n";
+//     }
+//     return 1;
+// }
+
+
+// while
+int main()
+{
+    int i = 0;
+    int jum;
+    cin >> jum;
+    do
+    {
+        cout << "bahlil ke-" << (i + 1) << endl;
+        i++;
+    } while (i < jum);
+    return 0;
+}
+```
+
+> Output
+> ![Screenshot bagian x](output/{157EDC01-3D35-454C-AFCF-4FB44D980C5D}.png)
+
 Program ini 
 
 ## Unguided
