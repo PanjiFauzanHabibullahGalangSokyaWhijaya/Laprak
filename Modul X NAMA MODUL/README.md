@@ -55,6 +55,45 @@ int main()
 > Output
 > ![Screenshot bagian x](output/{B47A6CB0-7B5E-45EC-AB42-0D78A05D830E}.png)
 
+Program ini digunakan untuk mencari hasil aritmatika dari Z = (7+3)/(3+1). Z dideklarasikan menggunakan float dikarenakan hasil pembagian mempunyai kemungkinan desimal
+
+### soal 3
+perulangan.cpp
+
+```go
+#include <iostream>
+using namespace std;
+// int main()
+// {
+//     int jum;
+//     cout << "jumlah perulangan: ";
+//     cin >> jum;
+//     for (int i = 0; i < jum; i++)
+//     {
+//         cout << "saya sahroni\n";
+//     }
+//     return 1;
+// }
+
+
+// while
+int main()
+{
+    int i = 0;
+    int jum;
+    cin >> jum;
+    do
+    {
+        cout << "bahlil ke-" << (i + 1) << endl;
+        i++;
+    } while (i < jum);
+    return 0;
+}
+```
+
+> Output
+> ![Screenshot bagian x](output/{B47A6CB0-7B5E-45EC-AB42-0D78A05D830E}.png)
+
 Program ini 
 
 ## Unguided
