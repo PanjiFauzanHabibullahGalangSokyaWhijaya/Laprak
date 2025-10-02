@@ -92,7 +92,7 @@ int main()
 ```
 
 > Output
-> ![Screenshot bagian x](output/{B47A6CB0-7B5E-45EC-AB42-0D78A05D830E}.png)
+> ![Screenshot bagian x](output/{157EDC01-3D35-454C-AFCF-4FB44D980C5D}.png)
 
 Program ini 
 
