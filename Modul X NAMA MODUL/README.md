@@ -97,35 +97,62 @@ int main()
 Ini adalah program perulangan do while. Program ini akan mengulang kalimat "bahlil ke-[n]" sebanyak n(angka yang anda input).
 
 ### soal 4
-perulangan.cpp
+kondisi.cpp
 
 ```go
 #include <iostream>
 using namespace std;
 // int main()
 // {
-//     int jum;
-//     cout << "jumlah perulangan: ";
-//     cin >> jum;
-//     for (int i = 0; i < jum; i++)
-//     {
-//         cout << "saya sahroni\n";
-//     }
-//     return 1;
+//     double tot_pembelian, diskon;
+//     cout << "total pembelian: Rp";
+//     cin >> tot_pembelian;
+//     diskon = 0;
+//     if (tot_pembelian >= 100000)
+//         diskon = 0.05 * tot_pembelian;
+//     cout << "besar diskon = Rp" << diskon;
 // }
 
 
-// while
+
+// int main()
+// {
+//     double tot_pembelian, diskon;
+//     cout << "total pembelian: Rp";
+//     cin >> tot_pembelian;
+//     diskon = 0;
+//     if (tot_pembelian >= 100000)
+//         diskon = 0.05 * tot_pembelian;
+//     else
+//         diskon = 0;
+//     cout << "besar diskon = Rp" << diskon;
+// }
+
+
+
 int main()
 {
-    int i = 0;
-    int jum;
-    cin >> jum;
-    do
+    int kode_hari;
+    cout << "Menentukan hari kerja/libur\n"<<endl;
+    cout << "1=Senin 3=Rabu 5=Jumat 7=Minggu "<<endl;
+    cout << "2=Selasa 4=Kamis 6=Sabtu "<<endl;
+    cin >> kode_hari;
+    switch (kode_hari)
     {
-        cout << "bahlil ke-" << (i + 1) << endl;
-        i++;
-    } while (i < jum);
+    case 1:
+    case 2:
+    case 3:
+    case 4:
+    case 5:
+        cout<<"Hari Kerja";
+        break;
+    case 6:
+    case 7:
+        cout<<"Hari Libur";
+        break;
+    default:
+        cout<<"Kode masukan salah!!!";
+    }
     return 0;
 }
 ```
