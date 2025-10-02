@@ -158,9 +158,9 @@ int main()
 ```
 
 > Output
-> ![Screenshot bagian x](output/{157EDC01-3D35-454C-AFCF-4FB44D980C5D}.png)
+> ![Screenshot bagian x](output/{95981FC0-31B1-4EDB-A08B-2BE0BEBB89BC}.png)
 
-Program ini 
+Program ini digunakan untuk mencari tahu apakah hari yang diinput adalah hari kerja atau libur. Program ini menggunakan switch case
 
 ## Unguided
 
