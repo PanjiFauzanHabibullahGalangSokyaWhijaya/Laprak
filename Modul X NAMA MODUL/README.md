@@ -199,9 +199,9 @@ int main() {
 ```
 
 > Output
-> ![Screenshot bagian x](output/{95981FC0-31B1-4EDB-A08B-2BE0BEBB89BC}.png)
+> ![Screenshot bagian x](output/{D635236E-ADAD-4C79-936F-7DC3A3A1C883}.png)
 
-Program ini 
+Program ini menggunakan struct dan getline. Struct bisa menyimpan beberapa variabel dalam satu kesatuan dan getline digunakan agar kodenya dapat membaca satu baris penuh untuk nama (supaya bisa menerima spasi).
 
 ## Unguided
 
