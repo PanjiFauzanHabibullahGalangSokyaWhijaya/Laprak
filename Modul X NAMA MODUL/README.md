@@ -257,9 +257,10 @@ int main()
 ```
 
 > Output
-> ![Screenshot bagian x](output/{D635236E-ADAD-4C79-936F-7DC3A3A1C883}.png)
+> ![Screenshot bagian x](output/{3C82C501-6277-4923-8471-12841D936319}.png)
 
-Program ini menggunakan struct dan getline. Struct bisa menyimpan beberapa variabel dalam satu kesatuan dan getline digunakan agar kodenya dapat membaca satu baris penuh untuk nama (supaya bisa menerima spasi).
+Program ini menghitung luas & keliling dengan fungsi, lalu menampilkannya.
+Program juga memanggil prosedur, yang langsung menampilkan hasil. Tipe void → artinya tidak mengembalikan nilai. Tipe double → mengembalikan nilai berupa bilangan desimal. 
 
 ## Unguided
 
