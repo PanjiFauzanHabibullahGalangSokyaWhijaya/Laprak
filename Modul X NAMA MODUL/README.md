@@ -1,4 +1,4 @@
-# <h1 align="center">Laporan Praktikum Modul X <br> Nama Modul</h1>
+ # <h1 align="center">Laporan Praktikum Modul X <br> Nama Modul</h1>
 <p align="center">PANJI FAUZAN HABIBULLAH GALANG SOKYA WHIJAYA - 103112430162</p>
 
 ## Dasar Teori
@@ -259,8 +259,8 @@ int main()
 > Output
 > ![Screenshot bagian x](output/{3C82C501-6277-4923-8471-12841D936319}.png)
 
-Program ini menghitung luas & keliling dengan fungsi, lalu menampilkannya.
-Program juga memanggil prosedur, yang langsung menampilkan hasil. Tipe void → artinya tidak mengembalikan nilai. Tipe double → mengembalikan nilai berupa bilangan desimal. 
+Program ini menghitung luas & keliling dengan fungsi dan prosedur.
+Saat digunakan sebagai jenis pengembalian fungsi, void kata kunci menentukan bahwa fungsi tidak mengembalikan nilai. Tipe double artinya mengembalikan nilai berupa bilangan desimal. 
 
 ## Unguided
 
@@ -321,3 +321,4 @@ penjelasan bedanya sesuai soal
 ## Referensi
 
 1. https://en.wikipedia.org/wiki/Data_structure (diakses blablabla)
+2. https://learn.microsoft.com/id-id/cpp/cpp/void-cpp?view=msvc-170
