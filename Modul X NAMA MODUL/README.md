@@ -259,8 +259,7 @@ int main()
 > Output
 > ![Screenshot bagian x](output/{3C82C501-6277-4923-8471-12841D936319}.png)
 
-Program ini menghitung luas & keliling dengan fungsi dan prosedur.
-Saat digunakan sebagai jenis pengembalian fungsi, void kata kunci menentukan bahwa fungsi tidak mengembalikan nilai. Tipe double artinya mengembalikan nilai berupa bilangan desimal. 
+Program ini menghitung luas & keliling dengan fungsi dan prosedur. Di program ini ada 2 hal yang mungkin asing bagi anda, yaitu void dan double. Saat digunakan sebagai jenis pengembalian fungsi, void kata kunci menentukan bahwa fungsi tidak mengembalikan nilai sedangkan tipe double mengembalikan nilai berupa bilangan desimal. 
 
 ## Unguided
 
@@ -322,3 +321,4 @@ penjelasan bedanya sesuai soal
 
 1. https://en.wikipedia.org/wiki/Data_structure (diakses blablabla)
 2. https://learn.microsoft.com/id-id/cpp/cpp/void-cpp?view=msvc-170
+3. https://www.duniailkom.com/tutorial-belajar-c-plus-plus-tipe-data-float-dan-double-bahasa-c-plus-plus/
