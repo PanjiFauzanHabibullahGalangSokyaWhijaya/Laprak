@@ -289,10 +289,9 @@ int main()
 ```
 
 > Output
-> ![Screenshot bagian x](output/screenshot_soal1.png)
-> %% Untuk mencantumkan screenshot, tidak boleh ada spasi di urlnya `()`, penamaan file bebas asal gak sara dan mudah dipahami aja,, dan jangan lupa hapus komen ini yah%%
+> ![Screenshot bagian x](output/{E48EADCA-AAAF-42F9-824D-3AAD108DFF77}.png)
 
-Penjelasan ttg kode kalian disini
+Program ini adalah program aritmatika sederhana yang menghitung hasil penjumlahan, pengurangan, perkalian, dan pembagian. Saya menggunakan double karena double adalah float untuk win64
 
 ### Soal 2
 
