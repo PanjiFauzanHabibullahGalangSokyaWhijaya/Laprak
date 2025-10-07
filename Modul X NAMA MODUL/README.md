@@ -355,9 +355,9 @@ int main()
 ```
 
 > Output
-> ![Screenshot bagian x](output/screenshot_soal2A.png)
+> ![Screenshot bagian x](output/WhatsAppImage2025-10-07at11.36.09.jpeg)
 
-penjelasan kode
+Program ini mengkonversi angka menjadi latin. Di sini saya menggunakan fungsi dan array
 
 ### Soal 3
 
