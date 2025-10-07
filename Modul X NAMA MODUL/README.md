@@ -363,7 +363,7 @@ penjelasan kode
 ### Soal 3
 
 Buatlah program yang dapat memberikan input dan output sbb.
-> ![Screenshot bagian x](output/screenshot_soal2A.png)
+> ![Screenshot bagian x](output/{F626FCED-9EB9-4D1E-8A7F-21D9194D1611}.png)
 
 ```go
 #include <iostream>
