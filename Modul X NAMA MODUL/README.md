@@ -265,15 +265,26 @@ Program ini menghitung luas & keliling dengan fungsi dan prosedur. Di program in
 
 ### Soal 1
 
-copy paste soal nomor 1 disini
+Buatlah program yang menerima input-an dua buah bilangan betipe float, kemudian memberikan output-an hasil penjumlahan, pengurangan, perkalian, dan pembagian dari dua bilangan tersebut.
 
 ```go
-package main
+#include <iostream>
+using namespace std;
 
-func main() {
-	fmt.Println("Kode kalian disini")
-	fmt.Println("JANGAN MASUKIN >>SCREENSHOT<< KODE KALIAN DISINI")
-	fmt.Println("KALAU ADA -20 POIN LAPRAK")
+int main()
+{
+    double a,b,j,kr,kl,bg;
+
+    cout<<"Input 2 bilangan: ";
+    cin>>a;
+    cin>>b;
+    j=a+b;
+    kr=a-b;
+    kl=a*b;
+    bg=a/b;
+    
+    cout<<"Penjumlahan="<<j<<"\nPengurangan="<<kr<<"\nPerkalian="<<kl<<"\nPembagian="<<bg<<endl;
+    return 0;
 }
 ```
 
@@ -285,13 +296,62 @@ Penjelasan ttg kode kalian disini
 
 ### Soal 2
 
-soal nomor 2A
+Buatlah sebuah program yang menerima masukan angka dan mengeluarkan output nilai angka tersebut dalam bentuk tulisan. Angka yang akan di-input-kan user adalah bilangan bulat positif mulai dari 0 s.d 100
+contoh:
+79: tujuh puluh Sembilan
 
 ```go
-package main
+#include <iostream>
+using namespace std;
 
-func main() {
-	fmt.Println("kode untuk soal nomor 2A")
+string angkaKeTulisan(int n)
+{
+    string satuan[] = {"", "Satu", "Dua", "Tiga", "Empat", "Lima",
+                       "Enam", "Tujuh", "Delapan", "Sembilan"};
+
+    if (n == 0)
+        return "Nol";
+    else if (n == 10)
+        return "Sepuluh";
+    else if (n == 11)
+        return "Sebelas";
+    else if (n == 100)
+        return "Seratus";
+    else if (n < 10)
+        return satuan[n];
+    else if (n < 20)
+    {
+        int belas = n%10;
+        string hasil = satuan[belas] + " Belas";
+        return hasil;
+    }
+    else
+    {
+        int puluh = n / 10;
+        int sisa = n % 10;
+        string hasil = satuan[puluh] + " Puluh";
+        if (sisa > 0)
+            hasil += " " + satuan[sisa];
+        return hasil;
+    }
+}
+
+int main()
+{
+    int angka;
+    cout << "Masukkan angka (0-100): ";
+    cin >> angka;
+
+    if (angka < 0 || angka > 100)
+    {
+        cout << "Angka di luar jangkauan!" << endl;
+    }
+    else
+    {
+        cout << angka << ": " << angkaKeTulisan(angka) << endl;
+    }
+
+    return 0;
 }
 ```
 
@@ -300,15 +360,42 @@ func main() {
 
 penjelasan kode
 
-Kalau adalanjutan di lanjut disini aja
+### Soal 3
 
-soal nomor 2B
+Buatlah program yang dapat memberikan input dan output sbb.
+> ![Screenshot bagian x](output/screenshot_soal2A.png)
 
 ```go
-package main
+#include <iostream>
+using namespace std;
 
-func main() {
-	fmt.Println("kode untuk soal nomor 2B")
+int main() {
+    int n;
+    cout << "Input: ";
+    cin >> n;
+    cout << "Output: "<<endl;
+
+    for (int i = n; i >= 1; i--) {
+
+        for (int s = 0; s < (n - i); s++) {
+            cout << "  ";
+        }
+        for (int j = i; j >= 1; j--) {
+            cout << j << " ";
+        }
+        cout << "* ";
+        for (int j = 1; j <= i; j++) {
+            cout << j << " ";
+        }
+        cout << endl;
+    }
+
+    for (int s = 0; s < n; s++) {
+        cout << "  ";
+    }
+    cout << "*" << endl;
+
+    return 0;
 }
 ```
 
