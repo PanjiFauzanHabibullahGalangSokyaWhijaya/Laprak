@@ -34,7 +34,7 @@ void tukar(int *px, int *py)
 ```
 
 > Output
-> ![Screenshot bagian x](output/{4DA43ED0-6A8D-46FE-81D3-DE2FEA7D5A3C}.png)
+> ![Screenshot bagian x](output/{8BC353BF-E69D-46BE-9E9A-6554CE2A0E7F}.png)
 
 Program ini digunakan untuk menukar nilai dua variabel (a dan b) menggunakan pointer. Program ini menunjukkan cara kerja pointer dalam fungsi untuk mengubah nilai variabel di luar fungsi. Tanpa pointer, nilai variabel a dan b di fungsi main tidak akan berubah karena C++ menggunakan pass-by-value secara default.
 
