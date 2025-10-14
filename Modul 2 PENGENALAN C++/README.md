@@ -3,9 +3,9 @@
 
 ## Dasar Teori
 
-Array adalah kumpulan data sejenis yang disimpan berurutan di memori dan diakses dengan indeks.
-Pointer adalah variabel yang menyimpan alamat memori dari variabel lain.
-Nama array sebenarnya adalah pointer ke elemen pertama array, sehingga keduanya saling berkaitan dalam pengaksesan data di memori.
+Struktur data digunakan untuk menyimpan dan mengatur data agar mudah diakses dan dikelola. Salah satu contohnya adalah **array**, yang memungkinkan penyimpanan beberapa nilai dalam satu variabel dengan tipe data yang sama. Array dideklarasikan dengan menentukan tipe data, nama array, serta jumlah elemen yang akan disimpan.
+
+Selain array, C++ juga memiliki **pointer**, yaitu variabel khusus yang menyimpan alamat memori dari variabel lain, bukan nilainya langsung. Pointer memungkinkan program mengakses dan memanipulasi data di memori secara efisien, sehingga sangat penting untuk pemrograman tingkat sistem dan manajemen memori dinamis.
 
 ## Guided
 
