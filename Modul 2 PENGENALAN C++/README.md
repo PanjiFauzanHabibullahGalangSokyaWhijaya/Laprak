@@ -36,7 +36,7 @@ void tukar(int *px, int *py)
 > Output
 > ![Screenshot bagian x](output/{4DA43ED0-6A8D-46FE-81D3-DE2FEA7D5A3C}.png)
 
-Program ini akan mengambil huruf awal/char awal dari char-char yang diinput dengan menggunakan getchar()
+Program ini digunakan untuk menukar nilai dua variabel (a dan b) menggunakan pointer. Program ini menunjukkan cara kerja pointer dalam fungsi untuk mengubah nilai variabel di luar fungsi. Tanpa pointer, nilai variabel a dan b di fungsi main tidak akan berubah karena C++ menggunakan pass-by-value secara default.
 
 ### soal 2
 aritmatika.cpp
