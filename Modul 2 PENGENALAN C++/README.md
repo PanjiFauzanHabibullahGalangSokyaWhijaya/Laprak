@@ -10,19 +10,26 @@ Selain array, C++ juga memiliki **pointer**, yaitu variabel khusus yang menyimpa
 ## Guided
 
 ### soal 1
-TEST.cpp
+07_call_by_pointer.cpp
 
 ```go
 #include <iostream>
 using namespace std;
+
 int main()
 {
-    string ch;
-    cout << "Masukkan sebuah karakter: ";
-    // cin >> ch;
-    ch = getchar();  //Menggunakan getchar() untuk membaca satu karakter
-    cout << "Karakter yang Anda masukkan adalah: " << ch << endl;
+    int a = 10, b = 20;
+    cout << "Sebelum ditukar: a = " << a << ", b = " << b << endl;
+    tukar(&a, &b);
+    cout << "Setelah ditukar: a = " << a << ", b = " << b << endl;
     return 0;
+}
+
+void tukar(int *px, int *py)
+{
+    int temp = *px;
+    *px = *py;
+    *py = temp;
 }
 ```
 
