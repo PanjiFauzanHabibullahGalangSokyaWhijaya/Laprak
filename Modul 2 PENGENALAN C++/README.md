@@ -1,13 +1,11 @@
- # <h1 align="center">Laporan Praktikum Modul X <br> Nama Modul</h1>
+ # <h1 align="center">Laporan Praktikum Modul 2 <br> Pengenalan C++</h1>
 <p align="center">PANJI FAUZAN HABIBULLAH GALANG SOKYA WHIJAYA - 103112430162</p>
 
 ## Dasar Teori
 
-C++ adalah bahasa pemrograman komputer yang dikembangkan oleh Bjarne Stroustrup sebagai pengembangan dari bahasa C, yang sebelumnya dibuat oleh Dennis Ritchie di Bell Labs. Pada awal 1970-an, bahasa C sendiri merupakan penyempurnaan dari bahasa B.
-
-Awalnya, C++ dirancang untuk berjalan di sistem Unix. Seiring perkembangannya, standar ANSI C (American National Standards Institute) menjadi acuan utama, meskipun kini penggunaannya jarang ditemui dalam pengembangan sistem jaringan maupun sistem tertanam (embedded). Karena sifatnya yang fleksibel, C++ termasuk dalam kategori bahasa pemrograman tujuan umum (general-purpose programming language).
-
-Stroustrup mulai mengembangkan C++ pada awal 1980-an di Bell Labs dengan menambahkan efisiensi dan dukungan untuk pemrograman tingkat rendah. Bahasa ini juga memperkenalkan konsep baru seperti class, inheritance, dan overloading. Perbedaan utama antara C dan C++ adalah dukungan penuh C++ terhadap paradigma pemrograman berorientasi objek (OOP).
+Array adalah kumpulan data sejenis yang disimpan berurutan di memori dan diakses dengan indeks.
+Pointer adalah variabel yang menyimpan alamat memori dari variabel lain.
+Nama array sebenarnya adalah pointer ke elemen pertama array, sehingga keduanya saling berkaitan dalam pengaksesan data di memori.
 
 ## Guided
 
