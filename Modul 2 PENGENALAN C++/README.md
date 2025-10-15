@@ -67,7 +67,7 @@ void tukar(int &x, int &y)
 > Output
 > ![Screenshot bagian x](output/{8BC353BF-E69D-46BE-9E9A-6554CE2A0E7F}.png)
 
-Program ini digunakan untuk mencari hasil aritmatika dari Z = (7+3)/(3+1). Z dideklarasikan menggunakan float dikarenakan hasil pembagian mempunyai kemungkinan desimal
+Program ini digunakan untuk menukar nilai dua variabel (a dan b) menggunakan referensi (reference). Program ini menggunakan pass by reference agar fungsi dapat mengubah nilai variabel asli tanpa pointer.
 
 ## Unguided
 
