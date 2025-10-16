@@ -73,7 +73,7 @@ Program ini digunakan untuk menukar nilai dua variabel (a dan b) menggunakan ref
 
 ### Soal 1
 
-Buatlah program yang menerima input-an dua buah bilangan betipe float, kemudian memberikan output-an hasil penjumlahan, pengurangan, perkalian, dan pembagian dari dua bilangan tersebut.
+1. Buatlah sebuah program untuk melakukan transpose pada sebuah matriks persegi berukuran 3x3. Operasi transpose adalah mengubah baris menjadi kolom dan sebaliknya. Inisialisasi matriks awal di dalam kode, kemudian buat logika untuk melakukan transpose dan simpan hasilnya ke dalam matriks baru. Terakhir, tampilkan matriks awal dan matriks hasil transpose.
 
 ```go
 #include <iostream>
@@ -81,17 +81,43 @@ using namespace std;
 
 int main()
 {
-    double a,b,j,kr,kl,bg;
 
-    cout<<"Input 2 bilangan: ";
-    cin>>a;
-    cin>>b;
-    j=a+b;
-    kr=a-b;
-    kl=a*b;
-    bg=a/b;
-    
-    cout<<"Penjumlahan="<<j<<"\nPengurangan="<<kr<<"\nPerkalian="<<kl<<"\nPembagian="<<bg<<endl;
+    int matriks[3][3] = {
+        {1, 2, 3},
+        {4, 5, 6},
+        {7, 8, 9}
+    };
+
+    int transpose[3][3]; 
+
+    for (int i = 0; i < 3; i++)
+    {
+        for (int j = 0; j < 3; j++)
+        {
+            transpose[j][i] = matriks[i][j];
+        }
+    }
+
+    cout << "Matriks Awal:\n";
+    for (int i = 0; i < 3; i++)
+    {
+        for (int j = 0; j < 3; j++)
+        {
+            cout << matriks[i][j] << " ";
+        }
+        cout << endl;
+    }
+
+    cout << "\nMatriks Hasil Transpose:\n";
+    for (int i = 0; i < 3; i++)
+    {
+        for (int j = 0; j < 3; j++)
+        {
+            cout << transpose[i][j] << " ";
+        }
+        cout << endl;
+    }
+
     return 0;
 }
 ```
