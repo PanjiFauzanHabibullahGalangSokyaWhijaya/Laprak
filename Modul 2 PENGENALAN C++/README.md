@@ -159,5 +159,6 @@ Program ini menunjukkan penggunaan call by reference, di mana fungsi kuadratkan(
 ## Referensi
 
 1. https://en.wikipedia.org/wiki/Data_structure (diakses blablabla)
-2. https://learn.microsoft.com/id-id/cpp/cpp/void-cpp?view=msvc-170
-3. https://www.duniailkom.com/tutorial-belajar-c-plus-plus-tipe-data-float-dan-double-bahasa-c-plus-plus/
+2. [https://learn.microsoft.com/id-id/cpp/cpp/void-cpp?view=msvc-170](https://www.geeksforgeeks.org/cpp/cpp-pointers/)
+3. [https://www.duniailkom.com/tutorial-belajar-c-plus-plus-tipe-data-float-dan-double-bahasa-c-plus-plus/](https://www.w3schools.com/cpp/cpp_arrays.asp)
+4. https://www.w3schools.com/cpp/cpp_data_structures.asp
