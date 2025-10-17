@@ -152,7 +152,7 @@ int main() {
 ```
 
 > Output
-> ![Screenshot bagian x](output/WhatsAppImage2025-10-07at11.36.09.jpeg)
+> ![Screenshot bagian x](output/{91498EC7-9BED-4068-A882-FA569B6C50B4}.jpeg)
 
 Program ini menunjukkan penggunaan call by reference, di mana fungsi kuadratkan() menerima variabel secara referensi (&), sehingga perubahan di dalam fungsi langsung mempengaruhi variabel asli di main().
 
