@@ -123,7 +123,7 @@ int main()
 ```
 
 > Output
-> ![Screenshot bagian x](output/{E48EADCA-AAAF-42F9-824D-3AAD108DFF77}.png)
+> ![Screenshot bagian x](output/{BD188D2A-C971-4117-B89D-1529D8984B87}.png)
 
 Program ini digunakan untuk melakukan transpose pada matriks 3x3. Transpose berarti baris menjadi kolom dan kolom menjadi baris. Proses transpose dilakukan dengan menukar indeks baris dan kolom ([i][j] → [j][i]).
 
