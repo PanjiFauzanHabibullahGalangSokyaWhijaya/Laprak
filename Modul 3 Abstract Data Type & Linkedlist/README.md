@@ -1,4 +1,4 @@
- # <h1 align="center">Laporan Praktikum Modul X <br> Nama Modul</h1>
+ # <h1 align="center">Laporan Praktikum Modul 3 <br> Abstract Data Type & Linked List</h1>
 <p align="center">PANJI FAUZAN HABIBULLAH GALANG SOKYA WHIJAYA - 103112430162</p>
 
 ## Dasar Teori
