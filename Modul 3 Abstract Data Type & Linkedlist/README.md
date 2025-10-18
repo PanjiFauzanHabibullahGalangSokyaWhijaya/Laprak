@@ -12,18 +12,49 @@ Dalam C++, linked list adalah struktur data linear yang menyimpan data di memori
 ## Guided
 
 ### soal 1
-TEST.cpp
+mahasiswa.cpp, mahasiswa.h, dan main.cpp
 
 ```go
+#include "mahasiswa.h"
 #include <iostream>
 using namespace std;
+
+void inputMhs(mahasiswa &m)
+{
+    cout << "input name = ";
+    cin >> (m).nim;
+    cout << "input  nilai = ";
+    cin >> (m).nilai1;
+    cout << "input nilai2 = ";
+    cin >> (m).nilai2;
+}
+float rata2(mahasiswa m)
+{
+    return float(m.nilai1+m.nilai2)/2;
+}
+```
+```go
+#ifndef MAHASISWA_H_INCLUDED
+#define MAHASISWA_H_INCLUDED
+    struct mahasiswa
+    {
+        char nim[10];
+        int nilai1, nilai2;
+    };
+    void inputMhs(mahasiswa &m);
+    float rata2(mahasiswa m);
+    #endif
+```
+```go
+#include <iostream>
+#include "mahasiswa.h"
+using namespace std;
+
 int main()
 {
-    string ch;
-    cout << "Masukkan sebuah karakter: ";
-    // cin >> ch;
-    ch = getchar();  //Menggunakan getchar() untuk membaca satu karakter
-    cout << "Karakter yang Anda masukkan adalah: " << ch << endl;
+    mahasiswa mhs;
+    inputMhs(mhs);
+    cout << "rata - rata = " << rata2(mhs);
     return 0;
 }
 ```
