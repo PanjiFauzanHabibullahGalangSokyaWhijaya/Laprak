@@ -60,7 +60,7 @@ int main()
 ```
 
 > Output
-> ![Screenshot bagian x](output/{4DA43ED0-6A8D-46FE-81D3-DE2FEA7D5A3C}.png)
+> ![Screenshot bagian x](output/{{F1591E1A-823C-4EA8-9575-2683BABCB70F}.png)
 
 Program ini terdiri dari tiga file: mahasiswa.h, mahasiswa.cpp, dan main.cpp. File mahasiswa.h berisi definisi struct mahasiswa dengan atribut nim, nilai1, dan nilai2, serta deklarasi fungsi inputMhs() dan rata2(). File mahasiswa.cpp berisi implementasi fungsi-fungsi tersebut. Fungsi inputMhs() menerima parameter bertipe referensi dan meminta pengguna memasukkan NIM serta dua nilai, lalu menyimpannya ke dalam variabel mahasiswa. Fungsi rata2() menghitung dan mengembalikan rata-rata dari dua nilai mahasiswa dalam bentuk float. Pada main.cpp, dibuat variabel mhs bertipe mahasiswa, kemudian dipanggil inputMhs(mhs) untuk mengisi data dan rata2(mhs) untuk menghitung rata-rata, lalu hasilnya ditampilkan. Program ini menunjukkan penggunaan struct, parameter by reference, serta pemisahan kode dengan file header dan implementasi.
 
