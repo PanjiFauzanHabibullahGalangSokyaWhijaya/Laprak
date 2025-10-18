@@ -3,11 +3,11 @@
 
 ## Dasar Teori
 
-C++ adalah bahasa pemrograman komputer yang dikembangkan oleh Bjarne Stroustrup sebagai pengembangan dari bahasa C, yang sebelumnya dibuat oleh Dennis Ritchie di Bell Labs. Pada awal 1970-an, bahasa C sendiri merupakan penyempurnaan dari bahasa B.
+Abstract Data Type (ADT) adalah model konseptual yang mendefinisikan operasi dan perilaku suatu struktur data tanpa menjelaskan bagaimana operasi tersebut diimplementasikan. ADT hanya menjelaskan apa yang dilakukan, bukan bagaimana cara melakukannya, sehingga bersifat abstrak dan tidak tergantung pada implementasi.
 
-Awalnya, C++ dirancang untuk berjalan di sistem Unix. Seiring perkembangannya, standar ANSI C (American National Standards Institute) menjadi acuan utama, meskipun kini penggunaannya jarang ditemui dalam pengembangan sistem jaringan maupun sistem tertanam (embedded). Karena sifatnya yang fleksibel, C++ termasuk dalam kategori bahasa pemrograman tujuan umum (general-purpose programming language).
-
-Stroustrup mulai mengembangkan C++ pada awal 1980-an di Bell Labs dengan menambahkan efisiensi dan dukungan untuk pemrograman tingkat rendah. Bahasa ini juga memperkenalkan konsep baru seperti class, inheritance, dan overloading. Perbedaan utama antara C dan C++ adalah dukungan penuh C++ terhadap paradigma pemrograman berorientasi objek (OOP).
+Dalam C++, linked list adalah struktur data linear yang menyimpan data di memori tidak berurutan. Setiap elemen disebut node, dan tiap node memiliki dua bagian utama:
+- Data/value – menyimpan nilai.
+- Pointer – menyimpan alamat node berikutnya (atau sebelumnya).
 
 ## Guided
 
