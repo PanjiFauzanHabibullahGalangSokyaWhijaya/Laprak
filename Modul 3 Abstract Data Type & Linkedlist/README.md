@@ -247,7 +247,7 @@ int main() {
 ```
 
 > Output
-> ![Screenshot bagian x](output/{B47A6CB0-7B5E-45EC-AB42-0D78A05D830E}.png)
+> ![Screenshot bagian x](output/{E3751B25-8A19-42F2-9989-B6AE01E8702E}.png)
 
 Program ini digunakan untuk mengelola data dalam struktur Single Linked List.
 Program ini bisa:
