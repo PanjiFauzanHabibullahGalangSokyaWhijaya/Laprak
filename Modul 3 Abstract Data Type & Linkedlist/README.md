@@ -65,7 +65,7 @@ int main()
 Program ini terdiri dari tiga file: mahasiswa.h, mahasiswa.cpp, dan main.cpp. File mahasiswa.h berisi definisi struct mahasiswa dengan atribut nim, nilai1, dan nilai2, serta deklarasi fungsi inputMhs() dan rata2(). File mahasiswa.cpp berisi implementasi fungsi-fungsi tersebut. Fungsi inputMhs() menerima parameter bertipe referensi dan meminta pengguna memasukkan NIM serta dua nilai, lalu menyimpannya ke dalam variabel mahasiswa. Fungsi rata2() menghitung dan mengembalikan rata-rata dari dua nilai mahasiswa dalam bentuk float. Pada main.cpp, dibuat variabel mhs bertipe mahasiswa, kemudian dipanggil inputMhs(mhs) untuk mengisi data dan rata2(mhs) untuk menghitung rata-rata, lalu hasilnya ditampilkan. Program ini menunjukkan penggunaan struct, parameter by reference, serta pemisahan kode dengan file header dan implementasi.
 
 ### soal 2
-aritmatika.cpp
+linkedlist.cpp
 
 ```go
 #include <iostream>
@@ -249,7 +249,12 @@ int main() {
 > Output
 > ![Screenshot bagian x](output/{B47A6CB0-7B5E-45EC-AB42-0D78A05D830E}.png)
 
-Program ini digunakan untuk mencari hasil aritmatika dari Z = (7+3)/(3+1). Z dideklarasikan menggunakan float dikarenakan hasil pembagian mempunyai kemungkinan desimal
+Program ini digunakan untuk mengelola data dalam struktur Single Linked List.
+Program ini bisa:
+- Menambah data (di depan, belakang, atau setelah data tertentu)
+- Menghapus data berdasarkan nilainya
+- Memperbarui data
+- Menampilkan semua isi linked list
 
 ### soal 3
 perulangan.cpp
