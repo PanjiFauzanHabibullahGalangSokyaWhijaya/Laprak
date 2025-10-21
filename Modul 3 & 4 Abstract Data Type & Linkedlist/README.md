@@ -260,25 +260,87 @@ Program ini bisa:
 
 ### Soal 1
 
-Buatlah program yang menerima input-an dua buah bilangan betipe float, kemudian memberikan output-an hasil penjumlahan, pengurangan, perkalian, dan pembagian dari dua bilangan tersebut.
+Buat program yang dapat menyimpan data mahasiswa (max. 10) ke dalam sebuah array dengan field nama, nim, uts, uas, tugas, dan nilai akhir. Nilai akhir diperoleh dari FUNGSI dengan rumus 0.3uts+0.4uas+0.3*tugas.
 
+unguided.cpp, unguided.h, dan unguided1.cpp
 ```go
+#include "mahasiswa.h"
 #include <iostream>
 using namespace std;
 
-int main()
-{
-    double a,b,j,kr,kl,bg;
+float hitungNilaiAkhir(float uts, float uas, float tugas) {
+    return 0.3 * uts + 0.4 * uas + 0.3 * tugas;
+}
 
-    cout<<"Input 2 bilangan: ";
-    cin>>a;
-    cin>>b;
-    j=a+b;
-    kr=a-b;
-    kl=a*b;
-    bg=a/b;
-    
-    cout<<"Penjumlahan="<<j<<"\nPengurangan="<<kr<<"\nPerkalian="<<kl<<"\nPembagian="<<bg<<endl;
+void inputData(Mahasiswa &m) {
+    cout << "Masukkan Nama   : ";
+    cin.ignore(); 
+    getline(cin, m.nama);
+    cout << "Masukkan NIM    : ";
+    getline(cin, m.nim);
+    cout << "Masukkan Nilai UTS  : ";
+    cin >> m.uts;
+    cout << "Masukkan Nilai UAS  : ";
+    cin >> m.uas;
+    cout << "Masukkan Nilai Tugas: ";
+    cin >> m.tugas;
+
+    m.nilaiAkhir = hitungNilaiAkhir(m.uts, m.uas, m.tugas);
+}
+
+void tampilData(const Mahasiswa m) {
+    cout << "\nNama        : " << m.nama << endl;
+    cout << "NIM         : " << m.nim << endl;
+    cout << "UTS         : " << m.uts << endl;
+    cout << "UAS         : " << m.uas << endl;
+    cout << "Tugas       : " << m.tugas << endl;
+    cout << "Nilai Akhir : " << m.nilaiAkhir << endl;
+}
+```
+```go
+#ifndef MAHASISWA_H
+#define MAHASISWA_H
+
+#include <string>
+using namespace std;
+
+struct Mahasiswa {
+    string nama;
+    string nim;
+    float uts, uas, tugas, nilaiAkhir;
+};
+
+float hitungNilaiAkhir(float uts, float uas, float tugas);
+void inputData(Mahasiswa &m);
+void tampilData(const Mahasiswa m);
+
+#endif
+```
+```go
+#include <iostream>
+#include "mahasiswa.h"
+using namespace std;
+
+int main() {
+    Mahasiswa daftar[10];
+    int n;
+
+    cout << "Masukkan jumlah mahasiswa (maks 10): ";
+    cin >> n;
+
+    if (n > 10) n = 10;
+
+    for (int i = 0; i < n; i++) {
+        cout << "\n=== Input Mahasiswa ke-" << i + 1 << " ===" << endl;
+        inputData(daftar[i]);
+    }
+
+    cout << "\n=== Data Mahasiswa ===" << endl;
+    for (int i = 0; i < n; i++) {
+        cout << "\nMahasiswa ke-" << i + 1 << ":" << endl;
+        tampilData(daftar[i]);
+    }
+
     return 0;
 }
 ```
@@ -286,7 +348,10 @@ int main()
 > Output
 > ![Screenshot bagian x](output/{6B254A09-D5F3-4392-A4B6-071A627D7ED1}.png)
 
-Program ini adalah program aritmatika sederhana yang menghitung hasil penjumlahan, pengurangan, perkalian, dan pembagian. Saya menggunakan double karena double adalah float untuk win64
+Penjelasan:
+- mahasiswa.h → berisi struktur Mahasiswa dan deklarasi fungsi untuk input, tampil, dan hitung nilai akhir.
+- mahasiswa.cpp → berisi implementasi fungsi: menghitung nilai akhir (0.3*UTS + 0.4*UAS + 0.3*Tugas), input data, dan tampil data.
+- main.cpp → program utama yang menyimpan max 10 mahasiswa, memanggil fungsi input dan tampil.
 
 ### Soal 2
 
