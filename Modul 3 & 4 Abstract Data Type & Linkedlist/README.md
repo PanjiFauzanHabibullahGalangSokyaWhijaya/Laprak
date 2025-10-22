@@ -355,67 +355,62 @@ Penjelasan:
 
 ### Soal 2
 
-Buatlah sebuah program yang menerima masukan angka dan mengeluarkan output nilai angka tersebut dalam bentuk tulisan. Angka yang akan di-input-kan user adalah bilangan bulat positif mulai dari 0 s.d 100
-contoh:
-79: tujuh puluh Sembilan
+Buatlah ADT pelajaran sebagai berikut di dalam file “pelajaran.h”:
+> ![Screenshot bagian x](output/{CAC2DBBE-A5C2-4029-A6F8-F879A5BF6585}.png)
+Buatlah implementasi ADT pelajaran pada file “pelajaran.cpp”
+Cobalah hasil implementasi ADT pada file “main.cpp”
+> ![Screenshot bagian x](output/{CAC2DBBE-A5C2-4029-A6F8-F879A5BF6585}.png)
 
+pelajaran.cpp, pelajaran.h, dan main.cpp
 ```go
+#include "pelajaran.h"
 #include <iostream>
 using namespace std;
 
-string angkaKeTulisan(int n)
-{
-    string satuan[] = {"", "Satu", "Dua", "Tiga", "Empat", "Lima",
-                       "Enam", "Tujuh", "Delapan", "Sembilan"};
-
-    if (n == 0)
-        return "Nol";
-    else if (n == 10)
-        return "Sepuluh";
-    else if (n == 11)
-        return "Sebelas";
-    else if (n == 100)
-        return "Seratus";
-    else if (n < 10)
-        return satuan[n];
-    else if (n < 20)
-    {
-        int belas = n%10;
-        string hasil = satuan[belas] + " Belas";
-        return hasil;
-    }
-    else
-    {
-        int puluh = n / 10;
-        int sisa = n % 10;
-        string hasil = satuan[puluh] + " Puluh";
-        if (sisa > 0)
-            hasil += " " + satuan[sisa];
-        return hasil;
-    }
+pelajaran create_pelajaran(string namaMapel, string kodeMapel) {
+    pelajaran p;
+    p.namaMapel = namaMapel;
+    p.kodeMapel = kodeMapel;
+    return p;
 }
 
-int main()
-{
-    int angka;
-    cout << "Masukkan angka (0-100): ";
-    cin >> angka;
+void tampil_pelajaran(pelajaran pel) {
+    cout << "nama pelajaran : " << pel.namaMapel << endl;
+    cout << "nilai : " << pel.kodeMapel << endl;
+}
+```
+```go
+#ifndef PELAJARAN_H
+#define PELAJARAN_H
+#include <string>
+using namespace std;
 
-    if (angka < 0 || angka > 100)
-    {
-        cout << "Angka di luar jangkauan!" << endl;
-    }
-    else
-    {
-        cout << angka << ": " << angkaKeTulisan(angka) << endl;
-    }
+struct pelajaran {
+    string namaMapel;
+    string kodeMapel;
+};
 
+pelajaran create_pelajaran(string namaMapel, string kodeMapel);
+void tampil_pelajaran(pelajaran pel);
+
+#endif
+```
+```go
+#include <iostream>
+#include "pelajaran.h"
+using namespace std;
+
+int main() {
+    string namapel = "Struktur Data";
+    string kodepel = "STD";
+    pelajaran pel = create_pelajaran(namapel, kodepel);
+    tampil_pelajaran(pel);
     return 0;
 }
 ```
 
 > Output
-> ![Screenshot bagian x](output/WhatsAppImage2025-10-07at11.36.09.jpeg)
+> ![Screenshot bagian x](output/{CAC2DBBE-A5C2-4029-A6F8-F879A5BF6585}.png)
 
 Program ini mengkonversi angka menjadi latin. Di sini saya menggunakan fungsi dan array
 
