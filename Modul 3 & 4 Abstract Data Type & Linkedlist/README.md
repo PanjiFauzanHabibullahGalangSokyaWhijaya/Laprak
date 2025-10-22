@@ -250,6 +250,7 @@ int main() {
 > ![Screenshot bagian x](output/{E3751B25-8A19-42F2-9989-B6AE01E8702E}.png)
 
 Program ini digunakan untuk mengelola data dalam struktur Single Linked List.
+
 Program ini bisa:
 - Menambah data (di depan, belakang, atau setelah data tertentu)
 - Menghapus data berdasarkan nilainya
@@ -417,15 +418,19 @@ Program ini menunjukkan cara membuat dan menampilkan data pelajaran menggunakan 
 
 Ini penjelasan lebih lanjutnya: 
 - pelajaran.h
+
   Berisi deklarasi struktur pelajaran dengan dua atribut: namaMapel dan kodeMapel.
+
   Juga mendefinisikan dua fungsi:
   * create_pelajaran() = membuat dan mengembalikan data pelajaran baru.
   * tampil_pelajaran() = menampilkan isi data pelajaran.
 - pelajaran.cpp
+
   Berisi implementasi fungsi dari header:
   * create_pelajaran() mengisi dan mengembalikan struct pelajaran.
   * tampil_pelajaran() mencetak nama dan kode pelajaran ke layar.
 - main.cpp
+
   Membuat objek pelajaran dengan memanggil create_pelajaran() dan menampilkannya lewat tampil_pelajaran().
 
 ### Soal 3
