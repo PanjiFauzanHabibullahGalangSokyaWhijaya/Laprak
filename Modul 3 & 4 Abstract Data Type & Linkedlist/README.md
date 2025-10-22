@@ -349,9 +349,9 @@ int main() {
 > ![Screenshot bagian x](output/{6B254A09-D5F3-4392-A4B6-071A627D7ED1}.png)
 
 Penjelasan:
-- mahasiswa.h → berisi struktur Mahasiswa dan deklarasi fungsi untuk input, tampil, dan hitung nilai akhir.
-- mahasiswa.cpp → berisi implementasi fungsi: menghitung nilai akhir (0.3*UTS + 0.4*UAS + 0.3*Tugas), input data, dan tampil data.
-- main.cpp → program utama yang menyimpan max 10 mahasiswa, memanggil fungsi input dan tampil.
+- mahasiswa.h = berisi struktur Mahasiswa dan deklarasi fungsi untuk input, tampil, dan hitung nilai akhir.
+- mahasiswa.cpp = berisi implementasi fungsi: menghitung nilai akhir (0.3*UTS + 0.4*UAS + 0.3*Tugas), input data, dan tampil data.
+- main.cpp = program utama yang menyimpan max 10 mahasiswa, memanggil fungsi input dan tampil.
 
 ### Soal 2
 
@@ -416,16 +416,16 @@ int main() {
 Program ini menunjukkan cara membuat dan menampilkan data pelajaran menggunakan ADT
 Ini penjelasan lebih lanjutnya: 
 -pelajaran.h
-Berisi deklarasi struktur pelajaran dengan dua atribut: namaMapel dan kodeMapel.
-Juga mendefinisikan dua fungsi:
-*create_pelajaran() = membuat dan mengembalikan data pelajaran baru.
-*tampil_pelajaran() = menampilkan isi data pelajaran.
+ Berisi deklarasi struktur pelajaran dengan dua atribut: namaMapel dan kodeMapel.
+ Juga mendefinisikan dua fungsi:
+ *create_pelajaran() = membuat dan mengembalikan data pelajaran baru.
+ *tampil_pelajaran() = menampilkan isi data pelajaran.
 -pelajaran.cpp
-Berisi implementasi fungsi dari header:
-*create_pelajaran() mengisi dan mengembalikan struct pelajaran.
-*tampil_pelajaran() mencetak nama dan kode pelajaran ke layar.
+ Berisi implementasi fungsi dari header:
+ *create_pelajaran() mengisi dan mengembalikan struct pelajaran.
+ *tampil_pelajaran() mencetak nama dan kode pelajaran ke layar.
 -main.cpp
-Membuat objek pelajaran dengan memanggil create_pelajaran() dan menampilkannya lewat tampil_pelajaran().
+ Membuat objek pelajaran dengan memanggil create_pelajaran() dan menampilkannya lewat tampil_pelajaran().
 
 ### Soal 3
 
