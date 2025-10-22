@@ -356,10 +356,11 @@ Penjelasan:
 ### Soal 2
 
 Buatlah ADT pelajaran sebagai berikut di dalam file “pelajaran.h”:
-> ![Screenshot bagian x](output/{CAC2DBBE-A5C2-4029-A6F8-F879A5BF6585}.png)
+> ![Screenshot bagian x](output/{E3774362-B1B1-4D0C-B10D-157856DC6F4C}.png)
+
 Buatlah implementasi ADT pelajaran pada file “pelajaran.cpp”
 Cobalah hasil implementasi ADT pada file “main.cpp”
-> ![Screenshot bagian x](output/{CAC2DBBE-A5C2-4029-A6F8-F879A5BF6585}.png)
+> ![Screenshot bagian x](output/{3A13B526-637E-4974-AEB9-88E275368F2F}.png)
 
 pelajaran.cpp, pelajaran.h, dan main.cpp
 ```go
@@ -412,7 +413,19 @@ int main() {
 > Output
 > ![Screenshot bagian x](output/{CAC2DBBE-A5C2-4029-A6F8-F879A5BF6585}.png)
 
-Program ini mengkonversi angka menjadi latin. Di sini saya menggunakan fungsi dan array
+Program ini menunjukkan cara membuat dan menampilkan data pelajaran menggunakan ADT
+Ini penjelasan lebih lanjutnya: 
+-pelajaran.h
+Berisi deklarasi struktur pelajaran dengan dua atribut: namaMapel dan kodeMapel.
+Juga mendefinisikan dua fungsi:
+*create_pelajaran() = membuat dan mengembalikan data pelajaran baru.
+*tampil_pelajaran() = menampilkan isi data pelajaran.
+-pelajaran.cpp
+Berisi implementasi fungsi dari header:
+*create_pelajaran() mengisi dan mengembalikan struct pelajaran.
+*tampil_pelajaran() mencetak nama dan kode pelajaran ke layar.
+-main.cpp
+Membuat objek pelajaran dengan memanggil create_pelajaran() dan menampilkannya lewat tampil_pelajaran().
 
 ### Soal 3
 
