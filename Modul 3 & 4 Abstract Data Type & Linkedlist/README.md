@@ -413,23 +413,20 @@ int main() {
 > Output
 > ![Screenshot bagian x](output/{CAC2DBBE-A5C2-4029-A6F8-F879A5BF6585}.png)
 
-Program ini menunjukkan cara membuat dan menampilkan data pelajaran menggunakan ADT
+Program ini menunjukkan cara membuat dan menampilkan data pelajaran menggunakan ADT.
 
 Ini penjelasan lebih lanjutnya: 
-
--pelajaran.h
- Berisi deklarasi struktur pelajaran dengan dua atribut: namaMapel dan kodeMapel.
- Juga mendefinisikan dua fungsi:
- *create_pelajaran() = membuat dan mengembalikan data pelajaran baru.
- *tampil_pelajaran() = menampilkan isi data pelajaran.
-
--pelajaran.cpp
- Berisi implementasi fungsi dari header:
- *create_pelajaran() mengisi dan mengembalikan struct pelajaran.
- *tampil_pelajaran() mencetak nama dan kode pelajaran ke layar.
-
--main.cpp
- Membuat objek pelajaran dengan memanggil create_pelajaran() dan menampilkannya lewat tampil_pelajaran().
+- pelajaran.h
+  Berisi deklarasi struktur pelajaran dengan dua atribut: namaMapel dan kodeMapel.
+  Juga mendefinisikan dua fungsi:
+  * create_pelajaran() = membuat dan mengembalikan data pelajaran baru.
+  * tampil_pelajaran() = menampilkan isi data pelajaran.
+- pelajaran.cpp
+  Berisi implementasi fungsi dari header:
+  * create_pelajaran() mengisi dan mengembalikan struct pelajaran.
+  * tampil_pelajaran() mencetak nama dan kode pelajaran ke layar.
+- main.cpp
+  Membuat objek pelajaran dengan memanggil create_pelajaran() dan menampilkannya lewat tampil_pelajaran().
 
 ### Soal 3
 
