@@ -435,38 +435,67 @@ Ini penjelasan lebih lanjutnya:
 
 ### Soal 3
 
-Buatlah program yang dapat memberikan input dan output sbb.
-> ![Screenshot bagian x](output/{F626FCED-9EB9-4D1E-8A7F-21D9194D1611}.png)
+Buatlah program dengan ketentuan :
+- 2 buah array 2D integer berukuran 3x3 dan 2 buah pointer integer
+- fungsi/prosedur yang menampilkan isi sebuah array integer 2D
+- fungsi/prosedur yang akan menukarkan isi dari 2 array integer 2D pada posisi tertentu
+- fungsi/prosedur yang akan menukarkan isi dari variabel yang ditunjuk oleh 2 buah pointer
 
 ```go
 #include <iostream>
 using namespace std;
 
-int main() {
-    int n;
-    cout << "Input: ";
-    cin >> n;
-    cout << "Output: "<<endl;
-
-    for (int i = n; i >= 1; i--) {
-
-        for (int s = 0; s < (n - i); s++) {
-            cout << "  ";
-        }
-        for (int j = i; j >= 1; j--) {
-            cout << j << " ";
-        }
-        cout << "* ";
-        for (int j = 1; j <= i; j++) {
-            cout << j << " ";
+void tampilArray(int arr[3][3]) {
+    for (int i = 0; i < 3; i++) {
+        for (int j = 0; j < 3; j++) {
+            cout << arr[i][j] << " ";
         }
         cout << endl;
     }
+}
 
-    for (int s = 0; s < n; s++) {
-        cout << "  ";
-    }
-    cout << "*" << endl;
+void tukarPosisi(int arr1[3][3], int arr2[3][3], int baris, int kolom) {
+    int temp = arr1[baris][kolom];
+    arr1[baris][kolom] = arr2[baris][kolom];
+    arr2[baris][kolom] = temp;
+}
+
+void tukarPointer(int *p1, int *p2) {
+    int temp = *p1;
+    *p1 = *p2;
+    *p2 = temp;
+}
+
+int main() {
+    int A[3][3] = { {1, 2, 3},
+                    {4, 5, 6},
+                    {7, 8, 9} };
+
+    int B[3][3] = { {9, 8, 7},
+                    {6, 5, 4},
+                    {3, 2, 1} };
+
+    int *ptr1, *ptr2;
+    int x = 10, y = 20;
+    ptr1 = &x;
+    ptr2 = &y;
+
+    cout << "=== Array A ===" << endl;
+    tampilArray(A);
+    cout << "\n=== Array B ===" << endl;
+    tampilArray(B);
+
+    cout << "\nMenukar elemen [1][1] antara A dan B" << endl;
+    tukarPosisi(A, B, 1, 1);
+
+    cout << "\n=== Array A setelah tukar ===" << endl;
+    tampilArray(A);
+    cout << "\n=== Array B setelah tukar ===" << endl;
+    tampilArray(B);
+
+    cout << "\nSebelum tukar pointer: x=" << x << ", y=" << y << endl;
+    tukarPointer(ptr1, ptr2);
+    cout << "Setelah tukar pointer: x=" << x << ", y=" << y << endl;
 
     return 0;
 }
