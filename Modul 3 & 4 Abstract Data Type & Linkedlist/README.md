@@ -624,7 +624,93 @@ int main() {
 > Output
 > ![Screenshot bagian x](output/{E2B28BA3-7DFF-4EAA-83A4-CD3B22D4A404}.png)
 
-Struktur Node menyimpan data pembeli (nama, pesanan) dan pointer next. Front dan rear menunjuk ke awal dan akhir antrian. tambahAntrian() menambah pembeli di belakang antrian. layaniAntrian() melayani (menghapus) pembeli paling depan. tampilkanAntrian() menampilkan seluruh pembeli dalam antrian. main() berisi menu interaktif untuk menjalankan ketiga fungsi tersebut sampai pengguna memilih keluar.
+Struktur Node menyimpan data pembeli (nama, pesanan) dan pointer next.
+- Front dan rear menunjuk ke awal dan akhir antrian.
+- tambahAntrian() menambah pembeli di belakang antrian.
+- layaniAntrian() melayani (menghapus) pembeli paling depan.
+- tampilkanAntrian() menampilkan seluruh pembeli dalam antrian.
+- main() berisi menu interaktif untuk menjalankan ketiga fungsi tersebut sampai pengguna memilih keluar.
+
+### Soal 5
+
+buatlah program kode untuk membalik (reverse) singly linked list (1-2-3 menjadi 3-2-1)
+```go
+#include <iostream>
+using namespace std;
+
+struct Node {
+    int data;
+    Node* next;
+};
+
+Node* head = nullptr;
+
+void tambahNode(int nilai) {
+    Node* baru = new Node();
+    baru->data = nilai;
+    baru->next = nullptr;
+
+    if (head == nullptr) {
+        head = baru;
+    } else {
+        Node* temp = head;
+        while (temp->next != nullptr)
+            temp = temp->next;
+        temp->next = baru;
+    }
+}
+
+void tampilkanList() {
+    Node* temp = head;
+    while (temp != nullptr) {
+        cout << temp->data << " -> ";
+        temp = temp->next;
+    }
+    cout << "NULL" << endl;
+}
+
+void reverseList() {
+    Node* prev = nullptr;
+    Node* curr = head;
+    Node* next = nullptr;
+
+    while (curr != nullptr) {
+        next = curr->next;   
+        curr->next = prev;   
+        prev = curr;         
+        curr = next;         
+    }
+    head = prev; 
+}
+
+int main() {
+
+    tambahNode(1);
+    tambahNode(2);
+    tambahNode(3);
+
+    cout << "Linked List sebelum dibalik: ";
+    tampilkanList();
+
+    reverseList();
+
+    cout << "Linked List setelah dibalik: ";
+    tampilkanList();
+
+    return 0;
+}
+```
+
+> Output
+> ![Screenshot bagian x](output/{E2B28BA3-7DFF-4EAA-83A4-CD3B22D4A404}.png)
+
+Program ini membuat Single Linked List dan membalik urutannya.
+
+- struct Node menyimpan data dan pointer ke node berikutnya.
+- tambahNode() menambah data di akhir list.
+- tampilkanList() menampilkan isi list.
+- reverseList() membalik arah pointer antar node agar urutannya terbalik.
+- Di main(), list 1→2→3 dibuat, lalu setelah dibalik menjadi 3→2→1.
 
 ## Referensi
 
