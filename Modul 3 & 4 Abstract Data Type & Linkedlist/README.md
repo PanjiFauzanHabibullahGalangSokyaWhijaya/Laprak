@@ -502,9 +502,16 @@ int main() {
 ```
 
 > Output
-> ![Screenshot bagian x](output/{78A35B0E-8CB4-4DF5-A70B-D94521A279D9}.png)
+> ![Screenshot bagian x](output/{D6366EB0-70DA-46E0-8D1F-6A7F8217D15A}.png)
 
-Program ini menampilkan pola angka simetris dengan bintang di tengahnya, berdasarkan input angka n. Program ini menggeser pola ke kanan setiap baris dengan penambahan spasi. Saya di sini menggunakan nested loop
+Program ini membuat dua array 2D berukuran 3x3 dan dua pointer integer.
+
+Program memiliki tiga fungsi:
+- tampilArray() — menampilkan isi array 2D. 
+- tukarPosisi() — menukar elemen pada posisi tertentu antara dua array.
+- tukarPointer() — menukar nilai dua variabel lewat pointer.
+  
+Di main(), program menampilkan array awal, menukar elemen tertentu antar array, lalu menukar nilai dua variabel (x dan y) menggunakan pointer.
 
 ## Referensi
 
