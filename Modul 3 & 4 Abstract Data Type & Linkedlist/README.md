@@ -709,7 +709,7 @@ Program ini membuat Single Linked List dan membalik urutannya.
 - tambahNode() menambah data di akhir list.
 - tampilkanList() menampilkan isi list.
 - reverseList() membalik arah pointer antar node agar urutannya terbalik.
-- Di main(), list 1→2→3 dibuat, lalu setelah dibalik menjadi 3→2→1.
+- Di main(), list 1->2->3 dibuat, lalu setelah dibalik menjadi 3->2->1.
 
 ## Referensi
 
