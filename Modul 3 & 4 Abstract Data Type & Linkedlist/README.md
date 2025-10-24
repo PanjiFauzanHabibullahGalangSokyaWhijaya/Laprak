@@ -702,10 +702,9 @@ int main() {
 ```
 
 > Output
-> ![Screenshot bagian x](output/{E2B28BA3-7DFF-4EAA-83A4-CD3B22D4A404}.png)
+> ![Screenshot bagian x](output/{16EEAD82-7302-4ADE-A06B-163AD17C5F16}.png)
 
 Program ini membuat Single Linked List dan membalik urutannya.
-
 - struct Node menyimpan data dan pointer ke node berikutnya.
 - tambahNode() menambah data di akhir list.
 - tampilkanList() menampilkan isi list.
