@@ -513,6 +513,119 @@ Program memiliki tiga fungsi:
   
 Di main(), program menampilkan array awal, menukar elemen tertentu antar array, lalu menukar nilai dua variabel (x dan y) menggunakan pointer.
 
+### Soal 4
+
+buatlah single linked list untuk Antrian yang menyimpan data pembeli( nama dan pesanan). program memiliki beberapa menu seperti tambah antrian, layani antrian(hapus), dan tampilkan antrian. *antrian pertama harus yang pertama dilayani
+
+```go
+#include <iostream>
+#include <string>
+using namespace std;
+
+struct Node {
+    string nama;
+    string pesanan;
+    Node* next;
+};
+
+Node* front = nullptr;
+Node* rear = nullptr;
+
+Node* createNode(string nama, string pesanan) {
+    Node* newNode = new Node();
+    newNode->nama = nama;
+    newNode->pesanan = pesanan;
+    newNode->next = nullptr;
+    return newNode;
+}
+
+void tambahAntrian(string nama, string pesanan) {
+    Node* newNode = createNode(nama, pesanan);
+    if (rear == nullptr) {
+        front = rear = newNode;
+    } else {
+        rear->next = newNode;
+        rear = newNode;
+    }
+    cout << "Pembeli " << nama << " dengan pesanan \"" << pesanan << "\" ditambahkan ke antrian.\n";
+}
+
+void layaniAntrian() {
+    if (front == nullptr) {
+        cout << "Antrian kosong, tidak ada yang dilayani.\n";
+        return;
+    }
+    Node* temp = front;
+    cout << "Melayani pembeli " << front->nama << " (pesanan: " << front->pesanan << ")\n";
+    front = front->next;
+    if (front == nullptr) {
+        rear = nullptr;
+    }
+    delete temp;
+}
+
+void tampilkanAntrian() {
+    if (front == nullptr) {
+        cout << "Antrian kosong.\n";
+        return;
+    }
+    Node* temp = front;
+    cout << "\n=== Daftar Antrian Pembeli ===\n";
+    while (temp != nullptr) {
+        cout << "- " << temp->nama << " (Pesanan: " << temp->pesanan << ")\n";
+        temp = temp->next;
+    }
+}
+
+int main() {
+    int pilihan;
+    string nama, pesanan;
+
+    do {
+        cout << "\n=== MENU ANTRIAN PEMBELI ===\n";
+        cout << "1. Tambah Antrian\n";
+        cout << "2. Layani Antrian\n";
+        cout << "3. Tampilkan Antrian\n";
+        cout << "0. Keluar\n";
+        cout << "Pilih menu: ";
+        cin >> pilihan;
+
+        switch (pilihan) {
+            case 1:
+                cout << "Masukkan nama pembeli: ";
+                cin.ignore();
+                getline(cin, nama);
+                cout << "Masukkan pesanan: ";
+                getline(cin, pesanan);
+                tambahAntrian(nama, pesanan);
+                break;
+
+            case 2:
+                layaniAntrian();
+                break;
+
+            case 3:
+                tampilkanAntrian();
+                break;
+
+            case 0:
+                cout << "Program selesai.\n";
+                break;
+
+            default:
+                cout << "Pilihan tidak valid!\n";
+        }
+    } while (pilihan != 0);
+
+    return 0;
+}
+```
+
+> Output
+> ![Screenshot bagian x](output/{E2B28BA3-7DFF-4EAA-83A4-CD3B22D4A404}.png)
+
+Struktur Node menyimpan data pembeli (nama, pesanan) dan pointer next. Front dan rear menunjuk ke awal dan akhir antrian. tambahAntrian() menambah pembeli di belakang antrian. layaniAntrian() melayani (menghapus) pembeli paling depan. tampilkanAntrian() menampilkan seluruh pembeli dalam antrian. main() berisi menu interaktif untuk menjalankan ketiga fungsi tersebut sampai pengguna memilih keluar.
+
 ## Referensi
 
 1. https://en.wikipedia.org/wiki/Data_structure (diakses blablabla)
