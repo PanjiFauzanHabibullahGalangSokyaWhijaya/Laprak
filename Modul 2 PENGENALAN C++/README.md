@@ -1,4 +1,4 @@
- # <h1 align="center">Laporan Praktikum Modul 2 <br> Pengenalan C++</h1>
+ # <h1 align="center">Laporan Praktikum Modul 2 <br> Pengenalan C++ (Part 2)</h1>
 <p align="center">PANJI FAUZAN HABIBULLAH GALANG SOKYA WHIJAYA - 103112430162</p>
 
 ## Dasar Teori
