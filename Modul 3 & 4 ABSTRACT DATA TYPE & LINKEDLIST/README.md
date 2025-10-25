@@ -441,6 +441,7 @@ Buatlah program dengan ketentuan :
 - fungsi/prosedur yang akan menukarkan isi dari 2 array integer 2D pada posisi tertentu
 - fungsi/prosedur yang akan menukarkan isi dari variabel yang ditunjuk oleh 2 buah pointer
 
+unguided3.cpp
 ```go
 #include <iostream>
 using namespace std;
@@ -517,6 +518,7 @@ Di main(), program menampilkan array awal, menukar elemen tertentu antar array, 
 
 buatlah single linked list untuk Antrian yang menyimpan data pembeli( nama dan pesanan). program memiliki beberapa menu seperti tambah antrian, layani antrian(hapus), dan tampilkan antrian. *antrian pertama harus yang pertama dilayani
 
+unguided4.cpp
 ```go
 #include <iostream>
 #include <string>
@@ -634,6 +636,8 @@ Struktur Node menyimpan data pembeli (nama, pesanan) dan pointer next.
 ### Soal 5
 
 buatlah program kode untuk membalik (reverse) singly linked list (1-2-3 menjadi 3-2-1)
+
+unguided5.cpp
 ```go
 #include <iostream>
 using namespace std;
