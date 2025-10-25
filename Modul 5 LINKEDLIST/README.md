@@ -3,11 +3,9 @@
 
 ## Dasar Teori
 
-C++ adalah bahasa pemrograman komputer yang dikembangkan oleh Bjarne Stroustrup sebagai pengembangan dari bahasa C, yang sebelumnya dibuat oleh Dennis Ritchie di Bell Labs. Pada awal 1970-an, bahasa C sendiri merupakan penyempurnaan dari bahasa B.
+Untuk mencari sebuah elemen dalam linked list, kita harus melakukan iterasi melalui seluruh daftar, membandingkan setiap node dengan data yang dicari, dan terus mencari hingga ditemukan kecocokan. Karena linked list tidak mendukung akses acak, pencarian harus dimulai dari node pertama.
 
-Awalnya, C++ dirancang untuk berjalan di sistem Unix. Seiring perkembangannya, standar ANSI C (American National Standards Institute) menjadi acuan utama, meskipun kini penggunaannya jarang ditemui dalam pengembangan sistem jaringan maupun sistem tertanam (embedded). Karena sifatnya yang fleksibel, C++ termasuk dalam kategori bahasa pemrograman tujuan umum (general-purpose programming language).
-
-Stroustrup mulai mengembangkan C++ pada awal 1980-an di Bell Labs dengan menambahkan efisiensi dan dukungan untuk pemrograman tingkat rendah. Bahasa ini juga memperkenalkan konsep baru seperti class, inheritance, dan overloading. Perbedaan utama antara C dan C++ adalah dukungan penuh C++ terhadap paradigma pemrograman berorientasi objek (OOP).
+Diberikan sebuah linked list yang berisi bilangan bulat dan sebuah nilai kunci (key). Kita perlu menentukan apakah nilai kunci tersebut ada di dalam linked list atau tidak. Kita dapat menggunakan pencarian linear sederhana untuk menemukan key tersebut. Jika ditemukan, kita mengembalikan hasil “Ya”, jika tidak ditemukan maka “Tidak”.
 
 ## Guided
 
