@@ -198,9 +198,9 @@ int main() {
 ```
 
 > Output
-> ![Screenshot bagian x](output/{4DA43ED0-6A8D-46FE-81D3-DE2FEA7D5A3C}.png)
+> ![Screenshot bagian x](output/{9B175FD6-C4FE-451C-A64D-907FD5360613}.png)
 
-Program ini membuat **Single Linked List** yang dapat menambah, menghapus, mengubah, dan menampilkan data. Struktur `Node` menyimpan nilai data dan pointer ke node berikutnya, sedangkan `head` menjadi penunjuk awal list. Fungsi `createNode` membuat node baru, `insertDepan`, `insertBelakang`, dan `insertSetelah` menambah data di posisi berbeda. Fungsi `hapusNode` menghapus data tertentu, `updateNode` mengganti nilai data lama dengan yang baru, dan `tampilkanList` menampilkan isi list. Pada fungsi `main`, pengguna dapat memilih menu operasi hingga memilih keluar dari program.
+Program ini membuat Single Linked List yang dapat menambah, menghapus, mengubah, dan menampilkan data. Struktur Node menyimpan nilai data dan pointer ke node berikutnya, sedangkan head menjadi penunjuk awal list. Fungsi createNode membuat node baru, insertDepan, insertBelakang, dan insertSetelah menambah data di posisi berbeda. Fungsi hapusNode menghapus data tertentu, updateNode mengganti nilai data lama dengan yang baru, dan tampilkanList menampilkan isi list. Pada fungsi main, pengguna dapat memilih menu operasi hingga memilih keluar dari program.
 
 ### soal 2
 aritmatika.cpp
