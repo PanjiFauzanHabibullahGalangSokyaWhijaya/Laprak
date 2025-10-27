@@ -202,257 +202,143 @@ int main() {
 
 Program ini membuat Single Linked List yang dapat menambah, menghapus, mengubah, dan menampilkan data. Struktur Node menyimpan nilai data dan pointer ke node berikutnya, sedangkan head menjadi penunjuk awal list. Fungsi createNode membuat node baru, insertDepan, insertBelakang, dan insertSetelah menambah data di posisi berbeda. Fungsi hapusNode menghapus data tertentu, updateNode mengganti nilai data lama dengan yang baru, dan tampilkanList menampilkan isi list. Pada fungsi main, pengguna dapat memilih menu operasi hingga memilih keluar dari program.
 
-### soal 2
-aritmatika.cpp
+## Unguided
 
-```go
-#include <iostream>
-using namespace std;
-int main()
-{
-    int W, X, Y;
-    float Z;
-    X = 7;
-    Y = 3;
-    W = 1;
-    Z = (X + Y) / (Y + W);
-    cout << "Nilai z = " << Z << endl;
-    return 0;
-}
-```
+### Soal 1
 
-> Output
-> ![Screenshot bagian x](output/{B47A6CB0-7B5E-45EC-AB42-0D78A05D830E}.png)
-
-Program ini digunakan untuk mencari hasil aritmatika dari Z = (7+3)/(3+1). Z dideklarasikan menggunakan float dikarenakan hasil pembagian mempunyai kemungkinan desimal
-
-### soal 3
-perulangan.cpp
-
-```go
-#include <iostream>
-using namespace std;
-// int main()
-// {
-//     int jum;
-//     cout << "jumlah perulangan: ";
-//     cin >> jum;
-//     for (int i = 0; i < jum; i++)
-//     {
-//         cout << "saya sahroni\n";
-//     }
-//     return 1;
-// }
-
-
-// while
-int main()
-{
-    int i = 0;
-    int jum;
-    cin >> jum;
-    do
-    {
-        cout << "bahlil ke-" << (i + 1) << endl;
-        i++;
-    } while (i < jum);
-    return 0;
-}
-```
-
-> Output
-> ![Screenshot bagian x](output/{157EDC01-3D35-454C-AFCF-4FB44D980C5D}.png)
-
-Ini adalah program perulangan do while. Program ini akan mengulang kalimat "bahlil ke-[n]" sebanyak n(angka yang anda input).
-
-### soal 4
-kondisi.cpp
-
-```go
-#include <iostream>
-using namespace std;
-// int main()
-// {
-//     double tot_pembelian, diskon;
-//     cout << "total pembelian: Rp";
-//     cin >> tot_pembelian;
-//     diskon = 0;
-//     if (tot_pembelian >= 100000)
-//         diskon = 0.05 * tot_pembelian;
-//     cout << "besar diskon = Rp" << diskon;
-// }
-
-
-
-// int main()
-// {
-//     double tot_pembelian, diskon;
-//     cout << "total pembelian: Rp";
-//     cin >> tot_pembelian;
-//     diskon = 0;
-//     if (tot_pembelian >= 100000)
-//         diskon = 0.05 * tot_pembelian;
-//     else
-//         diskon = 0;
-//     cout << "besar diskon = Rp" << diskon;
-// }
-
-
-
-int main()
-{
-    int kode_hari;
-    cout << "Menentukan hari kerja/libur\n"<<endl;
-    cout << "1=Senin 3=Rabu 5=Jumat 7=Minggu "<<endl;
-    cout << "2=Selasa 4=Kamis 6=Sabtu "<<endl;
-    cin >> kode_hari;
-    switch (kode_hari)
-    {
-    case 1:
-    case 2:
-    case 3:
-    case 4:
-    case 5:
-        cout<<"Hari Kerja";
-        break;
-    case 6:
-    case 7:
-        cout<<"Hari Libur";
-        break;
-    default:
-        cout<<"Kode masukan salah!!!";
-    }
-    return 0;
-}
-```
-
-> Output
-> ![Screenshot bagian x](output/{95981FC0-31B1-4EDB-A08B-2BE0BEBB89BC}.png)
-
-Program ini digunakan untuk mencari tahu apakah hari yang diinput adalah hari kerja atau libur. Program ini menggunakan switch case
-
-### soal 5
-struct.cpp
+buatlah searcing untuk mencari nama pembeli pada unguided sebelumnya
 
 ```go
 #include <iostream>
 #include <string>
 using namespace std;
 
-// Definisi struct
-struct Mahasiswa {
+struct Node {
     string nama;
-    string nim;
-    float ipk;
+    string pesanan;
+    Node* next;
 };
 
+Node* front = nullptr;
+Node* rear = nullptr;
+
+Node* createNode(string nama, string pesanan) {
+    Node* newNode = new Node();
+    newNode->nama = nama;
+    newNode->pesanan = pesanan;
+    newNode->next = nullptr;
+    return newNode;
+}
+
+void tambahAntrian(string nama, string pesanan) {
+    Node* newNode = createNode(nama, pesanan);
+    if (rear == nullptr) {
+        front = rear = newNode;
+    } else {
+        rear->next = newNode;
+        rear = newNode;
+    }
+    cout << "Pembeli " << nama << " dengan pesanan \"" << pesanan << "\" ditambahkan ke antrian.\n";
+}
+
+void layaniAntrian() {
+    if (front == nullptr) {
+        cout << "Antrian kosong, tidak ada yang dilayani.\n";
+        return;
+    }
+    Node* temp = front;
+    cout << "Melayani pembeli " << front->nama << " (pesanan: " << front->pesanan << ")\n";
+    front = front->next;
+    if (front == nullptr) {
+        rear = nullptr;
+    }
+    delete temp;
+}
+
+void tampilkanAntrian() {
+    if (front == nullptr) {
+        cout << "Antrian kosong.\n";
+        return;
+    }
+    Node* temp = front;
+    cout << "\n=== Daftar Antrian Pembeli ===\n";
+    while (temp != nullptr) {
+        cout << "- " << temp->nama << " (Pesanan: " << temp->pesanan << ")\n";
+        temp = temp->next;
+    }
+}
+
+void cariPembeli(string namaCari) {
+    if (front == nullptr) {
+        cout << "Antrian kosong.\n";
+        return;
+    }
+
+    Node* temp = front;
+    bool ditemukan = false;
+
+    while (temp != nullptr) {
+        if (temp->nama == namaCari) {
+            cout << "Pembeli \"" << temp->nama << "\" ditemukan dengan pesanan: " << temp->pesanan << endl;
+            ditemukan = true;
+            break;
+        }
+        temp = temp->next;
+    }
+
+    if (!ditemukan) {
+        cout << "Pembeli dengan nama \"" << namaCari << "\" tidak ditemukan dalam antrian.\n";
+    }
+}
+
 int main() {
+    int pilihan;
+    string nama, pesanan;
 
-    Mahasiswa mhs1;
+    do {
+        cout << "\n=== MENU ANTRIAN PEMBELI ===\n";
+        cout << "1. Tambah Antrian\n";
+        cout << "2. Layani Antrian\n";
+        cout << "3. Tampilkan Antrian\n";
+        cout << "4. Cari Pembeli\n";
+        cout << "0. Keluar\n";
+        cout << "Pilih menu: ";
+        cin >> pilihan;
 
-    cout << "Masukkan Nama Mahasiswa: ";
-    getline(cin, mhs1.nama);
-    // cin >> mhs1.nama;
-    cout << "Masukkan NIM Mahasiswa : ";
-    cin >> mhs1.nim;
-    cout << "Masukkan IPK Mahasiswa : ";
-    cin >> mhs1.ipk;
+        switch (pilihan) {
+            case 1:
+                cout << "Masukkan nama pembeli: ";
+                cin.ignore();
+                getline(cin, nama);
+                cout << "Masukkan pesanan: ";
+                getline(cin, pesanan);
+                tambahAntrian(nama, pesanan);
+                break;
 
-    cout << "\n=== Data Mahasiswa ===" << endl;
-    cout << "Nama : " << mhs1.nama << endl;
-    cout << "NIM  : " << mhs1.nim << endl;
-    cout << "IPK  : " << mhs1.ipk << endl;
+            case 2:
+                layaniAntrian();
+                break;
 
-    return 0;
-}
-```
+            case 3:
+                tampilkanAntrian();
+                break;
 
-> Output
-> ![Screenshot bagian x](output/{D635236E-ADAD-4C79-936F-7DC3A3A1C883}.png)
+            case 4:
+                cout << "Masukkan nama pembeli yang ingin dicari: ";
+                cin.ignore();
+                getline(cin, nama);
+                cariPembeli(nama);
+                break;
 
-Program ini menggunakan struct dan getline. Struct bisa menyimpan beberapa variabel dalam satu kesatuan dan getline digunakan agar kodenya dapat membaca satu baris penuh untuk nama (supaya bisa menerima spasi).
+            case 0:
+                cout << "Program selesai.\n";
+                break;
 
-### soal 6
-fungsi.cpp
+            default:
+                cout << "Pilihan tidak valid!\n";
+        }
+    } while (pilihan != 0);
 
-```go
-#include <iostream>
-using namespace std;
-
-// Prosedur: hanya menampilkan hasil, tidak mengembalikan nilai
-void tampilkanHasil(double p, double l)
-{
-    cout << "\n=== Hasil Perhitungan ===" << endl;
-    cout << "Panjang : " << p << endl;
-    cout << "Lebar   : " << l << endl;
-    cout << "Luas    : " << p * l << endl;
-    cout << "Keliling: " << 2 * (p + l) << endl;
-}
-
-// Fungsi: mengembalikan nilai luas
-double hitungLuas(double p, double l)
-{
-    return p * l;
-}
-
-// Fungsi: mengembalikan nilai keliling
-double hitungKeliling(double p, double l)
-{
-    return 2 * (p + l);
-}
-
-int main()
-{
-    double panjang, lebar;
-
-    cout << "Masukkan panjang: ";
-    cin >> panjang;
-    cout << "Masukkan lebar  : ";
-    cin >> lebar;
-
-    // Panggil fungsi
-    double luas = hitungLuas(panjang, lebar);
-    double keliling = hitungKeliling(panjang, lebar);
-
-    cout << "\nDihitung dengan fungsi:" << endl;
-    cout << "Luas      = " << luas << endl;
-    cout << "Keliling  = " << keliling << endl;
-
-    // Panggil prosedur
-    tampilkanHasil(panjang, lebar);
-
-    return 0;
-}
-```
-
-> Output
-> ![Screenshot bagian x](output/{3C82C501-6277-4923-8471-12841D936319}.png)
-
-Program ini menghitung luas & keliling dengan fungsi dan prosedur. Di program ini ada 2 hal yang mungkin asing bagi anda, yaitu void dan double. Saat digunakan sebagai jenis pengembalian fungsi, void kata kunci menentukan bahwa fungsi tidak mengembalikan nilai sedangkan tipe double mengembalikan nilai berupa bilangan desimal. 
-
-## Unguided
-
-### Soal 1
-
-Buatlah program yang menerima input-an dua buah bilangan betipe float, kemudian memberikan output-an hasil penjumlahan, pengurangan, perkalian, dan pembagian dari dua bilangan tersebut.
-
-```go
-#include <iostream>
-using namespace std;
-
-int main()
-{
-    double a,b,j,kr,kl,bg;
-
-    cout<<"Input 2 bilangan: ";
-    cin>>a;
-    cin>>b;
-    j=a+b;
-    kr=a-b;
-    kl=a*b;
-    bg=a/b;
-    
-    cout<<"Penjumlahan="<<j<<"\nPengurangan="<<kr<<"\nPerkalian="<<kl<<"\nPembagian="<<bg<<endl;
     return 0;
 }
 ```
