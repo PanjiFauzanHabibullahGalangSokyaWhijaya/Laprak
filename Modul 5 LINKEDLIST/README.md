@@ -344,7 +344,7 @@ int main() {
 ```
 
 > Output
-> ![Screenshot bagian x](output/{E48EADCA-AAAF-42F9-824D-3AAD108DFF77}.png)
+> ![Screenshot bagian x](output/{62B59FC2-AADF-4BED-8CAF-25FFC5C733E8}.png)
 
 Program ini menambahkan fitur pencarian pembeli dengan fungsi cariPembeli().
 Fungsi ini akan menelusuri seluruh antrian dari depan hingga belakang, dan menampilkan data pembeli beserta pesanannya jika ditemukan. Jika tidak ditemukan, akan muncul pesan bahwa nama tidak ada dalam antrian.
