@@ -355,63 +355,205 @@ gunakan latihan pada pertemuan minggu ini dan tambahkan seardhing untuk mencari 
 
 ```go
 #include <iostream>
+#include <string>
 using namespace std;
 
-string angkaKeTulisan(int n)
-{
-    string satuan[] = {"", "Satu", "Dua", "Tiga", "Empat", "Lima",
-                       "Enam", "Tujuh", "Delapan", "Sembilan"};
+struct Buku {
+    string isbn;
+    string judul;
+    string penulis;
+    Buku* next;
+};
 
-    if (n == 0)
-        return "Nol";
-    else if (n == 10)
-        return "Sepuluh";
-    else if (n == 11)
-        return "Sebelas";
-    else if (n == 100)
-        return "Seratus";
-    else if (n < 10)
-        return satuan[n];
-    else if (n < 20)
-    {
-        int belas = n%10;
-        string hasil = satuan[belas] + " Belas";
-        return hasil;
+Buku* head = nullptr;
+
+void tambahBuku() {
+    Buku* baru = new Buku();
+    cout << "\nMasukkan ISBN     : ";
+    cin >> baru->isbn;
+    cin.ignore();
+    cout << "Masukkan Judul    : ";
+    getline(cin, baru->judul);
+    cout << "Masukkan Penulis  : ";
+    getline(cin, baru->penulis);
+    baru->next = nullptr;
+
+    if (head == nullptr) {
+        head = baru;
+    } else {
+        Buku* temp = head;
+        while (temp->next != nullptr)
+            temp = temp->next;
+        temp->next = baru;
     }
-    else
-    {
-        int puluh = n / 10;
-        int sisa = n % 10;
-        string hasil = satuan[puluh] + " Puluh";
-        if (sisa > 0)
-            hasil += " " + satuan[sisa];
-        return hasil;
+    cout << "Buku berhasil ditambahkan!\n";
+}
+
+void tampilkanBuku() {
+    if (head == nullptr) {
+        cout << "\nBelum ada buku dalam daftar.\n";
+        return;
+    }
+
+    Buku* temp = head;
+    cout << "\n=== Daftar Buku ===\n";
+    while (temp != nullptr) {
+        cout << "ISBN     : " << temp->isbn << endl;
+        cout << "Judul    : " << temp->judul << endl;
+        cout << "Penulis  : " << temp->penulis << endl;
+        cout << "------------------------\n";
+        temp = temp->next;
     }
 }
 
-int main()
-{
-    int angka;
-    cout << "Masukkan angka (0-100): ";
-    cin >> angka;
+void hapusBuku() {
+    if (head == nullptr) {
+        cout << "\nTidak ada buku untuk dihapus.\n";
+        return;
+    }
 
-    if (angka < 0 || angka > 100)
-    {
-        cout << "Angka di luar jangkauan!" << endl;
+    string target;
+    cout << "\nMasukkan ISBN buku yang ingin dihapus: ";
+    cin >> target;
+
+    Buku* temp = head;
+    Buku* prev = nullptr;
+
+    while (temp != nullptr && temp->isbn != target) {
+        prev = temp;
+        temp = temp->next;
     }
+
+    if (temp == nullptr) {
+        cout << "Buku dengan ISBN " << target << " tidak ditemukan.\n";
+        return;
+    }
+
+    if (prev == nullptr)
+        head = temp->next;
     else
-    {
-        cout << angka << ": " << angkaKeTulisan(angka) << endl;
+        prev->next = temp->next;
+
+    delete temp;
+    cout << "Buku berhasil dihapus!\n";
+}
+
+void editBuku() {
+    if (head == nullptr) {
+        cout << "\nTidak ada buku untuk diedit.\n";
+        return;
     }
+
+    string target;
+    cout << "\nMasukkan ISBN buku yang ingin diperbaiki: ";
+    cin >> target;
+
+    Buku* temp = head;
+    while (temp != nullptr && temp->isbn != target)
+        temp = temp->next;
+
+    if (temp == nullptr) {
+        cout << "Buku dengan ISBN " << target << " tidak ditemukan.\n";
+        return;
+    }
+
+    cout << "\nData lama:\n";
+    cout << "Judul   : " << temp->judul << endl;
+    cout << "Penulis : " << temp->penulis << endl;
+
+    cout << "\nMasukkan data baru:\n";
+    cin.ignore();
+    cout << "Judul baru   : ";
+    getline(cin, temp->judul);
+    cout << "Penulis baru : ";
+    getline(cin, temp->penulis);
+
+    cout << "Data buku berhasil diperbarui!\n";
+}
+
+void cariBuku() {
+    if (head == nullptr) {
+        cout << "\nBelum ada buku untuk dicari.\n";
+        return;
+    }
+
+    int pilihanCari;
+    string keyword;
+    cout << "\n=== MENU PENCARIAN BUKU ===\n";
+    cout << "1. Cari berdasarkan ISBN\n";
+    cout << "2. Cari berdasarkan Judul\n";
+    cout << "3. Cari berdasarkan Penulis\n";
+    cout << "Pilih: ";
+    cin >> pilihanCari;
+    cin.ignore();
+
+    cout << "Masukkan kata kunci: ";
+    getline(cin, keyword);
+
+    Buku* temp = head;
+    bool ditemukan = false;
+
+    cout << "\n=== Hasil Pencarian ===\n";
+    while (temp != nullptr) {
+        bool cocok = false;
+        if (pilihanCari == 1 && temp->isbn == keyword)
+            cocok = true;
+        else if (pilihanCari == 2 && temp->judul == keyword)
+            cocok = true;
+        else if (pilihanCari == 3 && temp->penulis == keyword)
+            cocok = true;
+
+        if (cocok) {
+            cout << "ISBN     : " << temp->isbn << endl;
+            cout << "Judul    : " << temp->judul << endl;
+            cout << "Penulis  : " << temp->penulis << endl;
+            cout << "------------------------\n";
+            ditemukan = true;
+        }
+        temp = temp->next;
+    }
+
+    if (!ditemukan)
+        cout << "Tidak ditemukan buku dengan data tersebut.\n";
+}
+
+int main() {
+    int pilihan;
+    do {
+        cout << "\n=== MENU MANAJEMEN BUKU ===\n";
+        cout << "1. Tambah Buku\n";
+        cout << "2. Hapus Buku\n";
+        cout << "3. Edit Buku\n";
+        cout << "4. Lihat Daftar Buku\n";
+        cout << "5. Cari Buku\n";
+        cout << "6. Keluar\n";
+        cout << "Pilih menu: ";
+        cin >> pilihan;
+
+        switch (pilihan) {
+        case 1: tambahBuku(); break;
+        case 2: hapusBuku(); break;
+        case 3: editBuku(); break;
+        case 4: tampilkanBuku(); break;
+        case 5: cariBuku(); break;
+        case 6: cout << "Program selesai.\n"; break;
+        default: cout << "Pilihan tidak valid.\n";
+        }
+    } while (pilihan != 6);
 
     return 0;
 }
 ```
 
 > Output
-> ![Screenshot bagian x](output/WhatsAppImage2025-10-07at11.36.09.jpeg)
+> ![Screenshot bagian x](output/{AC601A57-B81D-4F6B-B9DF-E7AEB8FF68B8}.jpeg)
 
-Program ini mengkonversi angka menjadi latin. Di sini saya menggunakan fungsi dan array
+Program ini menambahkan fitur pencarian buku (cariBuku()), di mana pengguna dapat memilih:
+- Cari berdasarkan ISBN
+- Cari berdasarkan Judul
+- Cari berdasarkan Penulis
+Program akan menelusuri seluruh node (linked list) dan menampilkan semua buku yang cocok dengan kata kunci.
+Jika tidak ditemukan, akan muncul pesan: "Tidak ditemukan buku dengan data tersebut."
 
 ## Referensi
 
