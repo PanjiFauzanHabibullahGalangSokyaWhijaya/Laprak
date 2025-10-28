@@ -546,7 +546,7 @@ int main() {
 ```
 
 > Output
-> ![Screenshot bagian x](output/{AC601A57-B81D-4F6B-B9DF-E7AEB8FF68B8}.jpeg)
+> ![Screenshot bagian x](output/{AC601A57-B81D-4F6B-B9DF-E7AEB8FF68B8}.png)
 
 Program ini menambahkan fitur pencarian buku (cariBuku()), di mana pengguna dapat memilih:
 - Cari berdasarkan ISBN
