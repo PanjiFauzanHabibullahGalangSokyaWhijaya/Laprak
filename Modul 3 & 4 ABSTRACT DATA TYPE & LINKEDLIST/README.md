@@ -718,5 +718,5 @@ Program ini membuat Single Linked List dan membalik urutannya.
 ## Referensi
 
 1. https://en.wikipedia.org/wiki/Data_structure (diakses blablabla)
-2. https://learn.microsoft.com/id-id/cpp/cpp/void-cpp?view=msvc-170
-3. https://www.duniailkom.com/tutorial-belajar-c-plus-plus-tipe-data-float-dan-double-bahasa-c-plus-plus/
+2. [https://learn.microsoft.com/id-id/cpp/cpp/void-cpp?view=msvc-170](https://www.geeksforgeeks.org/dsa/abstract-data-types/)
+3. [https://www.duniailkom.com/tutorial-belajar-c-plus-plus-tipe-data-float-dan-double-bahasa-c-plus-plus/](https://www.geeksforgeeks.org/cpp/cpp-linked-list/)
