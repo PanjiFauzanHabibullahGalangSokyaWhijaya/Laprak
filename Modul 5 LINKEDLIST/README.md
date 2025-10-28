@@ -346,13 +346,12 @@ int main() {
 > Output
 > ![Screenshot bagian x](output/{E48EADCA-AAAF-42F9-824D-3AAD108DFF77}.png)
 
-Program ini adalah program aritmatika sederhana yang menghitung hasil penjumlahan, pengurangan, perkalian, dan pembagian. Saya menggunakan double karena double adalah float untuk win64
+Program ini menambahkan fitur pencarian pembeli dengan fungsi cariPembeli().
+Fungsi ini akan menelusuri seluruh antrian dari depan hingga belakang, dan menampilkan data pembeli beserta pesanannya jika ditemukan. Jika tidak ditemukan, akan muncul pesan bahwa nama tidak ada dalam antrian.
 
 ### Soal 2
 
-Buatlah sebuah program yang menerima masukan angka dan mengeluarkan output nilai angka tersebut dalam bentuk tulisan. Angka yang akan di-input-kan user adalah bilangan bulat positif mulai dari 0 s.d 100
-contoh:
-79: tujuh puluh Sembilan
+gunakan latihan pada pertemuan minggu ini dan tambahkan seardhing untuk mencari buku berdasarkan judul, penulis, dan ISBN
 
 ```go
 #include <iostream>
@@ -413,50 +412,6 @@ int main()
 > ![Screenshot bagian x](output/WhatsAppImage2025-10-07at11.36.09.jpeg)
 
 Program ini mengkonversi angka menjadi latin. Di sini saya menggunakan fungsi dan array
-
-### Soal 3
-
-Buatlah program yang dapat memberikan input dan output sbb.
-> ![Screenshot bagian x](output/{F626FCED-9EB9-4D1E-8A7F-21D9194D1611}.png)
-
-```go
-#include <iostream>
-using namespace std;
-
-int main() {
-    int n;
-    cout << "Input: ";
-    cin >> n;
-    cout << "Output: "<<endl;
-
-    for (int i = n; i >= 1; i--) {
-
-        for (int s = 0; s < (n - i); s++) {
-            cout << "  ";
-        }
-        for (int j = i; j >= 1; j--) {
-            cout << j << " ";
-        }
-        cout << "* ";
-        for (int j = 1; j <= i; j++) {
-            cout << j << " ";
-        }
-        cout << endl;
-    }
-
-    for (int s = 0; s < n; s++) {
-        cout << "  ";
-    }
-    cout << "*" << endl;
-
-    return 0;
-}
-```
-
-> Output
-> ![Screenshot bagian x](output/{78A35B0E-8CB4-4DF5-A70B-D94521A279D9}.png)
-
-Program ini menampilkan pola angka simetris dengan bintang di tengahnya, berdasarkan input angka n. Program ini menggeser pola ke kanan setiap baris dengan penambahan spasi. Saya di sini menggunakan nested loop
 
 ## Referensi
 
