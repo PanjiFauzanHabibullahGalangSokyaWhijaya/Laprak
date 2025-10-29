@@ -3,11 +3,7 @@
 
 ## Dasar Teori
 
-C++ adalah bahasa pemrograman komputer yang dikembangkan oleh Bjarne Stroustrup sebagai pengembangan dari bahasa C, yang sebelumnya dibuat oleh Dennis Ritchie di Bell Labs. Pada awal 1970-an, bahasa C sendiri merupakan penyempurnaan dari bahasa B.
-
-Awalnya, C++ dirancang untuk berjalan di sistem Unix. Seiring perkembangannya, standar ANSI C (American National Standards Institute) menjadi acuan utama, meskipun kini penggunaannya jarang ditemui dalam pengembangan sistem jaringan maupun sistem tertanam (embedded). Karena sifatnya yang fleksibel, C++ termasuk dalam kategori bahasa pemrograman tujuan umum (general-purpose programming language).
-
-Stroustrup mulai mengembangkan C++ pada awal 1980-an di Bell Labs dengan menambahkan efisiensi dan dukungan untuk pemrograman tingkat rendah. Bahasa ini juga memperkenalkan konsep baru seperti class, inheritance, dan overloading. Perbedaan utama antara C dan C++ adalah dukungan penuh C++ terhadap paradigma pemrograman berorientasi objek (OOP).
+Doubly linked list adalah linked list bidirectional. Jadi, kita bisa melintasinya secara dua arah. Tidak seperti singly linked list, simpul doubly linked list berisi satu pointer tambahan yang disebut previous pointer. Pointer ini menunjuk ke simpul sebelumnya. Saat menambahkan atau menghapus node dalam doubly linked list, dibutuhkan lebih banyak perubahan pointer dibandingkan dengan operasi yang sama pada singly linked list. Namun, operasinya justru lebih sederhana dan berpotensi lebih efisien (terutama untuk node selain node pertama), karena tidak perlu melacak node sebelumnya selama penelusuran atau menelusuri daftar untuk menemukan node sebelumnya agar pointer dapat diubah.
 
 ## Guided
 
