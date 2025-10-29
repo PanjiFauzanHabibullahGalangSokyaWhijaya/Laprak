@@ -539,7 +539,8 @@ int main() {
         case 6: cout << "Program selesai.\n"; break;
         default: cout << "Pilihan tidak valid.\n";
         }
-    } while (pilihan != 6);
+    }
+    while (pilihan != 6);
 
     return 0;
 }
