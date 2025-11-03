@@ -629,7 +629,13 @@ findElm menelusuri doubly linked list dari awal, membandingkan nopol tiap elemen
 
 ### Soal 3
 
-Buatlah program yang dapat memberikan input dan output sbb.
+Hapus elemen dengan nomor polisi D003 dengan procedure delete.
+- procedure deleteFirst( input/output L : List,
+  P : address )
+- procedure deleteLast( input/output L : List,
+  P : address )
+- procedure deleteAfter( input Prec : address,
+  input/output P : address )
 > ![Screenshot bagian x](output/{F626FCED-9EB9-4D1E-8A7F-21D9194D1611}.png)
 
 ```go
