@@ -284,7 +284,7 @@ Buatlah ADT Doubly Linked list sebagai berikut di dalam file “Doublylist.h”:
 Buatlah implementasi ADT Doubly Linked list pada file “Doublylist.cpp” dan coba hasil
 implementasi ADT pada file “main.cpp”.
 
-Doublylist.cpp Doublylist.h main.cpp
+Doublylist.cpp, Doublylist.h, dan main.cpp
 ```go
 #include "Doublylist.h"
 #include <iostream>
@@ -433,7 +433,6 @@ int main() {
 > ![Screenshot bagian x](output/{E48EADCA-AAAF-42F9-824D-3AAD108DFF77}.png)
 
 Program ini:
-
 - Menggunakan doubly linked list untuk menyimpan data kendaraan.
 - Dapat menambah dan menampilkan data kendaraan.
 - Mencegah duplikasi nomor polisi dengan cekNopol.
@@ -444,9 +443,9 @@ Program ini:
 
 ### Soal 2
 
-Buatlah sebuah program yang menerima masukan angka dan mengeluarkan output nilai angka tersebut dalam bentuk tulisan. Angka yang akan di-input-kan user adalah bilangan bulat positif mulai dari 0 s.d 100
-contoh:
-79: tujuh puluh Sembilan
+Carilah elemen dengan nomor polisi D001 dengan membuat fungsi baru.
+fungsi findElm( L : List, x : infotype ) : address
+> ![Screenshot bagian x](output/{E48EADCA-AAAF-42F9-824D-3AAD108DFF77}.png)
 
 ```go
 #include <iostream>
