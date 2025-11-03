@@ -260,7 +260,7 @@ int main(){
 ```
 
 > Output
-> ![Screenshot bagian x](output/{4DA43ED0-6A8D-46FE-81D3-DE2FEA7D5A3C}.png)
+> ![Screenshot bagian x](output/1.png)
 
 Program ini membuat double linked list yang bisa menambah, menghapus, mengubah, dan menampilkan data dari depan atau belakang.
 Setiap node menyimpan data, serta pointer ke node sebelum dan sesudahnya.
@@ -279,9 +279,10 @@ Menu utama digunakan untuk menjalankan semua operasi tersebut secara interaktif.
 ### Soal 1
 
 Buatlah ADT Doubly Linked list sebagai berikut di dalam file “Doublylist.h”:
-> ![Screenshot bagian x](output/{E48EADCA-AAAF-42F9-824D-3AAD108DFF77}.png)
+> ![Screenshot bagian x](output/2.png)
 Buatlah implementasi ADT Doubly Linked list pada file “Doublylist.cpp” dan coba hasil
 implementasi ADT pada file “main.cpp”.
+> ![Screenshot bagian x](output/3.png)
 
 Doublylist.cpp, Doublylist.h, dan main.cpp
 ```go
@@ -429,7 +430,7 @@ int main() {
 ```
 
 > Output
-> ![Screenshot bagian x](output/{E48EADCA-AAAF-42F9-824D-3AAD108DFF77}.png)
+> ![Screenshot bagian x](output/4.png)
 
 Program ini:
 - Menggunakan doubly linked list untuk menyimpan data kendaraan.
@@ -448,7 +449,7 @@ Program ini:
 
 Carilah elemen dengan nomor polisi D001 dengan membuat fungsi baru.
 fungsi findElm( L : List, x : infotype ) : address
-> ![Screenshot bagian x](output/{E48EADCA-AAAF-42F9-824D-3AAD108DFF77}.png)
+> ![Screenshot bagian x](output/5.png)
 
 Doublylist.cpp, Doublylist.h, dan main.cpp
 ```go
@@ -623,7 +624,7 @@ int main() {
 ```
 
 > Output
-> ![Screenshot bagian x](output/WhatsAppImage2025-10-07at11.36.09.jpeg)
+> ![Screenshot bagian x](output/6.png)
 
 findElm menelusuri doubly linked list dari awal, membandingkan nopol tiap elemen. Jika ditemukan, mengembalikan alamat elemen tersebut; jika tidak, mengembalikan nullptr. Jika pengguna memasukkan nomor polisi D001, maka program akan menampilkan detail kendaraan seperti di gambar (nopol, warna, dan tahun).
 
@@ -636,7 +637,7 @@ Hapus elemen dengan nomor polisi D003 dengan procedure delete.
   P : address )
 - procedure deleteAfter( input Prec : address,
   input/output P : address )
-> ![Screenshot bagian x](output/{F626FCED-9EB9-4D1E-8A7F-21D9194D1611}.png)
+> ![Screenshot bagian x](output/7.png)
 
 Doublylist.cpp, Doublylist.h, dan main.cpp
 ```go
@@ -874,7 +875,7 @@ int main() {
 ```
 
 > Output
-> ![Screenshot bagian x](output/{78A35B0E-8CB4-4DF5-A70B-D94521A279D9}.png)
+> ![Screenshot bagian x](output/8.png)
 
 - deleteFirst menghapus elemen paling awal.
 - deleteLast menghapus elemen paling akhir.
