@@ -280,6 +280,7 @@ Menu utama digunakan untuk menjalankan semua operasi tersebut secara interaktif.
 
 Buatlah ADT Doubly Linked list sebagai berikut di dalam file “Doublylist.h”:
 > ![Screenshot bagian x](output/2.png)
+
 Buatlah implementasi ADT Doubly Linked list pada file “Doublylist.cpp” dan coba hasil
 implementasi ADT pada file “main.cpp”.
 > ![Screenshot bagian x](output/3.png)
