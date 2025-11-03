@@ -265,7 +265,6 @@ int main(){
 Program ini membuat double linked list yang bisa menambah, menghapus, mengubah, dan menampilkan data dari depan atau belakang.
 Setiap node menyimpan data, serta pointer ke node sebelum dan sesudahnya.
 Menu utama digunakan untuk menjalankan semua operasi tersebut secara interaktif.
-
 - Struct Node = Menyimpan data, pointer ke node sebelumnya (prev), dan berikutnya (next).
 - head & tail = Menunjuk node pertama dan terakhir dari list.
 - insertDepan / insertBelakang = Menambah node baru di depan atau belakang list.
@@ -440,6 +439,10 @@ Program ini:
   * Doublylist.h => deklarasi
   * Doublylist.cpp => implementasi
   * main.cpp => menu interaktif
+- Menu interaktif memberi tiga opsi:
+  * Masukkan Data = Memasukkan data kendaraan baru dengan validasi agar nopol tidak boleh duplikat.
+  * Tampilkan Data = Menampilkan seluruh isi list.
+  * Keluar = Mengakhiri program.
 
 ### Soal 2
 
@@ -447,56 +450,173 @@ Carilah elemen dengan nomor polisi D001 dengan membuat fungsi baru.
 fungsi findElm( L : List, x : infotype ) : address
 > ![Screenshot bagian x](output/{E48EADCA-AAAF-42F9-824D-3AAD108DFF77}.png)
 
+Doublylist.cpp, Doublylist.h, dan main.cpp
 ```go
+#include "Doublylist.h"
 #include <iostream>
 using namespace std;
 
-string angkaKeTulisan(int n)
-{
-    string satuan[] = {"", "Satu", "Dua", "Tiga", "Empat", "Lima",
-                       "Enam", "Tujuh", "Delapan", "Sembilan"};
+void CreateList(List &L) {
+    L.first = nullptr;
+    L.last = nullptr;
+}
 
-    if (n == 0)
-        return "Nol";
-    else if (n == 10)
-        return "Sepuluh";
-    else if (n == 11)
-        return "Sebelas";
-    else if (n == 100)
-        return "Seratus";
-    else if (n < 10)
-        return satuan[n];
-    else if (n < 20)
-    {
-        int belas = n%10;
-        string hasil = satuan[belas] + " Belas";
-        return hasil;
+address alokasi(kendaraan x) {
+    address P = new ElmList;
+    P->info = x;
+    P->next = nullptr;
+    P->prev = nullptr;
+    return P;
+}
+
+void dealokasi(address P) {
+    delete P;
+}
+
+bool cekNopol(const List &L, const string &nopol) {
+    address P = L.first;
+    while (P != nullptr) {
+        if (P->info.nopol == nopol)
+            return true;
+        P = P->next;
     }
-    else
-    {
-        int puluh = n / 10;
-        int sisa = n % 10;
-        string hasil = satuan[puluh] + " Puluh";
-        if (sisa > 0)
-            hasil += " " + satuan[sisa];
-        return hasil;
+    return false;
+}
+
+address findElm(List L, string nopol) {
+    address P = L.first;
+    while (P != nullptr) {
+        if (P->info.nopol == nopol) {
+            return P;  // Ketemu
+        }
+        P = P->next;
+    }
+    return nullptr;  // Tidak ditemukan
+}
+
+void insertLast(List &L, address P) {
+    if (L.first == nullptr) {
+        L.first = L.last = P;
+    } else {
+        P->next = L.first;
+        L.first->prev = P;
+        L.first = P;
     }
 }
 
-int main()
-{
-    int angka;
-    cout << "Masukkan angka (0-100): ";
-    cin >> angka;
+void printInfo(const List &L) {
+    if (L.first == nullptr) {
+        cout << "\nList kosong.\n";
+        return;
+    }
 
-    if (angka < 0 || angka > 100)
-    {
-        cout << "Angka di luar jangkauan!" << endl;
+    cout << "\nDATA LIST 1\n" << endl;
+    address P = L.first;
+    while (P != nullptr) {
+        cout << "No polisi : " << P->info.nopol << endl;
+        cout << "Warna     : " << P->info.warna << endl;
+        cout << "Tahun     : " << P->info.thnBuat << endl;
+        P = P->next;
     }
-    else
-    {
-        cout << angka << ": " << angkaKeTulisan(angka) << endl;
-    }
+}
+```
+```go
+#ifndef DOUBLYLIST_H
+#define DOUBLYLIST_H
+
+#include <string>
+using namespace std;
+
+struct kendaraan {
+    string nopol;
+    string warna;
+    int thnBuat;
+};
+
+struct ElmList;
+typedef ElmList* address;
+
+struct ElmList {
+    kendaraan info;
+    address next;
+    address prev;
+};
+
+struct List {
+    address first;
+    address last;
+};
+
+void CreateList(List &L);
+address alokasi(kendaraan x);
+void dealokasi(address P);
+void insertLast(List &L, address P);
+void printInfo(const List &L);
+bool cekNopol(const List &L, const string &nopol);
+address findElm(List L, string nopol);
+
+#endif
+```
+```go
+#include <iostream>
+#include "Doublylist.h"
+using namespace std;
+
+int main() {
+    List L;
+    CreateList(L);
+    int pilihan;
+    kendaraan k;
+
+    do {
+        cout << "\n=== MENU DATA KENDARAAN ===\n";
+        cout << "1. Masukkan Data Kendaraan\n";
+        cout << "2. Tampilkan Semua Data\n";
+        cout << "3. Cari Data Kendaraan\n";
+        cout << "0. Keluar\n";
+        cout << "Pilih menu: ";
+        cin >> pilihan;
+
+        switch (pilihan) {
+            case 1:
+                cout << "\nMasukkan Nomor Polisi: ";
+                cin >> k.nopol;
+                cout << "Masukkan Warna Kendaraan: ";
+                cin >> k.warna;
+                cout << "Masukkan Tahun Kendaraan: ";
+                cin >> k.thnBuat;
+                if (cekNopol(L, k.nopol)) {
+                    cout << "Nomor polisi sudah terdaftar\n";
+                    break;
+                }
+                insertLast(L, alokasi(k));
+                break;
+            case 2:
+                printInfo(L);
+                break;
+            case 3:
+                cout << "\nMasukkan Nomor Polisi yang dicari: ";
+                cin >> k.nopol;
+                {
+                    address hasil = findElm(L, k.nopol);
+                    if (hasil != nullptr) {
+                        cout << "\nNomor Polisi : " << hasil->info.nopol << endl;
+                        cout << "Warna        : " << hasil->info.warna << endl;
+                        cout << "Tahun        : " << hasil->info.thnBuat << endl;
+                    } else {
+                        cout << "Data tidak ditemukan.\n";
+                    }
+                }
+                break;
+            case 0:
+                cout << "Program selesai.\n";
+                break;
+            default:
+                cout << "Pilihan tidak valid!\n";
+                break;
+        }
+
+    } while (pilihan != 0);
 
     return 0;
 }
@@ -505,7 +625,7 @@ int main()
 > Output
 > ![Screenshot bagian x](output/WhatsAppImage2025-10-07at11.36.09.jpeg)
 
-Program ini mengkonversi angka menjadi latin. Di sini saya menggunakan fungsi dan array
+findElm menelusuri doubly linked list dari awal, membandingkan nopol tiap elemen. Jika ditemukan, mengembalikan alamat elemen tersebut; jika tidak, mengembalikan nullptr. Jika pengguna memasukkan nomor polisi D001, maka program akan menampilkan detail kendaraan seperti di gambar (nopol, warna, dan tahun).
 
 ### Soal 3
 
