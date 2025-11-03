@@ -5,10 +5,15 @@
 
 Doubly linked list adalah linked list bidirectional. Jadi, kita bisa melintasinya secara dua arah. Tidak seperti singly linked list, simpul doubly linked list berisi satu pointer tambahan yang disebut previous pointer. Pointer ini menunjuk ke simpul sebelumnya. Saat menambahkan atau menghapus node dalam doubly linked list, dibutuhkan lebih banyak perubahan pointer dibandingkan dengan operasi yang sama pada singly linked list. Namun, operasinya justru lebih sederhana dan berpotensi lebih efisien (terutama untuk node selain node pertama), karena tidak perlu melacak node sebelumnya selama penelusuran atau menelusuri daftar untuk menemukan node sebelumnya agar pointer dapat diubah.
 
+In a data structure, a doubly linked list is represented using nodes that have three fields:
+1. Data
+2. A pointer to the next node (next)
+3. A pointer to the previous node (prev)
+
 ## Guided
 
 ### soal 1
-TEST.cpp
+guided1.cpp
 
 ```go
 #include <iostream>
