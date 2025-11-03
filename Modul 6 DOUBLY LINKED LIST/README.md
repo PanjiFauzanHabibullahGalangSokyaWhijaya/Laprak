@@ -638,35 +638,236 @@ Hapus elemen dengan nomor polisi D003 dengan procedure delete.
   input/output P : address )
 > ![Screenshot bagian x](output/{F626FCED-9EB9-4D1E-8A7F-21D9194D1611}.png)
 
+Doublylist.cpp, Doublylist.h, dan main.cpp
 ```go
+#include "Doublylist.h"
 #include <iostream>
 using namespace std;
 
+void CreateList(List &L) {
+    L.first = nullptr;
+    L.last = nullptr;
+}
+
+address alokasi(kendaraan x) {
+    address P = new ElmList;
+    P->info = x;
+    P->next = nullptr;
+    P->prev = nullptr;
+    return P;
+}
+
+void dealokasi(address P) {
+    delete P;
+}
+
+bool cekNopol(const List &L, const string &nopol) {
+    address P = L.first;
+    while (P != nullptr) {
+        if (P->info.nopol == nopol)
+            return true;
+        P = P->next;
+    }
+    return false;
+}
+
+address findElm(List L, string nopol) {
+    address P = L.first;
+    while (P != nullptr) {
+        if (P->info.nopol == nopol) {
+            return P;  // Ketemu
+        }
+        P = P->next;
+    }
+    return nullptr;  // Tidak ditemukan
+}
+
+void insertLast(List &L, address P) {
+    if (L.first == nullptr) {
+        L.first = L.last = P;
+    } else {
+        P->next = L.first;
+        L.first->prev = P;
+        L.first = P;
+    }
+}
+
+void printInfo(const List &L) {
+    if (L.first == nullptr) {
+        cout << "\nList kosong.\n";
+        return;
+    }
+
+    cout << "\nDATA LIST 1\n" << endl;
+    address P = L.first;
+    while (P != nullptr) {
+        cout << "No polisi : " << P->info.nopol << endl;
+        cout << "Warna     : " << P->info.warna << endl;
+        cout << "Tahun     : " << P->info.thnBuat << endl;
+        P = P->next;
+    }
+}
+
+void deleteFirst(List &L, address &P) {
+    if (L.first == nullptr) {
+        P = nullptr;
+    } else if (L.first == L.last) {
+        P = L.first;
+        L.first = L.last = nullptr;
+    } else {
+        P = L.first;
+        L.first = L.first->next;
+        L.first->prev = nullptr;
+        P->next = nullptr;
+    }
+}
+
+void deleteLast(List &L, address &P) {
+    if (L.first == nullptr) {
+        P = nullptr;
+    } else if (L.first == L.last) {
+        P = L.last;
+        L.first = L.last = nullptr;
+    } else {
+        P = L.last;
+        L.last = L.last->prev;
+        L.last->next = nullptr;
+        P->prev = nullptr;
+    }
+}
+
+void deleteAfter(address Prec, address &P) {
+    if (Prec != nullptr && Prec->next != nullptr) {
+        P = Prec->next;
+        Prec->next = P->next;
+        if (P->next != nullptr)
+            P->next->prev = Prec;
+        P->next = P->prev = nullptr;
+    }
+}
+```
+```go
+#ifndef DOUBLYLIST_H
+#define DOUBLYLIST_H
+
+#include <string>
+using namespace std;
+
+struct kendaraan {
+    string nopol;
+    string warna;
+    int thnBuat;
+};
+
+struct ElmList;
+typedef ElmList* address;
+
+struct ElmList {
+    kendaraan info;
+    address next;
+    address prev;
+};
+
+struct List {
+    address first;
+    address last;
+};
+
+void CreateList(List &L);
+address alokasi(kendaraan x);
+void dealokasi(address P);
+void insertLast(List &L, address P);
+void printInfo(const List &L);
+bool cekNopol(const List &L, const string &nopol);
+address findElm(List L, string nopol);
+void deleteFirst(List &L, address &P);
+void deleteLast(List &L, address &P);
+void deleteAfter(address Prec, address &P);
+
+#endif
+```
+```go
+#include <iostream>
+#include "Doublylist.h"
+using namespace std;
+
 int main() {
-    int n;
-    cout << "Input: ";
-    cin >> n;
-    cout << "Output: "<<endl;
+    List L;
+    CreateList(L);
+    int pilihan;
+    kendaraan k;
 
-    for (int i = n; i >= 1; i--) {
+    do {
+        cout << "\n=== MENU DATA KENDARAAN ===\n";
+        cout << "1. Masukkan Data Kendaraan\n";
+        cout << "2. Tampilkan Semua Data\n";
+        cout << "3. Cari Data Kendaraan\n";
+        cout << "4. Hapus Data Kendaraan\n";
+        cout << "0. Keluar\n";
+        cout << "Pilih menu: ";
+        cin >> pilihan;
 
-        for (int s = 0; s < (n - i); s++) {
-            cout << "  ";
-        }
-        for (int j = i; j >= 1; j--) {
-            cout << j << " ";
-        }
-        cout << "* ";
-        for (int j = 1; j <= i; j++) {
-            cout << j << " ";
-        }
-        cout << endl;
-    }
+        switch (pilihan) {
+            case 1:
+                cout << "\nMasukkan Nomor Polisi: ";
+                cin >> k.nopol;
+                cout << "Masukkan Warna Kendaraan: ";
+                cin >> k.warna;
+                cout << "Masukkan Tahun Kendaraan: ";
+                cin >> k.thnBuat;
+                if (cekNopol(L, k.nopol)) {
+                    cout << "Nomor polisi sudah terdaftar\n";
+                    break;
+                }
+                insertLast(L, alokasi(k));
+                break;
+            case 2:
+                printInfo(L);
+                break;
+            case 3:
+                cout << "\nMasukkan Nomor Polisi yang dicari: ";
+                cin >> k.nopol;
+                {
+                    address hasil = findElm(L, k.nopol);
+                    if (hasil != nullptr) {
+                        cout << "\nNomor Polisi : " << hasil->info.nopol << endl;
+                        cout << "Warna        : " << hasil->info.warna << endl;
+                        cout << "Tahun        : " << hasil->info.thnBuat << endl;
+                    } else {
+                        cout << "Data tidak ditemukan.\n";
+                    }
+                }
+                break;
+            case 4: {
+                string hapusNopol;
+                cout << "\nMasukkan Nomor Polisi yang akan dihapus: ";
+                cin >> hapusNopol;
 
-    for (int s = 0; s < n; s++) {
-        cout << "  ";
-    }
-    cout << "*" << endl;
+                address P = findElm(L, hapusNopol);
+                if (P == nullptr) {
+                    cout << "Data dengan nomor polisi " << hapusNopol << " tidak ditemukan.\n";
+                } else {
+                    if (P == L.first) {
+                        deleteFirst(L, P);
+                    } else if (P == L.last) {
+                        deleteLast(L, P);
+                    } else {
+                        deleteAfter(P->prev, P);
+                    }
+                    dealokasi(P);
+                    cout << "Data dengan nomor polisi " << hapusNopol << " berhasil dihapus.\n";
+                }
+                break;
+            }
+            case 0:
+                cout << "Program selesai.\n";
+                break;
+            default:
+                cout << "Pilihan tidak valid!\n";
+                break;
+        }
+
+    } while (pilihan != 0);
 
     return 0;
 }
@@ -675,7 +876,10 @@ int main() {
 > Output
 > ![Screenshot bagian x](output/{78A35B0E-8CB4-4DF5-A70B-D94521A279D9}.png)
 
-Program ini menampilkan pola angka simetris dengan bintang di tengahnya, berdasarkan input angka n. Program ini menggeser pola ke kanan setiap baris dengan penambahan spasi. Saya di sini menggunakan nested loop
+- deleteFirst menghapus elemen paling awal.
+- deleteLast menghapus elemen paling akhir.
+- deleteAfter menghapus elemen di tengah (setelah node tertentu).
+  Program mencari node berdasarkan nomor polisi, lalu memanggil prosedur penghapusan yang sesuai dengan posisi node tersebut.
 
 ## Referensi
 
