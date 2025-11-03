@@ -284,63 +284,147 @@ Buatlah ADT Doubly Linked list sebagai berikut di dalam file “Doublylist.h”:
 Buatlah implementasi ADT Doubly Linked list pada file “Doublylist.cpp” dan coba hasil
 implementasi ADT pada file “main.cpp”.
 
+Doublylist.cpp Doublylist.h main.cpp
 ```go
+#include "Doublylist.h"
 #include <iostream>
 using namespace std;
 
-int main()
-{
-    double a,b,j,kr,kl,bg;
+void CreateList(List &L) {
+    L.first = nullptr;
+    L.last = nullptr;
+}
 
-    cout<<"Input 2 bilangan: ";
-    cin>>a;
-    cin>>b;
-    j=a+b;
-    kr=a-b;
-    kl=a*b;
-    bg=a/b;
-    
-    cout<<"Penjumlahan="<<j<<"\nPengurangan="<<kr<<"\nPerkalian="<<kl<<"\nPembagian="<<bg<<endl;
-    return 0;
+address alokasi(kendaraan x) {
+    address P = new ElmList;
+    P->info = x;
+    P->next = nullptr;
+    P->prev = nullptr;
+    return P;
+}
+
+void dealokasi(address P) {
+    delete P;
+}
+
+bool cekNopol(const List &L, const string &nopol) {
+    address P = L.first;
+    while (P != nullptr) {
+        if (P->info.nopol == nopol)
+            return true;
+        P = P->next;
+    }
+    return false;
+}
+
+void insertLast(List &L, address P) {
+    if (L.first == nullptr) {
+        L.first = L.last = P;
+    } else {
+        P->next = L.first;
+        L.first->prev = P;
+        L.first = P;
+    }
+}
+
+void printInfo(const List &L) {
+    if (L.first == nullptr) {
+        cout << "\nList kosong.\n";
+        return;
+    }
+
+    cout << "\nDATA LIST 1\n" << endl;
+    address P = L.first;
+    while (P != nullptr) {
+        cout << "No polisi : " << P->info.nopol << endl;
+        cout << "Warna     : " << P->info.warna << endl;
+        cout << "Tahun     : " << P->info.thnBuat << endl;
+        P = P->next;
+    }
 }
 ```
 ```go
-#include <iostream>
+#ifndef DOUBLYLIST_H
+#define DOUBLYLIST_H
+
+#include <string>
 using namespace std;
 
-int main()
-{
-    double a,b,j,kr,kl,bg;
+struct kendaraan {
+    string nopol;
+    string warna;
+    int thnBuat;
+};
 
-    cout<<"Input 2 bilangan: ";
-    cin>>a;
-    cin>>b;
-    j=a+b;
-    kr=a-b;
-    kl=a*b;
-    bg=a/b;
-    
-    cout<<"Penjumlahan="<<j<<"\nPengurangan="<<kr<<"\nPerkalian="<<kl<<"\nPembagian="<<bg<<endl;
-    return 0;
-}
+struct ElmList;
+typedef ElmList* address;
+
+struct ElmList {
+    kendaraan info;
+    address next;
+    address prev;
+};
+
+struct List {
+    address first;
+    address last;
+};
+
+void CreateList(List &L);
+address alokasi(kendaraan x);
+void dealokasi(address P);
+void insertLast(List &L, address P);
+void printInfo(const List &L);
+bool cekNopol(const List &L, const string &nopol);
+
+#endif
 ```
 ```go
 #include <iostream>
+#include "Doublylist.h"
 using namespace std;
 
-int main()
-{
-    double a,b,j,kr,kl,bg;
+int main() {
+    List L;
+    CreateList(L);
+    int pilihan;
+    kendaraan k;
 
-    cout<<"Input 2 bilangan: ";
-    cin>>a;
-    cin>>b;
-    j=a+b;
-    kr=a-b;
-    kl=a*b;
-    bg=a/b;
-    
-    cout<<"Penjumlahan="<<j<<"\nPengurangan="<<kr<<"\nPerkalian="<<kl<<"\nPembagian="<<bg<<endl;
+    do {
+        cout << "\n=== MENU DATA KENDARAAN ===\n";
+        cout << "1. Masukkan Data Kendaraan\n";
+        cout << "2. Tampilkan Semua Data\n";
+        cout << "0. Keluar\n";
+        cout << "Pilih menu: ";
+        cin >> pilihan;
+
+        switch (pilihan) {
+            case 1:
+                cout << "\nMasukkan Nomor Polisi: ";
+                cin >> k.nopol;
+                cout << "Masukkan Warna Kendaraan: ";
+                cin >> k.warna;
+                cout << "Masukkan Tahun Kendaraan: ";
+                cin >> k.thnBuat;
+                if (cekNopol(L, k.nopol)) {
+                    cout << "Nomor polisi sudah terdaftar\n";
+                    break;
+                }
+                insertLast(L, alokasi(k));
+                break;
+            case 2:
+                printInfo(L);
+                break;
+            case 0:
+                cout << "Program selesai.\n";
+                break;
+            default:
+                cout << "Pilihan tidak valid!\n";
+                break;
+        }
+
+    } while (pilihan != 0);
+
     return 0;
 }
 ```
@@ -348,7 +432,15 @@ int main()
 > Output
 > ![Screenshot bagian x](output/{E48EADCA-AAAF-42F9-824D-3AAD108DFF77}.png)
 
-Program ini adalah program aritmatika sederhana yang menghitung hasil penjumlahan, pengurangan, perkalian, dan pembagian. Saya menggunakan double karena double adalah float untuk win64
+Program ini:
+
+- Menggunakan doubly linked list untuk menyimpan data kendaraan.
+- Dapat menambah dan menampilkan data kendaraan.
+- Mencegah duplikasi nomor polisi dengan cekNopol.
+- Struktur kodenya rapi dan modular karena dipisah dalam tiga file:
+  * Doublylist.h => deklarasi
+  * Doublylist.cpp => implementasi
+  * main.cpp => menu interaktif
 
 ### Soal 2
 
