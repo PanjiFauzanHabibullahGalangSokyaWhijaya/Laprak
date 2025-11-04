@@ -559,5 +559,4 @@ Jika tidak ditemukan, akan muncul pesan: "Tidak ditemukan buku dengan data terse
 ## Referensi
 
 1. https://en.wikipedia.org/wiki/Data_structure (diakses blablabla)
-2. https://www.duniailkom.com/tutorial-belajar-c-plus-plus-tipe-data-float-dan-double-bahasa-c-plus-plus/
-](https://www.tutorialspoint.com/searching-an-element-in-a-linked-list-using-cplusplus)
+2. https://www.tutorialspoint.com/searching-an-element-in-a-linked-list-using-cplusplus
