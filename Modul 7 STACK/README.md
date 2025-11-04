@@ -117,63 +117,107 @@ Buatlah ADT Stack menggunakan ARRAY sebagai berikut di dalam file “stack.h”:
 Buatlah implementasi ADT Stack menggunakan Array pada file “stack.cpp” dan “main.cpp”
 > ![Screenshot bagian x](output/{E48EADCA-AAAF-42F9-824D-3AAD108DFF77}.png)
 
+stack.cpp, stack.h, dan main.cpp
 ```go
 #include <iostream>
+#include "stack.h"
 using namespace std;
 
-int main()
-{
-    double a,b,j,kr,kl,bg;
+void createStack(Stack &S) {
+    S.top = -1;
+}
 
-    cout<<"Input 2 bilangan: ";
-    cin>>a;
-    cin>>b;
-    j=a+b;
-    kr=a-b;
-    kl=a*b;
-    bg=a/b;
-    
-    cout<<"Penjumlahan="<<j<<"\nPengurangan="<<kr<<"\nPerkalian="<<kl<<"\nPembagian="<<bg<<endl;
-    return 0;
+void push(Stack &S, infotype x) {
+    if (S.top < MAX - 1) {
+        S.top++;
+        S.info[S.top] = x;
+    } else {
+        cout << "Stack penuh!\n";
+    }
+}
+
+infotype pop(Stack &S) {
+    if (S.top >= 0) { 
+        infotype x = S.info[S.top];
+        S.top--;
+        return x;
+    } else {
+        cout << "Stack kosong!\n";
+        return -1;
+    }
+}
+
+void printInfo(Stack S) {
+    if (S.top == -1) {
+        cout << "Stack kosong.\n";
+        return;
+    }
+
+    cout << "[TOP] ";
+    for (int i = S.top; i >= 0; i--) {
+        cout << S.info[i] << " ";
+    }
+    cout << endl;
+}
+
+void balikStack(Stack &S) {
+    Stack temp;
+    createStack(temp);
+
+    while (S.top != -1) {
+        push(temp, pop(S));
+    }
+
+    S = temp;
 }
 ```
 ```go
-#include <iostream>
-using namespace std;
+#ifndef STACK_H
+#define STACK_H
 
-int main()
-{
-    double a,b,j,kr,kl,bg;
+const int MAX = 20;
 
-    cout<<"Input 2 bilangan: ";
-    cin>>a;
-    cin>>b;
-    j=a+b;
-    kr=a-b;
-    kl=a*b;
-    bg=a/b;
-    
-    cout<<"Penjumlahan="<<j<<"\nPengurangan="<<kr<<"\nPerkalian="<<kl<<"\nPembagian="<<bg<<endl;
-    return 0;
-}
+typedef int infotype;
+
+struct Stack {
+    infotype info[MAX];
+    int top;
+};
+
+void createStack(Stack &S);
+void push(Stack &S, infotype x);
+infotype pop(Stack &S);
+void printInfo(Stack S);
+void balikStack(Stack &S);
+
+#endif
 ```
 ```go
 #include <iostream>
+#include "stack.h"
 using namespace std;
 
-int main()
-{
-    double a,b,j,kr,kl,bg;
+int main() {
+    cout << "Hello world!" << endl;
 
-    cout<<"Input 2 bilangan: ";
-    cin>>a;
-    cin>>b;
-    j=a+b;
-    kr=a-b;
-    kl=a*b;
-    bg=a/b;
-    
-    cout<<"Penjumlahan="<<j<<"\nPengurangan="<<kr<<"\nPerkalian="<<kl<<"\nPembagian="<<bg<<endl;
+    Stack S;
+    createStack(S);
+
+    push(S, 3);
+    push(S, 4);
+    push(S, 8);
+    pop(S);
+    push(S, 2);
+    push(S, 3);
+    pop(S);
+    push(S, 9);
+
+    printInfo(S);
+
+    cout << "balik stack" << endl;
+    balikStack(S);
+    printInfo(S);
+
     return 0;
 }
 ```
