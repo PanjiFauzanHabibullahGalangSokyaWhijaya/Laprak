@@ -886,5 +886,6 @@ int main() {
 ## Referensi
 
 1. https://en.wikipedia.org/wiki/Data_structure (diakses blablabla)
-2. https://learn.microsoft.com/id-id/cpp/cpp/void-cpp?view=msvc-170
-3. https://www.duniailkom.com/tutorial-belajar-c-plus-plus-tipe-data-float-dan-double-bahasa-c-plus-plus/
+2. https://www.trivusi.web.id/2022/07/struktur-data-linked-list.html
+3. https://en.wikipedia.org/wiki/Doubly_linked_list
+4. https://www.geeksforgeeks.org/dsa/doubly-linked-list/
