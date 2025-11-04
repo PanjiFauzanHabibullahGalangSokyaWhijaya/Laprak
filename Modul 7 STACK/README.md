@@ -3,13 +3,13 @@
 
 ## Dasar Teori
 
-A stack stores multiple elements in a specific order, called LIFO.
+Sebuah stack menyimpan banyak elemen dalam urutan tertentu yang disebut LIFO.
 
-LIFO stands for Last In, First Out. To visualize LIFO, think of a pile of pancakes, where pancakes are both added and removed from the top. So when removing a pancake, it will always be the last one you added. This way of organizing elements is called LIFO in computer science and programming.
+LIFO merupakan singkatan dari Last In, First Out (masuk terakhir, keluar pertama). Untuk memvisualisasikan konsep LIFO, bayangkan setumpuk pancake, di mana pancake ditambahkan dan diambil dari bagian atas tumpukan. Jadi, saat mengambil pancake, yang akan diambil selalu yang terakhir kali ditambahkan. Cara pengorganisasian elemen seperti ini disebut LIFO dalam computer science and programming.
 
-Unlike vectors, index numbers do not access elements in the stack. Since elements are added and removed from the top, you can only access the element at the top of the stack.
+Berbeda dengan vector, elemen dalam stack tidak dapat diakses menggunakan nomor indeks. Karena elemen selalu ditambahkan dan dihapus dari bagian atas, maka hanya elemen paling atas dari stack yang dapat diakses.
 
-To use a stack, you have to include the <stack> header file
+Untuk menggunakan stack, Anda harus menyertakan header file stack.
 
 ## Guided
 
