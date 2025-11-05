@@ -225,7 +225,16 @@ int main() {
 > Output
 > ![Screenshot bagian x](output/{E48EADCA-AAAF-42F9-824D-3AAD108DFF77}.png)
 
-Program ini adalah program aritmatika sederhana yang menghitung hasil penjumlahan, pengurangan, perkalian, dan pembagian. Saya menggunakan double karena double adalah float untuk win64
+Program ini membuat ADT Stack (tumpukan) menggunakan array.
+Stack menyimpan data secara LIFO (Last In, First Out), data terakhir yang dimasukkan akan keluar lebih dulu.
+- createStack() = menginisialisasi stack agar kosong.
+- push() = menambah data ke puncak stack.
+- pop() = menghapus data dari puncak stack.
+- printInfo() = menampilkan isi stack dari atas ke bawah.
+- balikStack() = membalik urutan isi stack.
+
+Pada program utama (main.cpp), beberapa data dimasukkan dan dihapus, lalu isi stack ditampilkan sebelum dan sesudah dibalik.
+Hasilnya menunjukkan bahwa urutan data dalam stack berhasil dibalik.
 
 ### Soal 2
 
