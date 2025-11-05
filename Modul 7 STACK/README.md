@@ -240,40 +240,25 @@ Hasilnya menunjukkan bahwa urutan data dalam stack berhasil dibalik.
 ### Soal 2
 
 Tambahkan prosedur pushAscending( in/out S : Stack, in x : integer)
-
+```go
 int main()
-
 {
-
 cout << "Hello world!" << endl;
-
 Stack S;
-
 createStack(S);
-
 pushAscending(S,3);
-
 pushAscending(S,4);
-
 pushAscending(S,8);
-
 pushAscending(S,2);
-
 pushAscending(S,3);
-
 pushAscending(S,9);
-
 printInfo(S);
-
 cout<<"balik stack"<<endl;
-
 balikStack(S);
-
 printInfo(S);
-
 return 0;
-
 }
+```
 > ![Screenshot bagian x](output/5.png)
 
 stack.cpp, stack.h, dan main.cpp
