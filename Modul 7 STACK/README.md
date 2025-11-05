@@ -96,7 +96,7 @@ int main()
 ```
 
 > Output
-> ![Screenshot bagian x](output/{4DA43ED0-6A8D-46FE-81D3-DE2FEA7D5A3C}.png)
+> ![Screenshot bagian x](output/1.png)
 
 Struktur:
 - Node berisi data dan pointer next.
@@ -113,9 +113,9 @@ Fungsi utama:
 ### Soal 1
 
 Buatlah ADT Stack menggunakan ARRAY sebagai berikut di dalam file “stack.h”:
-> ![Screenshot bagian x](output/{E48EADCA-AAAF-42F9-824D-3AAD108DFF77}.png)
+> ![Screenshot bagian x](output/2.png)
 Buatlah implementasi ADT Stack menggunakan Array pada file “stack.cpp” dan “main.cpp”
-> ![Screenshot bagian x](output/{E48EADCA-AAAF-42F9-824D-3AAD108DFF77}.png)
+> ![Screenshot bagian x](output/3.png)
 
 stack.cpp, stack.h, dan main.cpp
 ```go
@@ -223,7 +223,7 @@ int main() {
 ```
 
 > Output
-> ![Screenshot bagian x](output/{E48EADCA-AAAF-42F9-824D-3AAD108DFF77}.png)
+> ![Screenshot bagian x](output/4.png)
 
 Program ini membuat ADT Stack (tumpukan) menggunakan array.
 Stack menyimpan data secara LIFO (Last In, First Out), data terakhir yang dimasukkan akan keluar lebih dulu.
@@ -257,7 +257,7 @@ balikStack(S);
 printInfo(S);
 return 0;
 }
-> ![Screenshot bagian x](output/WhatsAppImage2025-10-07at11.36.09.jpeg)
+> ![Screenshot bagian x](output/5.png)
 
 stack.cpp, stack.h, dan main.cpp
 ```go
@@ -383,7 +383,7 @@ int main() {
 ```
 
 > Output
-> ![Screenshot bagian x](output/WhatsAppImage2025-10-07at11.36.09.jpeg)
+> ![Screenshot bagian x](output/6.jpeg)
 
 Penjelasan:
 - pushAscending() menjaga agar elemen selalu dalam urutan menaik (ascending).
@@ -395,7 +395,7 @@ Penjelasan:
 Tambahkan prosedur getInputStream( in/out S : Stack ). Prosedur akan terus membaca dan
 menerima input user dan memasukkan setiap input ke dalam stack hingga user menekan
 tombol enter. Contoh: gunakan cin.get() untuk mendapatkan inputan user.
-> ![Screenshot bagian x](output/{F626FCED-9EB9-4D1E-8A7F-21D9194D1611}.png)
+> ![Screenshot bagian x](output/7.png)
 
 stack.cpp, stack.h, dan main.cpp
 ```go
@@ -525,7 +525,7 @@ int main() {
 ```
 
 > Output
-> ![Screenshot bagian x](output/{78A35B0E-8CB4-4DF5-A70B-D94521A279D9}.png)
+> ![Screenshot bagian x](output/8.png)
 
 Program ini membuat ADT Stack berbasis array yang dapat menyimpan data secara LIFO (Last In First Out).
 
