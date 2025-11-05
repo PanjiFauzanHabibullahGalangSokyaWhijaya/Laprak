@@ -128,7 +128,7 @@ void createStack(Stack &S) {
     S.top = -1;
 }
 
-void push(Stack &S, infotype x) {
+void push(Stack &S, int x) {
     if (S.top < MAX - 1) {
         S.top++;
         S.info[S.top] = x;
@@ -137,9 +137,9 @@ void push(Stack &S, infotype x) {
     }
 }
 
-infotype pop(Stack &S) {
+int pop(Stack &S) {
     if (S.top >= 0) { 
-        infotype x = S.info[S.top];
+        int x = S.info[S.top];
         S.top--;
         return x;
     } else {
@@ -178,16 +178,14 @@ void balikStack(Stack &S) {
 
 const int MAX = 20;
 
-typedef int infotype;
-
 struct Stack {
-    infotype info[MAX];
+    int info[MAX];
     int top;
 };
 
 void createStack(Stack &S);
-void push(Stack &S, infotype x);
-infotype pop(Stack &S);
+void push(Stack &S, int x);
+int pop(Stack &S);
 void printInfo(Stack S);
 void balikStack(Stack &S);
 
