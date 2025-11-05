@@ -242,11 +242,6 @@ Tambahkan prosedur pushAscending( in/out S : Stack, in x : integer)
 
 int main()
 {
-
-Gambar 7-11 Output stack
-
-STRUKTUR DATA 65
-
 cout << "Hello world!" << endl;
 Stack S;
 createStack(S);
@@ -397,38 +392,133 @@ Penjelasan:
 
 ### Soal 3
 
-Buatlah program yang dapat memberikan input dan output sbb.
+Tambahkan prosedur getInputStream( in/out S : Stack ). Prosedur akan terus membaca dan
+menerima input user dan memasukkan setiap input ke dalam stack hingga user menekan
+tombol enter. Contoh: gunakan cin.get() untuk mendapatkan inputan user.
 > ![Screenshot bagian x](output/{F626FCED-9EB9-4D1E-8A7F-21D9194D1611}.png)
 
+stack.cpp, stack.h, dan main.cpp
 ```go
+#include "Stack.h"
 #include <iostream>
 using namespace std;
 
+void createStack(Stack &S) {
+    S.top = -1;
+}
+
+bool isEmpty(Stack S) {
+    return S.top == -1;
+}
+
+bool isFull(Stack S) {
+    return S.top == MAX - 1;
+}
+
+void push(Stack &S, int x) {
+    if (!isFull(S)) {
+        S.top++;
+        S.info[S.top] = x;
+    } else {
+        cout << "Stack penuh!\n";
+    }
+}
+
+int pop(Stack &S) {
+    if (!isEmpty(S)) {
+        int x = S.info[S.top];
+        S.top--;
+        return x;
+    } else {
+        cout << "Stack kosong!\n";
+        return -1;
+    }
+}
+
+void printInfo(Stack S) {
+    cout << "[TOP] ";
+    for (int i = S.top; i >= 0; i--) {
+        cout << S.info[i] << " ";
+    }
+    cout << endl;
+}
+
+void balikStack(Stack &S) {
+    Stack temp;
+    createStack(temp);
+    while (!isEmpty(S)) {
+        push(temp, pop(S));
+    }
+    S = temp;
+}
+
+void pushAscending(Stack &S, int x) {
+    Stack temp;
+    createStack(temp);
+
+    while (!isEmpty(S) && S.info[S.top] < x) {
+        push(temp, pop(S));
+    }
+
+    push(S, x);
+
+    while (!isEmpty(temp)) {
+        push(S, pop(temp));
+    }
+}
+
+// === Prosedur baru ===
+void getInputStream(Stack &S) {
+    char ch;
+    cout << "Masukkan input (akhiri dengan Enter): ";
+    while (true) {
+        ch = cin.get(); // ambil karakter
+        if (ch == '\n') break; // berhenti jika Enter
+        push(S, ch - '0');     // konversi char angka ke int
+    }
+}
+```
+```go
+#ifndef STACK_H
+#define STACK_H
+
+const int MAX = 20;
+
+struct Stack {
+    int info[MAX];
+    int top;
+};
+
+void createStack(Stack &S);
+bool isEmpty(Stack S);
+bool isFull(Stack S);
+void push(Stack &S, int x);
+int pop(Stack &S);
+void printInfo(Stack S);
+void balikStack(Stack &S);
+void pushAscending(Stack &S, int x);
+void getInputStream(Stack &S); // <-- prosedur baru
+
+#endif
+```
+```go
+#include <iostream>
+#include "Stack.h"
+using namespace std;
+
 int main() {
-    int n;
-    cout << "Input: ";
-    cin >> n;
-    cout << "Output: "<<endl;
+    cout << "Hello world!" << endl;
 
-    for (int i = n; i >= 1; i--) {
+    Stack S;
+    createStack(S);
 
-        for (int s = 0; s < (n - i); s++) {
-            cout << "  ";
-        }
-        for (int j = i; j >= 1; j--) {
-            cout << j << " ";
-        }
-        cout << "* ";
-        for (int j = 1; j <= i; j++) {
-            cout << j << " ";
-        }
-        cout << endl;
-    }
+    getInputStream(S);  // ← input dari user
 
-    for (int s = 0; s < n; s++) {
-        cout << "  ";
-    }
-    cout << "*" << endl;
+    printInfo(S);
+
+    cout << "balik stack" << endl;
+    balikStack(S);
+    printInfo(S);
 
     return 0;
 }
@@ -437,10 +527,19 @@ int main() {
 > Output
 > ![Screenshot bagian x](output/{78A35B0E-8CB4-4DF5-A70B-D94521A279D9}.png)
 
-Program ini menampilkan pola angka simetris dengan bintang di tengahnya, berdasarkan input angka n. Program ini menggeser pola ke kanan setiap baris dengan penambahan spasi. Saya di sini menggunakan nested loop
+Program ini membuat ADT Stack berbasis array yang dapat menyimpan data secara LIFO (Last In First Out).
+
+Penjelasan:
+- createStack() membuat stack kosong.
+- push() dan pop() menambah atau menghapus elemen.
+- printInfo() menampilkan isi stack dari atas ke bawah.
+- balikStack() membalik urutan elemen dalam stack.
+- pushAscending() menambahkan elemen agar urutan tetap menaik.
+- getInputStream() membaca input dari pengguna (hingga tekan Enter) dan memasukkannya ke stack.
+
+Pada main(), program menampilkan teks “Hello world!”, meminta input angka, menampilkan isi stack, lalu membalik dan menampilkan hasilnya kembali.
 
 ## Referensi
 
 1. https://en.wikipedia.org/wiki/Data_structure (diakses blablabla)
-2. https://learn.microsoft.com/id-id/cpp/cpp/void-cpp?view=msvc-170
-3. https://www.duniailkom.com/tutorial-belajar-c-plus-plus-tipe-data-float-dan-double-bahasa-c-plus-plus/
+2. https://www.w3schools.com/cpp/cpp_stacks.asp
