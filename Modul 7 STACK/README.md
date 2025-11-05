@@ -114,6 +114,7 @@ Fungsi utama:
 
 Buatlah ADT Stack menggunakan ARRAY sebagai berikut di dalam file “stack.h”:
 > ![Screenshot bagian x](output/2.png)
+
 Buatlah implementasi ADT Stack menggunakan Array pada file “stack.cpp” dan “main.cpp”
 > ![Screenshot bagian x](output/3.png)
 
@@ -241,21 +242,37 @@ Hasilnya menunjukkan bahwa urutan data dalam stack berhasil dibalik.
 Tambahkan prosedur pushAscending( in/out S : Stack, in x : integer)
 
 int main()
+
 {
+
 cout << "Hello world!" << endl;
+
 Stack S;
+
 createStack(S);
+
 pushAscending(S,3);
+
 pushAscending(S,4);
+
 pushAscending(S,8);
+
 pushAscending(S,2);
+
 pushAscending(S,3);
+
 pushAscending(S,9);
+
 printInfo(S);
+
 cout<<"balik stack"<<endl;
+
 balikStack(S);
+
 printInfo(S);
+
 return 0;
+
 }
 > ![Screenshot bagian x](output/5.png)
 
@@ -383,7 +400,7 @@ int main() {
 ```
 
 > Output
-> ![Screenshot bagian x](output/6.jpeg)
+> ![Screenshot bagian x](output/6.png)
 
 Penjelasan:
 - pushAscending() menjaga agar elemen selalu dalam urutan menaik (ascending).
