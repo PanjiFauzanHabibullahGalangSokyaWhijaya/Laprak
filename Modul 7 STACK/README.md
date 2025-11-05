@@ -238,60 +238,150 @@ Hasilnya menunjukkan bahwa urutan data dalam stack berhasil dibalik.
 
 ### Soal 2
 
-Buatlah sebuah program yang menerima masukan angka dan mengeluarkan output nilai angka tersebut dalam bentuk tulisan. Angka yang akan di-input-kan user adalah bilangan bulat positif mulai dari 0 s.d 100
-contoh:
-79: tujuh puluh Sembilan
-
-```go
-#include <iostream>
-using namespace std;
-
-string angkaKeTulisan(int n)
-{
-    string satuan[] = {"", "Satu", "Dua", "Tiga", "Empat", "Lima",
-                       "Enam", "Tujuh", "Delapan", "Sembilan"};
-
-    if (n == 0)
-        return "Nol";
-    else if (n == 10)
-        return "Sepuluh";
-    else if (n == 11)
-        return "Sebelas";
-    else if (n == 100)
-        return "Seratus";
-    else if (n < 10)
-        return satuan[n];
-    else if (n < 20)
-    {
-        int belas = n%10;
-        string hasil = satuan[belas] + " Belas";
-        return hasil;
-    }
-    else
-    {
-        int puluh = n / 10;
-        int sisa = n % 10;
-        string hasil = satuan[puluh] + " Puluh";
-        if (sisa > 0)
-            hasil += " " + satuan[sisa];
-        return hasil;
-    }
-}
+Tambahkan prosedur pushAscending( in/out S : Stack, in x : integer)
 
 int main()
 {
-    int angka;
-    cout << "Masukkan angka (0-100): ";
-    cin >> angka;
 
-    if (angka < 0 || angka > 100)
-    {
-        cout << "Angka di luar jangkauan!" << endl;
+Gambar 7-11 Output stack
+
+STRUKTUR DATA 65
+
+cout << "Hello world!" << endl;
+Stack S;
+createStack(S);
+pushAscending(S,3);
+pushAscending(S,4);
+pushAscending(S,8);
+pushAscending(S,2);
+pushAscending(S,3);
+pushAscending(S,9);
+printInfo(S);
+cout<<"balik stack"<<endl;
+balikStack(S);
+printInfo(S);
+return 0;
+}
+> ![Screenshot bagian x](output/WhatsAppImage2025-10-07at11.36.09.jpeg)
+
+stack.cpp, stack.h, dan main.cpp
+```go
+#include "Stack.h"
+#include <iostream>
+using namespace std;
+
+void createStack(Stack &S) {
+    S.top = -1;
+}
+
+bool isEmpty(Stack S) {
+    return S.top == -1;
+}
+
+bool isFull(Stack S) {
+    return S.top == MAX - 1;
+}
+
+void push(Stack &S, int x) {
+    if (!isFull(S)) {
+        S.top++;
+        S.info[S.top] = x;
+    } else {
+        cout << "Stack penuh!\n";
     }
-    else
-    {
-        cout << angka << ": " << angkaKeTulisan(angka) << endl;
+}
+
+int pop(Stack &S) {
+    if (!isEmpty(S)) {
+        int x = S.info[S.top];
+        S.top--;
+        return x;
+    } else {
+        cout << "Stack kosong!\n";
+        return -1;
     }
+}
+
+void printInfo(Stack S) {
+    cout << "[TOP] ";
+    for (int i = S.top; i >= 0; i--) {
+        cout << S.info[i] << " ";
+    }
+    cout << endl;
+}
+
+void balikStack(Stack &S) {
+    Stack temp;
+    createStack(temp);
+    while (!isEmpty(S)) {
+        push(temp, pop(S));
+    }
+    S = temp;
+}
+
+void pushAscending(Stack &S, int x) {
+    Stack temp;
+    createStack(temp);
+
+    // Pindahkan semua elemen yang lebih kecil dari x ke stack sementara
+    while (!isEmpty(S) && S.info[S.top] < x) {
+        push(temp, pop(S));
+    }
+
+    // Masukkan elemen baru
+    push(S, x);
+
+    // Kembalikan elemen dari stack sementara
+    while (!isEmpty(temp)) {
+        push(S, pop(temp));
+    }
+}
+```
+```go
+#ifndef STACK_H
+#define STACK_H
+
+const int MAX = 20;
+
+struct Stack {
+    int info[MAX];
+    int top;
+};
+
+void createStack(Stack &S);
+bool isEmpty(Stack S);
+bool isFull(Stack S);
+void push(Stack &S, int x);
+int pop(Stack &S);
+void printInfo(Stack S);
+void balikStack(Stack &S);
+void pushAscending(Stack &S, int x);
+
+#endif
+```
+```go
+#include <iostream>
+#include "Stack.h"
+using namespace std;
+
+int main() {
+    cout << "Hello world!" << endl;
+
+    Stack S;
+    createStack(S);
+
+    pushAscending(S, 3);
+    pushAscending(S, 4);
+    pushAscending(S, 8);
+    pushAscending(S, 2);
+    pushAscending(S, 3);
+    pushAscending(S, 9);
+
+    printInfo(S);
+
+    cout << "balik stack" << endl;
+    balikStack(S);
+    printInfo(S);
 
     return 0;
 }
@@ -300,7 +390,10 @@ int main()
 > Output
 > ![Screenshot bagian x](output/WhatsAppImage2025-10-07at11.36.09.jpeg)
 
-Program ini mengkonversi angka menjadi latin. Di sini saya menggunakan fungsi dan array
+Penjelasan:
+- pushAscending() menjaga agar elemen selalu dalam urutan menaik (ascending).
+- Jika elemen baru lebih besar dari elemen atas, elemen tersebut disisipkan di posisi yang tepat dengan bantuan stack sementara.
+- Setelah semua elemen dimasukkan, hasil akhir akan menampilkan urutan yang terjaga.
 
 ### Soal 3
 
