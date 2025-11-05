@@ -387,7 +387,7 @@ int main() {
 > ![Screenshot bagian x](output/6.png)
 
 Penjelasan:
-- pushAscending() menjaga agar elemen selalu dalam urutan menaik (ascending).
+- pushAscending() menjaga agar elemen selalu dalam urutan menaik? (ascending?).
 - Jika elemen baru lebih besar dari elemen atas, elemen tersebut disisipkan di posisi yang tepat dengan bantuan stack sementara.
 - Setelah semua elemen dimasukkan, hasil akhir akan menampilkan urutan yang terjaga.
 
