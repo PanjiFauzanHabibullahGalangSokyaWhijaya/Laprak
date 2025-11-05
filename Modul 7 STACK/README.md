@@ -398,8 +398,8 @@ tombol enter. Contoh: gunakan cin.get() untuk mendapatkan inputan user.
 
 stack.cpp, stack.h, dan main.cpp
 ```go
-#include "Stack.h"
 #include <iostream>
+#include "Stack.h"
 using namespace std;
 
 void createStack(Stack &S) {
@@ -410,12 +410,8 @@ bool isEmpty(Stack S) {
     return S.top == -1;
 }
 
-bool isFull(Stack S) {
-    return S.top == MAX - 1;
-}
-
 void push(Stack &S, int x) {
-    if (!isFull(S)) {
+    if (S.top < MAX - 1) {
         S.top++;
         S.info[S.top] = x;
     } else {
@@ -424,7 +420,7 @@ void push(Stack &S, int x) {
 }
 
 int pop(Stack &S) {
-    if (!isEmpty(S)) {
+    if (S.top >= 0) {
         int x = S.info[S.top];
         S.top--;
         return x;
@@ -435,6 +431,11 @@ int pop(Stack &S) {
 }
 
 void printInfo(Stack S) {
+    if (S.top == -1) {
+        cout << "Stack kosong.\n";
+        return;
+    }
+
     cout << "[TOP] ";
     for (int i = S.top; i >= 0; i--) {
         cout << S.info[i] << " ";
@@ -445,9 +446,11 @@ void printInfo(Stack S) {
 void balikStack(Stack &S) {
     Stack temp;
     createStack(temp);
-    while (!isEmpty(S)) {
+
+    while (S.top != -1) {
         push(temp, pop(S));
     }
+
     S = temp;
 }
 
@@ -455,7 +458,7 @@ void pushAscending(Stack &S, int x) {
     Stack temp;
     createStack(temp);
 
-    while (!isEmpty(S) && S.info[S.top] < x) {
+    while (!isEmpty(S) && S.info[S.top] > x) {
         push(temp, pop(S));
     }
 
@@ -466,14 +469,12 @@ void pushAscending(Stack &S, int x) {
     }
 }
 
-// === Prosedur baru ===
 void getInputStream(Stack &S) {
     char ch;
-    cout << "Masukkan input (akhiri dengan Enter): ";
     while (true) {
-        ch = cin.get(); // ambil karakter
-        if (ch == '\n') break; // berhenti jika Enter
-        push(S, ch - '0');     // konversi char angka ke int
+        ch = cin.get(); 
+        if (ch == '\n') break; 
+        push(S, ch - '0');     
     }
 }
 ```
@@ -490,13 +491,12 @@ struct Stack {
 
 void createStack(Stack &S);
 bool isEmpty(Stack S);
-bool isFull(Stack S);
 void push(Stack &S, int x);
 int pop(Stack &S);
 void printInfo(Stack S);
 void balikStack(Stack &S);
 void pushAscending(Stack &S, int x);
-void getInputStream(Stack &S); // <-- prosedur baru
+void getInputStream(Stack &S); 
 
 #endif
 ```
@@ -511,7 +511,7 @@ int main() {
     Stack S;
     createStack(S);
 
-    getInputStream(S);  // ← input dari user
+    getInputStream(S);
 
     printInfo(S);
 
