@@ -263,8 +263,8 @@ return 0;
 
 stack.cpp, stack.h, dan main.cpp
 ```go
-#include "Stack.h"
 #include <iostream>
+#include "Stack.h"
 using namespace std;
 
 void createStack(Stack &S) {
@@ -275,12 +275,8 @@ bool isEmpty(Stack S) {
     return S.top == -1;
 }
 
-bool isFull(Stack S) {
-    return S.top == MAX - 1;
-}
-
 void push(Stack &S, int x) {
-    if (!isFull(S)) {
+    if (S.top < MAX - 1) {
         S.top++;
         S.info[S.top] = x;
     } else {
@@ -289,7 +285,7 @@ void push(Stack &S, int x) {
 }
 
 int pop(Stack &S) {
-    if (!isEmpty(S)) {
+    if (S.top >= 0) {
         int x = S.info[S.top];
         S.top--;
         return x;
@@ -300,6 +296,11 @@ int pop(Stack &S) {
 }
 
 void printInfo(Stack S) {
+     if (S.top == -1) {
+        cout << "Stack kosong.\n";
+        return;
+    }
+
     cout << "[TOP] ";
     for (int i = S.top; i >= 0; i--) {
         cout << S.info[i] << " ";
@@ -310,9 +311,11 @@ void printInfo(Stack S) {
 void balikStack(Stack &S) {
     Stack temp;
     createStack(temp);
-    while (!isEmpty(S)) {
+
+    while (S.top != -1) {
         push(temp, pop(S));
     }
+
     S = temp;
 }
 
@@ -320,15 +323,12 @@ void pushAscending(Stack &S, int x) {
     Stack temp;
     createStack(temp);
 
-    // Pindahkan semua elemen yang lebih kecil dari x ke stack sementara
-    while (!isEmpty(S) && S.info[S.top] < x) {
+    while (!isEmpty(S) && S.info[S.top] > x) {
         push(temp, pop(S));
     }
 
-    // Masukkan elemen baru
     push(S, x);
 
-    // Kembalikan elemen dari stack sementara
     while (!isEmpty(temp)) {
         push(S, pop(temp));
     }
@@ -347,7 +347,6 @@ struct Stack {
 
 void createStack(Stack &S);
 bool isEmpty(Stack S);
-bool isFull(Stack S);
 void push(Stack &S, int x);
 int pop(Stack &S);
 void printInfo(Stack S);
