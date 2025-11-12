@@ -1,13 +1,27 @@
- # <h1 align="center">Laporan Praktikum Modul X <br> Nama Modul</h1>
+ # <h1 align="center">Laporan Praktikum Modul 8 <br> Queue</h1>
 <p align="center">PANJI FAUZAN HABIBULLAH GALANG SOKYA WHIJAYA - 103112430162</p>
 
 ## Dasar Teori
 
-C++ adalah bahasa pemrograman komputer yang dikembangkan oleh Bjarne Stroustrup sebagai pengembangan dari bahasa C, yang sebelumnya dibuat oleh Dennis Ritchie di Bell Labs. Pada awal 1970-an, bahasa C sendiri merupakan penyempurnaan dari bahasa B.
+Queue adalah struktur data linear yang mengikuti prinsip FIFO (First In First Out), artinya elemen yang pertama dimasukkan akan menjadi elemen pertama yang dikeluarkan.
 
-Awalnya, C++ dirancang untuk berjalan di sistem Unix. Seiring perkembangannya, standar ANSI C (American National Standards Institute) menjadi acuan utama, meskipun kini penggunaannya jarang ditemui dalam pengembangan sistem jaringan maupun sistem tertanam (embedded). Karena sifatnya yang fleksibel, C++ termasuk dalam kategori bahasa pemrograman tujuan umum (general-purpose programming language).
+Prinsip FIFO dalam Queue:
 
-Stroustrup mulai mengembangkan C++ pada awal 1980-an di Bell Labs dengan menambahkan efisiensi dan dukungan untuk pemrograman tingkat rendah. Bahasa ini juga memperkenalkan konsep baru seperti class, inheritance, dan overloading. Perbedaan utama antara C dan C++ adalah dukungan penuh C++ terhadap paradigma pemrograman berorientasi objek (OOP).
+Prinsip FIFO menyatakan bahwa elemen pertama yang ditambahkan ke dalam antrian akan menjadi elemen pertama yang dihapus atau diproses. Dengan kata lain, Queue dapat diibaratkan seperti barisan orang yang sedang menunggu untuk membeli tiket, orang yang pertama dalam barisan akan dilayani terlebih dahulu (First Come, First Serve).
+
+Istilah Dasar dalam Queue
+- Front: Posisi elemen pertama dalam antrian yang siap untuk dihapus atau diproses disebut front atau head dari antrian.
+- Rear: Posisi elemen terakhir dalam antrian, yaitu elemen yang baru saja ditambahkan, disebut rear atau tail dari antrian.
+- Size: Menunjukkan jumlah elemen yang saat ini ada di dalam antrian.
+- Capacity: Menunjukkan jumlah maksimum elemen yang dapat ditampung oleh antrian.
+
+Operasi Dasar pada Queue
+- Enqueue: Menambahkan elemen ke bagian belakang (rear) antrian. Jika antrian sudah penuh, maka terjadi overflow error.
+- Dequeue: Menghapus elemen dari bagian depan (front) antrian. Jika antrian kosong, maka terjadi underflow error.
+- Peek/Front: Mengembalikan elemen di bagian depan tanpa menghapusnya.
+- Size: Mengembalikan jumlah elemen dalam antrian.
+- isEmpty: Mengembalikan true jika antrian kosong, dan false jika tidak.
+- isFull: Mengembalikan true jika antrian penuh, dan false jika tidak.
 
 ## Guided
 
