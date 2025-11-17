@@ -262,15 +262,14 @@ int main() {
 ```
 
 > Output
-> ![Screenshot bagian x](output/{E48EADCA-AAAF-42F9-824D-3AAD108DFF77}.png)
+> ![Screenshot bagian x](output/output1.png)
 
 Program ini adalah program aritmatika sederhana yang menghitung hasil penjumlahan, pengurangan, perkalian, dan pembagian. Saya menggunakan double karena double adalah float untuk win64
 
 ### Soal 2
 
-Buatlah sebuah program yang menerima masukan angka dan mengeluarkan output nilai angka tersebut dalam bentuk tulisan. Angka yang akan di-input-kan user adalah bilangan bulat positif mulai dari 0 s.d 100
-contoh:
-79: tujuh puluh Sembilan
+Buatlah implementasi ADT Queue pada file “queue.cpp” dengan menerapkan mekanisme
+queue Alternatif 2 (head bergerak, tail bergerak).
 
 ```go
 #include <iostream>
@@ -334,8 +333,8 @@ Program ini mengkonversi angka menjadi latin. Di sini saya menggunakan fungsi da
 
 ### Soal 3
 
-Buatlah program yang dapat memberikan input dan output sbb.
-> ![Screenshot bagian x](output/{F626FCED-9EB9-4D1E-8A7F-21D9194D1611}.png)
+Buatlah implementasi ADT Queue pada file “queue.cpp” dengan menerapkan mekanisme
+queue Alternatif 3 (head dan tail berputar).
 
 ```go
 #include <iostream>
