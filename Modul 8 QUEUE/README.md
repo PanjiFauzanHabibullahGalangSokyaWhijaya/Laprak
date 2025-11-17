@@ -264,6 +264,7 @@ int main() {
 > Output
 > ![Screenshot bagian x](output/output1.png)
 
+Penjelasan program ini:
 - createQueue(Q) menginisialisasi queue kosong dengan head = tail = -1.
 - isEmptyQueue(Q) mengembalikan true jika head dan tail = -1.
 - isFullQueue(Q) true jika tail sudah mencapai indeks terakhir (MAX - 1).
@@ -282,64 +283,79 @@ Buatlah implementasi ADT Queue pada file “queue.cpp” dengan menerapkan mekan
 queue Alternatif 2 (head bergerak, tail bergerak).
 
 ```go
+#include "queue.h"
 #include <iostream>
 using namespace std;
 
-string angkaKeTulisan(int n)
-{
-    string satuan[] = {"", "Satu", "Dua", "Tiga", "Empat", "Lima",
-                       "Enam", "Tujuh", "Delapan", "Sembilan"};
-
-    if (n == 0)
-        return "Nol";
-    else if (n == 10)
-        return "Sepuluh";
-    else if (n == 11)
-        return "Sebelas";
-    else if (n == 100)
-        return "Seratus";
-    else if (n < 10)
-        return satuan[n];
-    else if (n < 20)
-    {
-        int belas = n%10;
-        string hasil = satuan[belas] + " Belas";
-        return hasil;
-    }
-    else
-    {
-        int puluh = n / 10;
-        int sisa = n % 10;
-        string hasil = satuan[puluh] + " Puluh";
-        if (sisa > 0)
-            hasil += " " + satuan[sisa];
-        return hasil;
-    }
+void createQueue(Queue &Q) {
+    Q.head = -1;
+    Q.tail = -1;
 }
 
-int main()
-{
-    int angka;
-    cout << "Masukkan angka (0-100): ";
-    cin >> angka;
+bool isEmptyQueue(Queue Q) {
+    return (Q.head == -1 && Q.tail == -1);
+}
 
-    if (angka < 0 || angka > 100)
-    {
-        cout << "Angka di luar jangkauan!" << endl;
-    }
-    else
-    {
-        cout << angka << ": " << angkaKeTulisan(angka) << endl;
+bool isFullQueue(Queue Q) {
+    return (Q.tail == MAX - 1);
+}
+
+void enqueue(Queue &Q, infotype x) {
+    if (isFullQueue(Q)) {
+        cout << "Queue penuh!" << endl;
+        return;
     }
 
-    return 0;
+    if (isEmptyQueue(Q)) {
+        Q.head = Q.tail = 0;
+    } else {
+        Q.tail++;
+    }
+
+    Q.info[Q.tail] = x;
+}
+
+infotype dequeue(Queue &Q) {
+    if (isEmptyQueue(Q)) {
+        cout << "Queue kosong!" << endl;
+        return -1;
+    }
+
+    infotype x = Q.info[Q.head];
+
+    if (Q.head == Q.tail) {
+        Q.head = Q.tail = -1;
+    } else {
+        Q.head++;
+    }
+
+    return x;
+}
+
+void printInfo(Queue Q) {
+    cout << Q.head << " - " << Q.tail << "\t| Queue info : ";
+
+    if (isEmptyQueue(Q)) {
+        cout << "empty queue" << endl;
+        return;
+    }
+
+    for (int i = Q.head; i <= Q.tail; i++) {
+        cout << Q.info[i] << " ";
+    }
+
+    cout << endl;
 }
 ```
 
 > Output
-> ![Screenshot bagian x](output/WhatsAppImage2025-10-07at11.36.09.jpeg)
+> ![Screenshot bagian x](output/output2.png)
 
-Program ini mengkonversi angka menjadi latin. Di sini saya menggunakan fungsi dan array
+Penjelasan program ini:
+- Head maju setiap kali dequeue
+- Tail maju setiap kali enqueue
+- Tidak ada penggeseran elemen
+- Jika tail mencapai MAX-1, queue dianggap penuh meskipun ada ruang di depan (karena tidak circular)
 
 ### Soal 3
 
