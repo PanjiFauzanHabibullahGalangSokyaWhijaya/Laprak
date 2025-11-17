@@ -142,6 +142,47 @@ Buatlah implementasi ADT Queue pada file “queue.cpp” dengan menerapkan mekan
 queue Alternatif 1 (head diam, tail bergerak).
 > ![Screenshot bagian x](output/{E48EADCA-AAAF-42F9-824D-3AAD108DFF77}.png)
 
+queue.cpp, queue.h, main.cpp
+```go
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    double a,b,j,kr,kl,bg;
+
+    cout<<"Input 2 bilangan: ";
+    cin>>a;
+    cin>>b;
+    j=a+b;
+    kr=a-b;
+    kl=a*b;
+    bg=a/b;
+    
+    cout<<"Penjumlahan="<<j<<"\nPengurangan="<<kr<<"\nPerkalian="<<kl<<"\nPembagian="<<bg<<endl;
+    return 0;
+}
+```
+```go
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    double a,b,j,kr,kl,bg;
+
+    cout<<"Input 2 bilangan: ";
+    cin>>a;
+    cin>>b;
+    j=a+b;
+    kr=a-b;
+    kl=a*b;
+    bg=a/b;
+    
+    cout<<"Penjumlahan="<<j<<"\nPengurangan="<<kr<<"\nPerkalian="<<kl<<"\nPembagian="<<bg<<endl;
+    return 0;
+}
+```
 ```go
 #include <iostream>
 using namespace std;
