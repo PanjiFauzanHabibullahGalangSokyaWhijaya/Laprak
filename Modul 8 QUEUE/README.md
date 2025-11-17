@@ -136,11 +136,11 @@ Penjelasan program ini:
 ### Soal 1
 
 Buatlah ADT Queue menggunakan ARRAY sebagai berikut di dalam file “queue.h”:
-> ![Screenshot bagian x](output/{E48EADCA-AAAF-42F9-824D-3AAD108DFF77}.png)
+> ![Screenshot bagian x](output/soal1.png)
 
 Buatlah implementasi ADT Queue pada file “queue.cpp” dengan menerapkan mekanisme
 queue Alternatif 1 (head diam, tail bergerak).
-> ![Screenshot bagian x](output/{E48EADCA-AAAF-42F9-824D-3AAD108DFF77}.png)
+> ![Screenshot bagian x](output/soal1out.png)
 
 queue.cpp, queue.h, main.cpp
 ```go
