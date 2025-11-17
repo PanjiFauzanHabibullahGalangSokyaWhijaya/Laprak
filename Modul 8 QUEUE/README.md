@@ -144,62 +144,119 @@ queue Alternatif 1 (head diam, tail bergerak).
 
 queue.cpp, queue.h, main.cpp
 ```go
+#include "queue.h"
 #include <iostream>
 using namespace std;
 
-int main()
-{
-    double a,b,j,kr,kl,bg;
+void createQueue(Queue &Q) {
+    Q.head = -1;
+    Q.tail = -1;
+}
 
-    cout<<"Input 2 bilangan: ";
-    cin>>a;
-    cin>>b;
-    j=a+b;
-    kr=a-b;
-    kl=a*b;
-    bg=a/b;
-    
-    cout<<"Penjumlahan="<<j<<"\nPengurangan="<<kr<<"\nPerkalian="<<kl<<"\nPembagian="<<bg<<endl;
-    return 0;
+bool isEmptyQueue(Queue Q) {
+    return (Q.head == -1 && Q.tail == -1);
+}
+
+bool isFullQueue(Queue Q) {
+    return (Q.tail == MAX - 1);
+}
+
+void enqueue(Queue &Q, infotype x) {
+    if (isFullQueue(Q)) {
+        cout << "Queue penuh!" << endl;
+        return;
+    }
+
+    if (isEmptyQueue(Q)) {
+        Q.head = Q.tail = 0;
+    } else {
+        Q.tail++;
+    }
+
+    Q.info[Q.tail] = x;
+}
+
+infotype dequeue(Queue &Q) {
+    if (isEmptyQueue(Q)) {
+        cout << "Queue kosong!" << endl;
+        return -1;
+    }
+
+    infotype x = Q.info[Q.head];
+
+    if (Q.head == Q.tail) {
+        Q.head = Q.tail = -1;
+    } 
+    else {
+        for (int i = Q.head; i < Q.tail; i++) {
+            Q.info[i] = Q.info[i + 1];
+        }
+        Q.tail--;
+    }
+
+    return x;
+}
+
+void printInfo(Queue Q) {
+    cout << Q.head << " - " << Q.tail << "\t| Queue info : ";
+
+    if (isEmptyQueue(Q)) {
+        cout << "empty queue" << endl;
+        return;
+    }
+
+    for (int i = Q.head; i <= Q.tail; i++) {
+        cout << Q.info[i] << " ";
+    }
+
+    cout << endl;
 }
 ```
 ```go
-#include <iostream>
-using namespace std;
+#ifndef QUEUE_H
+#define QUEUE_H
 
-int main()
-{
-    double a,b,j,kr,kl,bg;
+const int MAX = 5;
 
-    cout<<"Input 2 bilangan: ";
-    cin>>a;
-    cin>>b;
-    j=a+b;
-    kr=a-b;
-    kl=a*b;
-    bg=a/b;
-    
-    cout<<"Penjumlahan="<<j<<"\nPengurangan="<<kr<<"\nPerkalian="<<kl<<"\nPembagian="<<bg<<endl;
-    return 0;
-}
+typedef int infotype;
+
+struct Queue {
+    infotype info[MAX];
+    int head, tail;
+};
+
+void createQueue(Queue &Q);
+bool isEmptyQueue(Queue Q);
+bool isFullQueue(Queue Q);
+void enqueue(Queue &Q, infotype x);
+infotype dequeue(Queue &Q);
+void printInfo(Queue Q);
+
+#endif
 ```
 ```go
 #include <iostream>
+#include "queue.h"
 using namespace std;
 
-int main()
-{
-    double a,b,j,kr,kl,bg;
-
-    cout<<"Input 2 bilangan: ";
-    cin>>a;
-    cin>>b;
-    j=a+b;
-    kr=a-b;
-    kl=a*b;
-    bg=a/b;
+int main() {
+    cout << "Hello World" << endl;
+    Queue Q;
+    createQueue(Q);
     
-    cout<<"Penjumlahan="<<j<<"\nPengurangan="<<kr<<"\nPerkalian="<<kl<<"\nPembagian="<<bg<<endl;
+    cout<<"----------------------"<<endl;
+    cout<<" H - T \t | Queue info"<<endl;
+    cout<<"----------------------"<<endl;
+    printInfo(Q);
+    enqueue(Q,5); printInfo(Q);
+    enqueue(Q,2); printInfo(Q);
+    enqueue(Q,7); printInfo(Q);
+    dequeue(Q); printInfo(Q);
+    dequeue(Q); printInfo(Q);
+    enqueue(Q,4); printInfo(Q);
+    dequeue(Q); printInfo(Q);
+    dequeue(Q); printInfo(Q);
+
     return 0;
 }
 ```
