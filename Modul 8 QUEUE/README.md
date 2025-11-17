@@ -264,7 +264,17 @@ int main() {
 > Output
 > ![Screenshot bagian x](output/output1.png)
 
-Program ini adalah program aritmatika sederhana yang menghitung hasil penjumlahan, pengurangan, perkalian, dan pembagian. Saya menggunakan double karena double adalah float untuk win64
+- createQueue(Q) menginisialisasi queue kosong dengan head = tail = -1.
+- isEmptyQueue(Q) mengembalikan true jika head dan tail = -1.
+- isFullQueue(Q) true jika tail sudah mencapai indeks terakhir (MAX - 1).
+- enqueue(Q, x) menambahkan data ke antrian.
+  * Jika kosong = head dan tail jadi 0.
+  * Jika tidak = tail naik 1.
+  * Data dimasukkan ke info[tail].
+- dequeue(Q) mengambil data dari head.
+  * Jika hanya satu elemen → reset ke queue kosong.
+  * Jika lebih dari satu → seluruh elemen digeser ke kiri (inefisien), kemudian tail turun 1.
+- printInfo(Q) menampilkan posisi head–tail dan isi queue.
 
 ### Soal 2
 
