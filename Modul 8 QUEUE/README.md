@@ -363,43 +363,80 @@ Buatlah implementasi ADT Queue pada file “queue.cpp” dengan menerapkan mekan
 queue Alternatif 3 (head dan tail berputar).
 
 ```go
+#include "queue.h"
 #include <iostream>
 using namespace std;
 
-int main() {
-    int n;
-    cout << "Input: ";
-    cin >> n;
-    cout << "Output: "<<endl;
+void createQueue(Queue &Q) {
+    Q.head = -1;
+    Q.tail = -1;
+}
 
-    for (int i = n; i >= 1; i--) {
+bool isEmptyQueue(Queue Q) {
+    return (Q.head == -1 && Q.tail == -1);
+}
 
-        for (int s = 0; s < (n - i); s++) {
-            cout << "  ";
-        }
-        for (int j = i; j >= 1; j--) {
-            cout << j << " ";
-        }
-        cout << "* ";
-        for (int j = 1; j <= i; j++) {
-            cout << j << " ";
-        }
-        cout << endl;
+bool isFullQueue(Queue Q) {
+    return (Q.tail == MAX - 1);
+}
+
+void enqueue(Queue &Q, infotype x) {
+    if (isFullQueue(Q)) {
+        cout << "Queue penuh!" << endl;
+        return;
     }
 
-    for (int s = 0; s < n; s++) {
-        cout << "  ";
+    if (isEmptyQueue(Q)) {
+        Q.head = Q.tail = 0;
+    } else {
+        Q.tail++;
     }
-    cout << "*" << endl;
 
-    return 0;
+    Q.info[Q.tail] = x;
+}
+
+infotype dequeue(Queue &Q) {
+    if (isEmptyQueue(Q)) {
+        cout << "Queue kosong!" << endl;
+        return -1;
+    }
+
+    infotype x = Q.info[Q.head];
+
+    if (Q.head == Q.tail) {
+        Q.head = Q.tail = -1;
+    } else {
+        Q.head = (Q.head + 1) % MAX;
+    }
+
+    return x;
+}
+
+void printInfo(Queue Q) {
+    cout << Q.head << " - " << Q.tail << "\t| Queue info : ";
+
+    if (isEmptyQueue(Q)) {
+        cout << "empty queue" << endl;
+        return;
+    }
+
+    for (int i = Q.head; i <= Q.tail; i++) {
+        cout << Q.info[i] << " ";
+    }
+
+    cout << endl;
 }
 ```
 
 > Output
-> ![Screenshot bagian x](output/{78A35B0E-8CB4-4DF5-A70B-D94521A279D9}.png)
+> ![Screenshot bagian x](output/output3.png)
 
-Program ini menampilkan pola angka simetris dengan bintang di tengahnya, berdasarkan input angka n. Program ini menggeser pola ke kanan setiap baris dengan penambahan spasi. Saya di sini menggunakan nested loop
+Penjelasan program ini:
+- Menggunakan array tapi head dan tail berputar memakai modulo.
+- Tidak perlu geser elemen.
+- Memanfaatkan seluruh slot array.
+- Queue penuh jika (tail + 1) % MAX == head.
+- Queue kosong jika head == -1.
 
 ## Referensi
 
