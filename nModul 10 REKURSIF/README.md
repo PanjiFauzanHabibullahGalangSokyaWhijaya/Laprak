@@ -1,13 +1,25 @@
- # <h1 align="center">Laporan Praktikum Modul X <br> Nama Modul</h1>
+ # <h1 align="center">Laporan Praktikum Modul 10 <br> Rekursif</h1>
 <p align="center">PANJI FAUZAN HABIBULLAH GALANG SOKYA WHIJAYA - 103112430162</p>
 
 ## Dasar Teori
 
-C++ adalah bahasa pemrograman komputer yang dikembangkan oleh Bjarne Stroustrup sebagai pengembangan dari bahasa C, yang sebelumnya dibuat oleh Dennis Ritchie di Bell Labs. Pada awal 1970-an, bahasa C sendiri merupakan penyempurnaan dari bahasa B.
+Rekursi
+Rekursi adalah teknik membuat suatu fungsi memanggil dirinya sendiri.
+Rekurensi berlanjut bekerja hingga beberapa kondisi terpenuhi.
+Untuk mencegah rekursi tak terbatas, pernyataan if...else (atau pendekatan serupa) dapat digunakan di mana satu cabang membuat panggilan rekursif dan yang lainnya tidak.
 
-Awalnya, C++ dirancang untuk berjalan di sistem Unix. Seiring perkembangannya, standar ANSI C (American National Standards Institute) menjadi acuan utama, meskipun kini penggunaannya jarang ditemui dalam pengembangan sistem jaringan maupun sistem tertanam (embedded). Karena sifatnya yang fleksibel, C++ termasuk dalam kategori bahasa pemrograman tujuan umum (general-purpose programming language).
+Rekursif menyediakan cara untuk memecah masalah rumit menjadi masalah sederhana yang lebih mudah dipecahkan.
 
-Stroustrup mulai mengembangkan C++ pada awal 1980-an di Bell Labs dengan menambahkan efisiensi dan dukungan untuk pemrograman tingkat rendah. Bahasa ini juga memperkenalkan konsep baru seperti class, inheritance, dan overloading. Perbedaan utama antara C dan C++ adalah dukungan penuh C++ terhadap paradigma pemrograman berorientasi objek (OOP).
+Rekursi mungkin agak sulit dipahami. Cara terbaik untuk memahami cara kerjanya adalah dengan bereksperimen.
+
+Keuntungan Rekursi C++
+- Itu membuat kode kita lebih pendek dan bersih.
+- Rekursi diperlukan dalam permasalahan yang berkaitan dengan struktur data dan algoritma tingkat lanjut, seperti Penelusuran Grafik dan Pohon.
+
+Kekurangan Rekursi C++
+- Dibutuhkan banyak ruang tumpukan dibandingkan dengan program berulang.
+- Menggunakan lebih banyak waktu prosesor.
+- Mungkin lebih sulit untuk men-debugnya dibandingkan dengan program iteratif yang setara.
 
 ## Guided
 
