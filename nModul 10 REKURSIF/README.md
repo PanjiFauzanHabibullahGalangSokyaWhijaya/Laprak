@@ -594,5 +594,5 @@ Program ini menampilkan pola angka simetris dengan bintang di tengahnya, berdasa
 ## Referensi
 
 1. https://en.wikipedia.org/wiki/Data_structure (diakses blablabla)
-2. https://learn.microsoft.com/id-id/cpp/cpp/void-cpp?view=msvc-170
-3. https://www.duniailkom.com/tutorial-belajar-c-plus-plus-tipe-data-float-dan-double-bahasa-c-plus-plus/
+2. https://www.programiz.com/cpp-programming/recursion
+3. https://www.w3schools.com/cpp/cpp_functions_recursion.asp
