@@ -232,25 +232,103 @@ Program melakukan semua operasi tersebut di fungsi main() untuk demonstrasi.
 
 ### Soal 1
 
-Buatlah program yang menerima input-an dua buah bilangan betipe float, kemudian memberikan output-an hasil penjumlahan, pengurangan, perkalian, dan pembagian dari dua bilangan tersebut.
+Buatlah ADT Binary Search Tree menggunakan Linked list sebagai berikut di dalam file
+“bstree.h”:
+> ![Screenshot bagian x](output/{E48EADCA-AAAF-42F9-824D-3AAD108DFF77}.png)
 
+Buatlah implementasi ADT Binary Search Tree pada file “bstree.cpp” dan cobalah hasil
+implementasi ADT pada file “main.cpp”
+> ![Screenshot bagian x](output/{E48EADCA-AAAF-42F9-824D-3AAD108DFF77}.png)
+
+bstree.cpp, bstree.h, main.cpp
 ```go
+#include <iostream>
+#include "bstree.h"
+using namespace std;
+
+address alokasi(infotype x) {
+    address p = new Node;
+    p->info = x;
+    p->left = NULL;
+    p->right = NULL;
+    return p;
+}
+
+void insertNode(address &root, infotype x) {
+    if (root == NULL) {
+        root = alokasi(x);
+    } else if (x < root->info) {
+        insertNode(root->left, x);
+    } else if (x > root->info) {
+        insertNode(root->right, x);
+    }
+}
+
+address findNode(infotype x, address root) {
+    if (root == NULL) {
+        return NULL;
+    } else if (x == root->info) {
+        return root;
+    } else if (x < root->info) {
+        return findNode(x, root->left);
+    } else {
+        return findNode(x, root->right);
+    }
+}
+
+void printInOrder(address root) {
+    if (root != NULL) {
+        printInOrder(root->left);
+        cout << root->info << " - ";
+        printInOrder(root->right);
+    }
+}
+```
+```go
+#ifndef BSTREE_H
+#define BSTREE_H
+
 #include <iostream>
 using namespace std;
 
-int main()
-{
-    double a,b,j,kr,kl,bg;
+typedef int infotype;
 
-    cout<<"Input 2 bilangan: ";
-    cin>>a;
-    cin>>b;
-    j=a+b;
-    kr=a-b;
-    kl=a*b;
-    bg=a/b;
-    
-    cout<<"Penjumlahan="<<j<<"\nPengurangan="<<kr<<"\nPerkalian="<<kl<<"\nPembagian="<<bg<<endl;
+typedef struct Node *address;
+
+struct Node {
+    infotype info;
+    address left;
+    address right;
+};
+
+address alokasi(infotype x);
+void insertNode(address &root, infotype x);
+address findNode(infotype x, address root);
+void printInOrder(address root);
+
+#endif
+```
+```go
+#include <iostream>
+#include "bstree.h"
+using namespace std;
+
+int main() {
+    cout << "Hello world!\n";
+
+    address root = NULL;
+
+    insertNode(root, 1);
+    insertNode(root, 2);
+    insertNode(root, 6);
+    insertNode(root, 4);
+    insertNode(root, 5);
+    insertNode(root, 3);
+    insertNode(root, 6);
+    insertNode(root, 7);
+
+    printInOrder(root);
+
     return 0;
 }
 ```
@@ -258,7 +336,14 @@ int main()
 > Output
 > ![Screenshot bagian x](output/{E48EADCA-AAAF-42F9-824D-3AAD108DFF77}.png)
 
-Program ini adalah program aritmatika sederhana yang menghitung hasil penjumlahan, pengurangan, perkalian, dan pembagian. Saya menggunakan double karena double adalah float untuk win64
+- bstree.h berisi struktur Node (info, left, right) dan deklarasi fungsi BST, seperti alokasi, insertNode, findNode, printInOrder.
+- bstree.cpp berisi implementasi fungsi BST:
+  * alokasi: buat node baru.
+  * insertNode: masukkan angka ke BST (kiri lebih kecil, kanan lebih besar, duplikat diabaikan).
+  * findNode: mencari nilai.
+  * printInOrder: menampilkan isi tree secara urut (Left–Root–Right).
+ 
+Program melakukan semua operasi tersebut di fungsi main() untuk demonstrasi.
 
 ### Soal 2
 
