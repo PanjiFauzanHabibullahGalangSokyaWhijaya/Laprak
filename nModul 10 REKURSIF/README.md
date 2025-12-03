@@ -234,11 +234,12 @@ Program melakukan semua operasi tersebut di fungsi main() untuk demonstrasi.
 
 Buatlah ADT Binary Search Tree menggunakan Linked list sebagai berikut di dalam file
 “bstree.h”:
-> ![Screenshot bagian x](output/{E48EADCA-AAAF-42F9-824D-3AAD108DFF77}.png)
+> ![Screenshot bagian x](output/{73FAE1E6-CB1A-4C32-ACA0-120CF31918BC}.png)
 
 Buatlah implementasi ADT Binary Search Tree pada file “bstree.cpp” dan cobalah hasil
 implementasi ADT pada file “main.cpp”
-> ![Screenshot bagian x](output/{E48EADCA-AAAF-42F9-824D-3AAD108DFF77}.png)
+> ![Screenshot bagian x](output/{CD05BF11-4C5D-4050-A0E5-DB93F0D17E40}.png)
+
 
 bstree.cpp, bstree.h, main.cpp
 ```go
@@ -334,7 +335,7 @@ int main() {
 ```
 
 > Output
-> ![Screenshot bagian x](output/{E48EADCA-AAAF-42F9-824D-3AAD108DFF77}.png)
+> ![Screenshot bagian x](output/{1536EEC3-857E-480F-A92A-AC832555583C}.png)
 
 - bstree.h berisi struktur Node (info, left, right) dan deklarasi fungsi BST, seperti alokasi, insertNode, findNode, printInOrder.
 - bstree.cpp berisi implementasi fungsi BST:
