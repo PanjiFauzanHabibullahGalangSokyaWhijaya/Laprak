@@ -348,9 +348,13 @@ Program melakukan semua operasi tersebut di fungsi main() untuk demonstrasi.
 
 ### Soal 2
 
-Buatlah sebuah program yang menerima masukan angka dan mengeluarkan output nilai angka tersebut dalam bentuk tulisan. Angka yang akan di-input-kan user adalah bilangan bulat positif mulai dari 0 s.d 100
-contoh:
-79: tujuh puluh Sembilan
+Buatlah fungsi untuk menghitung jumlah node dengan fungsi berikut.
+- fungsi hitungJumlahNode( root:address ) : integer
+  /* fungsi mengembalikan integer banyak node yang ada di dalam BST*/
+- fungsi hitungTotalInfo( root:address, start:integer ) : integer
+  /* fungsi mengembalikan jumlah (total) info dari node-node yang ada di dalam BST*/
+- fungsi hitungKedalaman( root:address, start:integer ) : integer
+  /* fungsi rekursif mengembalikan integer kedalaman maksimal dari binary tree */
 
 ```go
 #include <iostream>
