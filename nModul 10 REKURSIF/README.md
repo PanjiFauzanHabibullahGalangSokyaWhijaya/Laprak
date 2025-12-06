@@ -240,7 +240,6 @@ Buatlah implementasi ADT Binary Search Tree pada file “bstree.cpp” dan cobal
 implementasi ADT pada file “main.cpp”
 > ![Screenshot bagian x](output/{CD05BF11-4C5D-4050-A0E5-DB93F0D17E40}.png)
 
-
 bstree.cpp, bstree.h, main.cpp
 ```go
 #include <iostream>
@@ -358,58 +357,123 @@ Buatlah fungsi untuk menghitung jumlah node dengan fungsi berikut.
 - fungsi hitungKedalaman( root:address, start:integer ) : integer
 
   /* fungsi rekursif mengembalikan integer kedalaman maksimal dari binary tree */
-  > ![Screenshot bagian x](output/WhatsAppImage2025-10-07at11.36.09.jpeg)
+> ![Screenshot bagian x](output/WhatsAppImage2025-10-07at11.36.09.jpeg)
 
+bstree.cpp, bstree.h, main.cpp
 ```go
 #include <iostream>
+#include "bstree.h"
 using namespace std;
 
-string angkaKeTulisan(int n)
-{
-    string satuan[] = {"", "Satu", "Dua", "Tiga", "Empat", "Lima",
-                       "Enam", "Tujuh", "Delapan", "Sembilan"};
+address alokasi(infotype x) {
+    address p = new Node;
+    p->info = x;
+    p->left = NULL;
+    p->right = NULL;
+    return p;
+}
 
-    if (n == 0)
-        return "Nol";
-    else if (n == 10)
-        return "Sepuluh";
-    else if (n == 11)
-        return "Sebelas";
-    else if (n == 100)
-        return "Seratus";
-    else if (n < 10)
-        return satuan[n];
-    else if (n < 20)
-    {
-        int belas = n%10;
-        string hasil = satuan[belas] + " Belas";
-        return hasil;
-    }
-    else
-    {
-        int puluh = n / 10;
-        int sisa = n % 10;
-        string hasil = satuan[puluh] + " Puluh";
-        if (sisa > 0)
-            hasil += " " + satuan[sisa];
-        return hasil;
+void insertNode(address &root, infotype x) {
+    if (root == NULL) {
+        root = alokasi(x);
+    } else if (x < root->info) {
+        insertNode(root->left, x);
+    } else if (x > root->info) {
+        insertNode(root->right, x);
     }
 }
 
-int main()
-{
-    int angka;
-    cout << "Masukkan angka (0-100): ";
-    cin >> angka;
+address findNode(infotype x, address root) {
+    if (root == NULL) {
+        return NULL;
+    } else if (x == root->info) {
+        return root;
+    } else if (x < root->info) {
+        return findNode(x, root->left);
+    } else {
+        return findNode(x, root->right);
+    }
+}
 
-    if (angka < 0 || angka > 100)
-    {
-        cout << "Angka di luar jangkauan!" << endl;
+void printInOrder(address root) {
+    if (root != NULL) {
+        printInOrder(root->left);
+        cout << root->info << " - ";
+        printInOrder(root->right);
     }
-    else
-    {
-        cout << angka << ": " << angkaKeTulisan(angka) << endl;
-    }
+}
+
+int hitungJumlahNode(address root) {
+    if (root == nullptr)
+        return 0;
+    return 1 + hitungJumlahNode(root->left) + hitungJumlahNode(root->right);
+}
+
+int hitungTotalInfo(address root) {
+    if (root == nullptr)
+        return 0;
+    return root->info + hitungTotalInfo(root->left) + hitungTotalInfo(root->right);
+}
+
+int hitungKedalaman(address root, int start) {
+    if (root == nullptr)
+        return start;
+    int leftDepth  = hitungKedalaman(root->left,  start + 1);
+    int rightDepth = hitungKedalaman(root->right, start + 1);
+    return max(leftDepth, rightDepth);
+}
+```
+```go
+#ifndef BSTREE_H
+#define BSTREE_H
+
+#include <iostream>
+using namespace std;
+
+typedef int infotype;
+
+typedef struct Node *address;
+
+struct Node {
+    infotype info;
+    address left;
+    address right;
+};
+
+address alokasi(infotype x);
+void insertNode(address &root, infotype x);
+address findNode(infotype x, address root);
+void printInOrder(address root);
+int hitungJumlahNode(address root);
+int hitungTotalInfo(address root);
+int hitungKedalaman(address root, int start);
+
+#endif
+```
+```go
+#include <iostream>
+#include "bstree.h"
+using namespace std;
+
+int main() {
+    cout << "Hello world!" << endl;
+
+    address root = NULL;
+
+    insertNode(root, 1);
+    insertNode(root, 2);
+    insertNode(root, 6);
+    insertNode(root, 4);
+    insertNode(root, 5);
+    insertNode(root, 3);
+    insertNode(root, 6);
+    insertNode(root, 7);
+
+    printInOrder(root);
+    cout << endl;
+    cout << "kedalaman : " << hitungKedalaman(root, 0) << endl;
+    cout << "jumlah Node : " << hitungJumlahNode(root) << endl;
+    cout << "total : " << hitungTotalInfo(root) << endl;
 
     return 0;
 }
@@ -418,7 +482,34 @@ int main()
 > Output
 > ![Screenshot bagian x](output/WhatsAppImage2025-10-07at11.36.09.jpeg)
 
-Program ini mengkonversi angka menjadi latin. Di sini saya menggunakan fungsi dan array
+Program ini berisi:
+- bstree.h berisi deklarasi: 
+  * Node menyimpan nilai (info) serta pointer left dan right.
+  * alokasi() untuk membuat node baru.
+  * insertNode() untuk memasukkan data ke BST.
+  * findNode() untuk mencari data.
+  * printInOrder() mencetak tree secara in-order.
+  * hitungJumlahNode() untuk menghitung total node.
+  * hitungTotalInfo() untuk menjumlahkan seluruh nilai info.
+  * hitungKedalaman() untuk mencari kedalaman maksimum tree.
+ 
+- bstree.cpp mengisi implementasi fungsi BST:
+  * alokasi(x) akan membuat node baru.
+  * insertNode(root, x) memasukkan data ke BST (kiri jika lebih kecil, kanan jika lebih besar).
+  * findNode(x, root) untuk mencari node.
+  * printInOrder(root) mencetak tree secara terurut (kiri–root–kanan).
+  * hitungJumlahNode(root) untuk menghitung total node.
+  * hitungTotalInfo(root) untuk menjumlahkan seluruh nilai / info node.
+  * hitungKedalaman(root, start) untuk menghitung kedalaman maksimum tree.
+ 
+- main.cpp
+  * Membuat BST
+  * Memasukkan data (1,2,6,4,5,3,6,7) (Catatan: nilai 6 dimasukkan dua kali tetapi BST tidak menerima duplikat.)
+  * Menampilkan hasil in-order
+  * Menampilkan:
+    > Kedalaman tree
+    > Total node
+    > Total penjumlahan nilai
 
 ### Soal 3
 
