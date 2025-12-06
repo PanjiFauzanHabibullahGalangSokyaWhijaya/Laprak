@@ -357,7 +357,7 @@ Buatlah fungsi untuk menghitung jumlah node dengan fungsi berikut.
 - fungsi hitungKedalaman( root:address, start:integer ) : integer
 
   /* fungsi rekursif mengembalikan integer kedalaman maksimal dari binary tree */
-> ![Screenshot bagian x](output/WhatsAppImage2025-10-07at11.36.09.jpeg)
+> ![Screenshot bagian x](output/{7C3AD20F-063B-45E8-B0D3-8747099E86D7}.png)
 
 bstree.cpp, bstree.h, main.cpp
 ```go
@@ -480,7 +480,7 @@ int main() {
 ```
 
 > Output
-> ![Screenshot bagian x](output/WhatsAppImage2025-10-07at11.36.09.jpeg)
+> ![Screenshot bagian x](output/{F7D1B7AA-F09B-473A-8C63-8C869EEFF063}.png)
 
 Program ini berisi:
 - bstree.h berisi deklarasi: 
@@ -507,9 +507,9 @@ Program ini berisi:
   * Memasukkan data (1,2,6,4,5,3,6,7) (Catatan: nilai 6 dimasukkan dua kali tetapi BST tidak menerima duplikat.)
   * Menampilkan hasil in-order
   * Menampilkan:
-    > Kedalaman tree
-    > Total node
-    > Total penjumlahan nilai
+    - Kedalaman tree
+    - Total node
+    - Total penjumlahan nilai
 
 ### Soal 3
 
