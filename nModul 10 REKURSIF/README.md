@@ -350,11 +350,15 @@ Program melakukan semua operasi tersebut di fungsi main() untuk demonstrasi.
 
 Buatlah fungsi untuk menghitung jumlah node dengan fungsi berikut.
 - fungsi hitungJumlahNode( root:address ) : integer
+
   /* fungsi mengembalikan integer banyak node yang ada di dalam BST*/
 - fungsi hitungTotalInfo( root:address, start:integer ) : integer
+
   /* fungsi mengembalikan jumlah (total) info dari node-node yang ada di dalam BST*/
 - fungsi hitungKedalaman( root:address, start:integer ) : integer
+
   /* fungsi rekursif mengembalikan integer kedalaman maksimal dari binary tree */
+  > ![Screenshot bagian x](output/WhatsAppImage2025-10-07at11.36.09.jpeg)
 
 ```go
 #include <iostream>
