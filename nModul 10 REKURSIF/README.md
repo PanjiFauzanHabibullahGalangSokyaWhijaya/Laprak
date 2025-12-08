@@ -514,7 +514,7 @@ Program ini berisi:
 ### Soal 3
 
 Print tree secara pre-order dan post-order.
-> ![Screenshot bagian x](output/{F626FCED-9EB9-4D1E-8A7F-21D9194D1611}.png)
+> ![Screenshot bagian x](output/{D862639A-2987-48B4-829C-C19F11A4948D}.png)
 
 ```go
 #include <iostream>
@@ -597,7 +597,7 @@ int main() {
 ```
 
 > Output
-> ![Screenshot bagian x](output/{78A35B0E-8CB4-4DF5-A70B-D94521A279D9}.png)
+> ![Screenshot bagian x](output/{3D61F0F9-646C-4507-8890-B413E433662C}.png)
 
 Program ini membuat Binary Search Tree (BST) dengan operasi dasar:
 - Node menyimpan info, left, dan right.
