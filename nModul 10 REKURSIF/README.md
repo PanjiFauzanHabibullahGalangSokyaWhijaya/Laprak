@@ -513,38 +513,84 @@ Program ini berisi:
 
 ### Soal 3
 
-Buatlah program yang dapat memberikan input dan output sbb.
+Print tree secara pre-order dan post-order.
 > ![Screenshot bagian x](output/{F626FCED-9EB9-4D1E-8A7F-21D9194D1611}.png)
 
 ```go
 #include <iostream>
 using namespace std;
 
+typedef int infotype;
+typedef struct Node *address;
+
+struct Node {
+    infotype info;
+    address left;
+    address right;
+};
+
+address alokasi(infotype x) {
+    address p = new Node;
+    p->info = x;
+    p->left = NULL;
+    p->right = NULL;
+    return p;
+}
+
+void insertNode(address &root, infotype x) {
+    if (root == NULL) {
+        root = alokasi(x);
+    } else if (x < root->info) {
+        insertNode(root->left, x);
+    } else if (x > root->info) {
+        insertNode(root->right, x);
+    }
+}
+
+void InOrder(address root) {
+    if (root != NULL) {
+        InOrder(root->left);
+        cout << root->info << " - ";
+        InOrder(root->right);
+    }
+}
+
+void PreOrder(Node *root) {
+    if (root != NULL) {
+        cout << root->info << " - ";
+        PreOrder(root->left);
+        PreOrder(root->right);
+    }
+}
+
+void PostOrder(Node *root) {
+    if (root != NULL) {
+        PostOrder(root->left);
+        PostOrder(root->right);
+        cout << root->info << " - ";
+    }
+}
+
 int main() {
-    int n;
-    cout << "Input: ";
-    cin >> n;
-    cout << "Output: "<<endl;
+    address root = NULL;
 
-    for (int i = n; i >= 1; i--) {
+    insertNode(root, 6);
+    insertNode(root, 4); 
+    insertNode(root, 7); 
+    insertNode(root, 2); 
+    insertNode(root, 5); 
+    insertNode(root, 1); 
+    insertNode(root, 3); 
 
-        for (int s = 0; s < (n - i); s++) {
-            cout << "  ";
-        }
-        for (int j = i; j >= 1; j--) {
-            cout << j << " ";
-        }
-        cout << "* ";
-        for (int j = 1; j <= i; j++) {
-            cout << j << " ";
-        }
-        cout << endl;
-    }
-
-    for (int s = 0; s < n; s++) {
-        cout << "  ";
-    }
-    cout << "*" << endl;
+    cout << "PreOrder  : ";
+    PreOrder(root);
+    cout << endl;
+    cout << "InOrder   : ";
+    InOrder(root);
+    cout << endl;
+    cout << "PostOrder : ";
+    PostOrder(root);
+    cout << endl;
 
     return 0;
 }
@@ -553,7 +599,11 @@ int main() {
 > Output
 > ![Screenshot bagian x](output/{78A35B0E-8CB4-4DF5-A70B-D94521A279D9}.png)
 
-Program ini menampilkan pola angka simetris dengan bintang di tengahnya, berdasarkan input angka n. Program ini menggeser pola ke kanan setiap baris dengan penambahan spasi. Saya di sini menggunakan nested loop
+Program ini membuat Binary Search Tree (BST) dengan operasi dasar:
+- Node menyimpan info, left, dan right.
+- insertNode() memasukkan data secara rekursif sesuai aturan BST.
+- InOrder, PreOrder, PostOrder menampilkan tree dalam tiga jenis traversal.
+Pada main(), program menampilkan traversal PreOrder, InOrder, dan PostOrder.
 
 ## Referensi
 
