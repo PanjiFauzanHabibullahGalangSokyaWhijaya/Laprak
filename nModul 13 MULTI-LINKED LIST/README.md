@@ -3,7 +3,7 @@
 
 ## Dasar Teori
 
-Multi-linked list adalah jenis daftar khusus yang memiliki dua atau lebih urutan kunci logis. Sebelum memahami multi-linked list lebih jauh, mari lihat kembali apa itu linked list. Linked list adalah struktur data yang tidak memiliki batasan ukuran selama memori heap masih tersedia. Kita telah mengenal berbagai jenis linked list seperti Singly Linked List, Circular Linked List, dan Doubly Linked List. Di sini kita akan mempelajari tentang multi-linked list.
+Multi-linked list adalah jenis daftar khusus yang memiliki dua atau lebih urutan kunci logis. Sebelum memahami multi-linked list lebih jauh, mari lihat kembali apa itu linked list. Linked list adalah struktur data yang tidak memiliki batasan ukuran selama memori heap masih tersedia. Kita telah mengenal berbagai jenis linked list seperti Singly Linked List dan Doubly Linked List. Di sini kita akan mempelajari tentang multi-linked list.
 
 Dalam multi-linked list, setiap node dapat memiliki N buah pointer yang mengarah ke node-node lain. Multi-linked list umumnya digunakan untuk mengatur beberapa urutan dari satu kumpulan elemen.
 
@@ -419,5 +419,4 @@ Program ini menampilkan pola angka simetris dengan bintang di tengahnya, berdasa
 ## Referensi
 
 1. https://en.wikipedia.org/wiki/Data_structure (diakses blablabla)
-2. https://learn.microsoft.com/id-id/cpp/cpp/void-cpp?view=msvc-170
-3. https://www.duniailkom.com/tutorial-belajar-c-plus-plus-tipe-data-float-dan-double-bahasa-c-plus-plus/
+2. https://www.geeksforgeeks.org/dsa/introduction-to-multi-linked-list/
