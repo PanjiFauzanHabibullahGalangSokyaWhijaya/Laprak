@@ -1,13 +1,26 @@
- # <h1 align="center">Laporan Praktikum Modul X <br> Nama Modul</h1>
+ # <h1 align="center">Laporan Praktikum Modul 13 <br> Multi-Linked List</h1>
 <p align="center">PANJI FAUZAN HABIBULLAH GALANG SOKYA WHIJAYA - 103112430162</p>
 
 ## Dasar Teori
 
-C++ adalah bahasa pemrograman komputer yang dikembangkan oleh Bjarne Stroustrup sebagai pengembangan dari bahasa C, yang sebelumnya dibuat oleh Dennis Ritchie di Bell Labs. Pada awal 1970-an, bahasa C sendiri merupakan penyempurnaan dari bahasa B.
+Multi-linked list adalah jenis daftar khusus yang memiliki dua atau lebih urutan kunci logis. Sebelum memahami multi-linked list lebih jauh, mari lihat kembali apa itu linked list. Linked list adalah struktur data yang tidak memiliki batasan ukuran selama memori heap masih tersedia. Kita telah mengenal berbagai jenis linked list seperti Singly Linked List, Circular Linked List, dan Doubly Linked List. Di sini kita akan mempelajari tentang multi-linked list.
 
-Awalnya, C++ dirancang untuk berjalan di sistem Unix. Seiring perkembangannya, standar ANSI C (American National Standards Institute) menjadi acuan utama, meskipun kini penggunaannya jarang ditemui dalam pengembangan sistem jaringan maupun sistem tertanam (embedded). Karena sifatnya yang fleksibel, C++ termasuk dalam kategori bahasa pemrograman tujuan umum (general-purpose programming language).
+Dalam multi-linked list, setiap node dapat memiliki N buah pointer yang mengarah ke node-node lain. Multi-linked list umumnya digunakan untuk mengatur beberapa urutan dari satu kumpulan elemen.
 
-Stroustrup mulai mengembangkan C++ pada awal 1980-an di Bell Labs dengan menambahkan efisiensi dan dukungan untuk pemrograman tingkat rendah. Bahasa ini juga memperkenalkan konsep baru seperti class, inheritance, dan overloading. Perbedaan utama antara C dan C++ adalah dukungan penuh C++ terhadap paradigma pemrograman berorientasi objek (OOP).
+Properti dari Multi-Linked List:
+
+Berikut adalah properti dari multi-linked list:
+
+- Merupakan daftar terintegrasi dari struktur-struktur yang saling berkaitan.
+- Semua node saling terhubung menggunakan link berupa pointer.
+- Node-node yang terhubung memiliki data yang saling terkait.
+- Node mengandung pointer yang menghubungkan satu struktur ke struktur lainnya.
+
+Struktur Multi-Linked List:
+
+Struktur multi-linked list bergantung pada struktur node-nya. Secara umum, satu node biasanya berisi dua komponen utama:
+- Daftar pointer
+- Semua data yang relevan
 
 ## Guided
 
