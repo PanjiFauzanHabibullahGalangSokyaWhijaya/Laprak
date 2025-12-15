@@ -157,7 +157,8 @@ Program ini membentuk multilist. Tiap parent node punya daftar child node sendir
 
 ### Soal 1
 
-Buatlah program yang menerima input-an dua buah bilangan betipe float, kemudian memberikan output-an hasil penjumlahan, pengurangan, perkalian, dan pembagian dari dua bilangan tersebut.
+Perhatikan program 46 multilist.h, buat multilist.cpp untuk implementasi semua fungsi pada
+multilist.h. Buat main.cpp untuk pemanggilan fungsi-fungsi tersebut.
 
 ```go
 #include <iostream>
@@ -187,9 +188,35 @@ Program ini adalah program aritmatika sederhana yang menghitung hasil penjumlaha
 
 ### Soal 2
 
-Buatlah sebuah program yang menerima masukan angka dan mengeluarkan output nilai angka tersebut dalam bentuk tulisan. Angka yang akan di-input-kan user adalah bilangan bulat positif mulai dari 0 s.d 100
-contoh:
-79: tujuh puluh Sembilan
+Buatlah ADT Multi Linked list sebagai berikut di dalam file “circularlist.h”:
+> ![Screenshot bagian x](output/{E48EADCA-AAAF-42F9-824D-3AAD108DFF77}.png)
+- Terdapat 11 fungsi/prosedur untuk ADT circularlist
+  * procedure CreateList( input/output L : List )
+  * function alokasi( x : infotype ) → address
+  * procedure dealokasi( input/output t P : address )
+  * procedure insertFirst( input/output L : List, input P : address )
+  * procedure insertAfter( input/output L : List, input Prec : address, P : address)
+  * procedure insertLast( input/output L : List, input P : address )
+  * procedure deleteFirst( input/output L : List, input/output P : address )
+  * procedure deleteAfter( input/output L : List, input Prec : address, input/output t P : address )
+  * procedure deleteLast( input/output L : List, P : address )
+  * function findElm( L : List, x : infotype ) → address
+  * procedure printInfo( input L : List )
+ 
+Keterangan :
+- fungsi findElm mencari elemen di dalam list L berdasarkan nim
+  * fungsi mengembalikan elemen dengan dengan info nim == x.nim jika ditemukan
+  * fungsi mengembalikan NIL jika tidak ditemukan
+> ![Screenshot bagian x](output/{E48EADCA-AAAF-42F9-824D-3AAD108DFF77}.png)
+Buatlah implementasi ADT Doubly Linked list pada file “circularlist.cpp”. Tambahkan fungsi/prosedur
+berikut pada file “main.cpp”.
+- fungsi create ( in nama, nim : string, jenis_kelamin : char, ipk : float)
+  * fungsi disediakan, ketik ulang code yang diberikan
+  * fungsi mengalokasikan sebuah elemen list dengan info sesuai input
+> ![Screenshot bagian x](output/{E48EADCA-AAAF-42F9-824D-3AAD108DFF77}.png)
+Cobalah hasil implementasi ADT pada file “main.cpp”
+> ![Screenshot bagian x](output/{E48EADCA-AAAF-42F9-824D-3AAD108DFF77}.png)
+> ![Screenshot bagian x](output/{E48EADCA-AAAF-42F9-824D-3AAD108DFF77}.png)
 
 ```go
 #include <iostream>
@@ -250,50 +277,6 @@ int main()
 > ![Screenshot bagian x](output/WhatsAppImage2025-10-07at11.36.09.jpeg)
 
 Program ini mengkonversi angka menjadi latin. Di sini saya menggunakan fungsi dan array
-
-### Soal 3
-
-Buatlah program yang dapat memberikan input dan output sbb.
-> ![Screenshot bagian x](output/{F626FCED-9EB9-4D1E-8A7F-21D9194D1611}.png)
-
-```go
-#include <iostream>
-using namespace std;
-
-int main() {
-    int n;
-    cout << "Input: ";
-    cin >> n;
-    cout << "Output: "<<endl;
-
-    for (int i = n; i >= 1; i--) {
-
-        for (int s = 0; s < (n - i); s++) {
-            cout << "  ";
-        }
-        for (int j = i; j >= 1; j--) {
-            cout << j << " ";
-        }
-        cout << "* ";
-        for (int j = 1; j <= i; j++) {
-            cout << j << " ";
-        }
-        cout << endl;
-    }
-
-    for (int s = 0; s < n; s++) {
-        cout << "  ";
-    }
-    cout << "*" << endl;
-
-    return 0;
-}
-```
-
-> Output
-> ![Screenshot bagian x](output/{78A35B0E-8CB4-4DF5-A70B-D94521A279D9}.png)
-
-Program ini menampilkan pola angka simetris dengan bintang di tengahnya, berdasarkan input angka n. Program ini menggeser pola ke kanan setiap baris dengan penambahan spasi. Saya di sini menggunakan nested loop
 
 ## Referensi
 
