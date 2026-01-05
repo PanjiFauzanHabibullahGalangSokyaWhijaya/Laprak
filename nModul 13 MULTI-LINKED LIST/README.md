@@ -481,7 +481,7 @@ int main(){
 ```
 
 > Output
-> ![Screenshot bagian x](output/{E48EADCA-AAAF-42F9-824D-3AAD108DFF77}.png)
+> ![Screenshot bagian x](output/{A529CFE4-CE33-41B5-94ED-446CD3A8CAD0}.png)
 
 Program ini mengimplementasikan Multi Linked List di C++ yang memiliki node induk (parent) dan node anak (child).
 
