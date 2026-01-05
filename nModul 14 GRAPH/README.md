@@ -24,254 +24,183 @@ Ada dua metode utama untuk merepresentasikan atau mengimplementasikan graph di C
 ## Guided
 
 ### soal 1
-TEST.cpp
+guided 1.cpp
 
 ```go
 #include <iostream>
-using namespace std;
-int main()
-{
-    string ch;
-    cout << "Masukkan sebuah karakter: ";
-    // cin >> ch;
-    ch = getchar();  //Menggunakan getchar() untuk membaca satu karakter
-    cout << "Karakter yang Anda masukkan adalah: " << ch << endl;
-    return 0;
-}
-```
-
-> Output
-> ![Screenshot bagian x](output/{4DA43ED0-6A8D-46FE-81D3-DE2FEA7D5A3C}.png)
-
-Program ini akan mengambil huruf awal/char awal dari char-char yang diinput dengan menggunakan getchar()
-
-### soal 2
-aritmatika.cpp
-
-```go
-#include <iostream>
-using namespace std;
-int main()
-{
-    int W, X, Y;
-    float Z;
-    X = 7;
-    Y = 3;
-    W = 1;
-    Z = (X + Y) / (Y + W);
-    cout << "Nilai z = " << Z << endl;
-    return 0;
-}
-```
-
-> Output
-> ![Screenshot bagian x](output/{B47A6CB0-7B5E-45EC-AB42-0D78A05D830E}.png)
-
-Program ini digunakan untuk mencari hasil aritmatika dari Z = (7+3)/(3+1). Z dideklarasikan menggunakan float dikarenakan hasil pembagian mempunyai kemungkinan desimal
-
-### soal 3
-perulangan.cpp
-
-```go
-#include <iostream>
-using namespace std;
-// int main()
-// {
-//     int jum;
-//     cout << "jumlah perulangan: ";
-//     cin >> jum;
-//     for (int i = 0; i < jum; i++)
-//     {
-//         cout << "saya sahroni\n";
-//     }
-//     return 1;
-// }
-
-
-// while
-int main()
-{
-    int i = 0;
-    int jum;
-    cin >> jum;
-    do
-    {
-        cout << "bahlil ke-" << (i + 1) << endl;
-        i++;
-    } while (i < jum);
-    return 0;
-}
-```
-
-> Output
-> ![Screenshot bagian x](output/{157EDC01-3D35-454C-AFCF-4FB44D980C5D}.png)
-
-Ini adalah program perulangan do while. Program ini akan mengulang kalimat "bahlil ke-[n]" sebanyak n(angka yang anda input).
-
-### soal 4
-kondisi.cpp
-
-```go
-#include <iostream>
-using namespace std;
-// int main()
-// {
-//     double tot_pembelian, diskon;
-//     cout << "total pembelian: Rp";
-//     cin >> tot_pembelian;
-//     diskon = 0;
-//     if (tot_pembelian >= 100000)
-//         diskon = 0.05 * tot_pembelian;
-//     cout << "besar diskon = Rp" << diskon;
-// }
-
-
-
-// int main()
-// {
-//     double tot_pembelian, diskon;
-//     cout << "total pembelian: Rp";
-//     cin >> tot_pembelian;
-//     diskon = 0;
-//     if (tot_pembelian >= 100000)
-//         diskon = 0.05 * tot_pembelian;
-//     else
-//         diskon = 0;
-//     cout << "besar diskon = Rp" << diskon;
-// }
-
-
-
-int main()
-{
-    int kode_hari;
-    cout << "Menentukan hari kerja/libur\n"<<endl;
-    cout << "1=Senin 3=Rabu 5=Jumat 7=Minggu "<<endl;
-    cout << "2=Selasa 4=Kamis 6=Sabtu "<<endl;
-    cin >> kode_hari;
-    switch (kode_hari)
-    {
-    case 1:
-    case 2:
-    case 3:
-    case 4:
-    case 5:
-        cout<<"Hari Kerja";
-        break;
-    case 6:
-    case 7:
-        cout<<"Hari Libur";
-        break;
-    default:
-        cout<<"Kode masukan salah!!!";
-    }
-    return 0;
-}
-```
-
-> Output
-> ![Screenshot bagian x](output/{95981FC0-31B1-4EDB-A08B-2BE0BEBB89BC}.png)
-
-Program ini digunakan untuk mencari tahu apakah hari yang diinput adalah hari kerja atau libur. Program ini menggunakan switch case
-
-### soal 5
-struct.cpp
-
-```go
-#include <iostream>
-#include <string>
+#include <queue>
 using namespace std;
 
-// Definisi struct
-struct Mahasiswa {
-    string nama;
-    string nim;
-    float ipk;
+typedef char infotype;
+
+struct Edge;
+struct Node;
+
+typedef Node* adrNode;
+typedef Edge* adrEdge;
+
+struct Edge {
+    adrNode tujuan;
+    adrEdge next;
 };
 
+struct Node {
+    infotype info;
+    bool visited;
+    adrEdge firstEdge;
+    adrNode next;
+};
+
+struct Graph {
+    adrNode first;
+};
+
+void CreateGraph(Graph &G) {
+    G.first = NULL;
+}
+
+adrNode alokasiNode(infotype X) {
+    adrNode P = new Node;
+    P->info = X;
+    P->visited = false;
+    P->firstEdge = NULL;
+    P->next = NULL;
+    return P;
+}
+
+adrEdge alokasiEdge(adrNode tujuan) {
+    adrEdge P = new Edge;
+    P->tujuan = tujuan;
+    P->next = NULL;
+    return P;
+}
+
+void InsertNode(Graph &G, infotype X) {
+    adrNode P = alokasiNode(X);
+    P->next = G.first;
+    G.first = P;
+}
+
+adrNode FindNode(Graph G, infotype X) {
+    adrNode P = G.first;
+    while (P != NULL) {
+        if (P->info == X)
+            return P;
+        P = P->next;
+    }
+    return NULL;
+}
+
+void ConnectNode(Graph &G, infotype A, infotype B) {
+    adrNode N1 = FindNode(G, A);
+    adrNode N2 = FindNode(G, B);
+
+    if (N1 == NULL || N2 == NULL) {
+        cout << "Node tidak ditemukan!\n";
+        return;
+    }
+
+    adrEdge E1 = alokasiEdge(N2);
+    E1->next = N1->firstEdge;
+    N1->firstEdge = E1;
+
+    adrEdge E2 = alokasiEdge(N1);
+    E2->next = N2->firstEdge;
+    N2->firstEdge = E2;
+}
+
+void PrintInfoGraph(Graph G) {
+    adrNode P = G.first;
+    while (P != NULL) {
+        cout << "Node " << P->info << " terhubung dengan: ";
+        adrEdge E = P->firstEdge;
+        while (E != NULL) {
+            cout << E->tujuan->info << " ";
+            E = E->next;
+        }
+        cout << endl;
+        P = P->next;
+    }
+}
+
+void ResetVisited(Graph &G) {
+    adrNode P = G.first;
+    while (P != NULL) {
+        P->visited = false;
+        P = P->next;
+    }
+}
+
+void DFS(Graph &G, adrNode N) {
+    if (N == NULL) return;
+    N->visited = true;
+    cout << N->info << " ";
+
+    adrEdge E = N->firstEdge;
+    while (E != NULL) {
+        if (!E->tujuan->visited)
+            DFS(G, E->tujuan);
+        E = E->next;
+    }
+}
+
+void BFS(Graph &G, adrNode N) {
+    if (N == NULL) return;
+    queue<adrNode> Q;
+    Q.push(N);
+
+    while (!Q.empty()) {
+        adrNode curr = Q.front();
+        Q.pop();
+
+        if (!curr->visited) {
+            curr->visited = true;
+            cout << curr->info << " ";
+
+            adrEdge E = curr->firstEdge;
+            while (E != NULL) {
+                if (!E->tujuan->visited)
+                    Q.push(E->tujuan);
+                E = E->next;
+            }
+        }
+    }
+}
+
 int main() {
+    Graph G;
+    CreateGraph(G);
 
-    Mahasiswa mhs1;
+    InsertNode(G, 'A');
+    InsertNode(G, 'C');
+    InsertNode(G, 'D');
+    InsertNode(G, 'E');
 
-    cout << "Masukkan Nama Mahasiswa: ";
-    getline(cin, mhs1.nama);
-    // cin >> mhs1.nama;
-    cout << "Masukkan NIM Mahasiswa : ";
-    cin >> mhs1.nim;
-    cout << "Masukkan IPK Mahasiswa : ";
-    cin >> mhs1.ipk;
+    ConnectNode(G, 'A', 'B');
+    ConnectNode(G, 'A', 'C');
+    ConnectNode(G, 'B', 'D');
+    ConnectNode(G, 'C', 'E');
 
-    cout << "\n=== Data Mahasiswa ===" << endl;
-    cout << "Nama : " << mhs1.nama << endl;
-    cout << "NIM  : " << mhs1.nim << endl;
-    cout << "IPK  : " << mhs1.ipk << endl;
+    cout << "=== Struktur Graph ===\n";
+    PrintInfoGraph(G);
 
+    cout << "\nDFS dari A:\n";
+    ResetVisited(G);
+    DFS(G, FindNode(G, 'A'));
+
+    cout << "\n\nBFS dari A:\n";
+    ResetVisited(G);
+    BFS(G, FindNode(G, 'A'));
+
+    cout << endl;
     return 0;
 }
 ```
 
 > Output
-> ![Screenshot bagian x](output/{D635236E-ADAD-4C79-936F-7DC3A3A1C883}.png)
+> ![Screenshot bagian x](output/{59E37223-59F3-4D7A-BFE8-AE3A1DD61D31}.png)
 
-Program ini menggunakan struct dan getline. Struct bisa menyimpan beberapa variabel dalam satu kesatuan dan getline digunakan agar kodenya dapat membaca satu baris penuh untuk nama (supaya bisa menerima spasi).
-
-### soal 6
-fungsi.cpp
-
-```go
-#include <iostream>
-using namespace std;
-
-// Prosedur: hanya menampilkan hasil, tidak mengembalikan nilai
-void tampilkanHasil(double p, double l)
-{
-    cout << "\n=== Hasil Perhitungan ===" << endl;
-    cout << "Panjang : " << p << endl;
-    cout << "Lebar   : " << l << endl;
-    cout << "Luas    : " << p * l << endl;
-    cout << "Keliling: " << 2 * (p + l) << endl;
-}
-
-// Fungsi: mengembalikan nilai luas
-double hitungLuas(double p, double l)
-{
-    return p * l;
-}
-
-// Fungsi: mengembalikan nilai keliling
-double hitungKeliling(double p, double l)
-{
-    return 2 * (p + l);
-}
-
-int main()
-{
-    double panjang, lebar;
-
-    cout << "Masukkan panjang: ";
-    cin >> panjang;
-    cout << "Masukkan lebar  : ";
-    cin >> lebar;
-
-    // Panggil fungsi
-    double luas = hitungLuas(panjang, lebar);
-    double keliling = hitungKeliling(panjang, lebar);
-
-    cout << "\nDihitung dengan fungsi:" << endl;
-    cout << "Luas      = " << luas << endl;
-    cout << "Keliling  = " << keliling << endl;
-
-    // Panggil prosedur
-    tampilkanHasil(panjang, lebar);
-
-    return 0;
-}
-```
-
-> Output
-> ![Screenshot bagian x](output/{3C82C501-6277-4923-8471-12841D936319}.png)
-
-Program ini menghitung luas & keliling dengan fungsi dan prosedur. Di program ini ada 2 hal yang mungkin asing bagi anda, yaitu void dan double. Saat digunakan sebagai jenis pengembalian fungsi, void kata kunci menentukan bahwa fungsi tidak mengembalikan nilai sedangkan tipe double mengembalikan nilai berupa bilangan desimal. 
+Program ini membuat struktur graph tak berarah dengan model adjacency list menggunakan linked list. Setiap node menyimpan nilai char, status visited, dan daftar edge (tetangga) yang terhubung ke node lain. Koneksi dibuat dua arah sehingga hubungan bersifat undirected. Terdapat traversal DFS yang berjalan rekursif menelusuri kedalaman node, dan BFS yang menggunakan queue untuk menelusuri node per level secara melebar. Status visited dipakai agar node tidak dikunjungi lebih dari sekali. Pada fungsi main(), graph diinisialisasi, node ditambahkan, hubungan antar node dibuat, lalu struktur graph ditampilkan dan traversal dimulai dari node A.
 
 ## Unguided
 
