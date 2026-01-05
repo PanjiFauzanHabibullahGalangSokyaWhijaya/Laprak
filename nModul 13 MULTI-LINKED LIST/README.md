@@ -515,15 +515,15 @@ Keterangan :
 - fungsi findElm mencari elemen di dalam list L berdasarkan nim
   * fungsi mengembalikan elemen dengan dengan info nim == x.nim jika ditemukan
   * fungsi mengembalikan NIL jika tidak ditemukan
-> ![Screenshot bagian x](output/{E48EADCA-AAAF-42F9-824D-3AAD108DFF77}.png)
+> ![Screenshot bagian x](output/{C2A08C61-A31E-4AC9-9D1C-7DF71CFF5A7C}.png)
 Buatlah implementasi ADT Doubly Linked list pada file “circularlist.cpp”. Tambahkan fungsi/prosedur
 berikut pada file “main.cpp”.
 - fungsi create ( in nama, nim : string, jenis_kelamin : char, ipk : float)
   * fungsi disediakan, ketik ulang code yang diberikan
   * fungsi mengalokasikan sebuah elemen list dengan info sesuai input
-> ![Screenshot bagian x](output/{E48EADCA-AAAF-42F9-824D-3AAD108DFF77}.png)
+> ![Screenshot bagian x](output/{9306A726-B05D-4633-B572-F78FAD921941}.png)
 Cobalah hasil implementasi ADT pada file “main.cpp”
-> ![Screenshot bagian x](output/{E48EADCA-AAAF-42F9-824D-3AAD108DFF77}.png)
+> ![Screenshot bagian x](output/{4B24A3A8-701E-4C57-877E-801B50C88E62}.png)
 
 ```go
 #include <iostream>
@@ -581,7 +581,7 @@ int main()
 ```
 
 > Output
-> ![Screenshot bagian x](output/WhatsAppImage2025-10-07at11.36.09.jpeg)
+> ![Screenshot bagian x](output/{A1AEF66B-81BA-437E-B263-CF0C2D3719BF}.png)
 
 Program ini mengkonversi angka menjadi latin. Di sini saya menggunakan fungsi dan array
 
