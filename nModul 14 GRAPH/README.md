@@ -9,13 +9,15 @@ Implementasi Struktur Data Graph di C++
 
 Ada dua metode utama untuk merepresentasikan atau mengimplementasikan graph di C++:
 1. Menggunakan Adjacency Matrix (Matriks Ketetanggaan)
+
    Adjacency matrix adalah array 2 dimensi berukuran n × n, dengan n adalah jumlah node/simpul pada graph.
    Aturannya:
    - a[i][j] = 1 jika ada edge antara vertex ke-i dan ke-j (vᵢ, vⱼ)
    - a[i][j] = 0 jika tidak ada edge di antara keduanya
    
    Matriks ini digunakan untuk mengetahui apakah ada hubungan (edge) antara dua simpul tertentu.
-2. Menggunakan Adjacency List (Daftar Ketetanggaan)
+3. Menggunakan Adjacency List (Daftar Ketetanggaan)
+
    Pada metode adjacency matrix, graph membutuhkan n² ruang memori, sedangkan adjacency list hadir sebagai solusi yang jauh lebih hemat memori karena hanya menyimpan node yang saling terhubung.
    Adjacency list adalah representasi berbasis node. Pada metode ini, setiap simpul memiliki daftar simpul lain yang bertetangga (terhubung langsung). Biasanya  digunakan array untuk menyimpan daftar tersebut, sehingga akses ke adjacency list dari simpul tertentu dapat dilakukan secara acak (random access).
 
