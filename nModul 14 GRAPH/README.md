@@ -16,6 +16,7 @@ Aturannya:
 - a[i][j] = 0 jika tidak ada edge di antara keduanya
 
 Matriks ini digunakan untuk mengetahui apakah ada hubungan (edge) antara dua simpul tertentu.
+
 2. Menggunakan Adjacency List (Daftar Ketetanggaan)
 
 Pada metode adjacency matrix, graph membutuhkan n² ruang memori, sedangkan adjacency list hadir sebagai solusi yang jauh lebih hemat memori karena hanya menyimpan node yang saling terhubung.
