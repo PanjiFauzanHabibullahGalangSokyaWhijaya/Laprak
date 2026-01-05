@@ -497,7 +497,7 @@ Di main(), dibuat 2 parent dan beberapa child, lalu dicetak dalam bentuk hubunga
 ### Soal 2
 
 Buatlah ADT Multi Linked list sebagai berikut di dalam file “circularlist.h”:
-> ![Screenshot bagian x](output/{E48EADCA-AAAF-42F9-824D-3AAD108DFF77}.png)
+> ![Screenshot bagian x](output/{29644619-8B53-4FC5-B72E-A43C497F5B44}.png)
 - Terdapat 11 fungsi/prosedur untuk ADT circularlist
   * procedure CreateList( input/output L : List )
   * function alokasi( x : infotype ) → address
@@ -522,6 +522,7 @@ berikut pada file “main.cpp”.
   * fungsi disediakan, ketik ulang code yang diberikan
   * fungsi mengalokasikan sebuah elemen list dengan info sesuai input
 > ![Screenshot bagian x](output/{9306A726-B05D-4633-B572-F78FAD921941}.png)
+
 Cobalah hasil implementasi ADT pada file “main.cpp”
 > ![Screenshot bagian x](output/{4B24A3A8-701E-4C57-877E-801B50C88E62}.png)
 
