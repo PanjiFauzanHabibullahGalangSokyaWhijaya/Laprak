@@ -206,39 +206,166 @@ Program ini membuat struktur graph tak berarah dengan model adjacency list mengg
 
 ### Soal 1
 
-Buatlah program yang menerima input-an dua buah bilangan betipe float, kemudian memberikan output-an hasil penjumlahan, pengurangan, perkalian, dan pembagian dari dua bilangan tersebut.
+Buatlah ADT Graph tidak berarah file “graph.h”:
+> ![Screenshot bagian x](output/{347E67F1-236F-42D9-BD87-9D68B312F666}.png)
+Buatlah implementasi ADT Graph pada file “graph.cpp” dan cobalah hasil implementasi ADT
+pada file “main.cpp”.
+> ![Screenshot bagian x](output/{A038F6F3-E487-4856-8AC3-A88B17DAE49D}.png)
 
+graph.cpp, graph.h, dan main.cpp
 ```go
+#include "graph.h"
 #include <iostream>
 using namespace std;
 
-int main()
-{
-    double a,b,j,kr,kl,bg;
+void CreateGraph(Graph &G) {
+    G.first = NULL;
+}
 
-    cout<<"Input 2 bilangan: ";
-    cin>>a;
-    cin>>b;
-    j=a+b;
-    kr=a-b;
-    kl=a*b;
-    bg=a/b;
-    
-    cout<<"Penjumlahan="<<j<<"\nPengurangan="<<kr<<"\nPerkalian="<<kl<<"\nPembagian="<<bg<<endl;
+adrNode alokasiNode(infograph X) {
+    adrNode P = new ElmNode;
+    P->info = X;
+    P->visited = 0;
+    P->firstEdge = NULL;
+    P->next = NULL;
+    return P;
+}
+
+adrEdge alokasiEdge(adrNode tujuan) {
+    adrEdge P = new ElmEdge;
+    P->tujuan = tujuan;
+    P->next = NULL;
+    return P;
+}
+
+void InsertNode(Graph &G, infograph X) {
+    adrNode P = alokasiNode(X);
+    P->next = G.first;
+    G.first = P;
+}
+
+adrNode FindNode(Graph G, infograph X) {
+    adrNode P = G.first;
+    while (P != NULL) {
+        if (P->info == X)
+            return P;
+        P = P->next;
+    }
+    return NULL;
+}
+
+void ConnectNode(Graph &G, infograph A, infograph B) {
+    adrNode N1 = FindNode(G, A);
+    adrNode N2 = FindNode(G, B);
+
+    if (N1 == NULL || N2 == NULL) {
+        cout << "Node tidak ditemukan!\n";
+        return;
+    }
+
+    adrEdge E1 = alokasiEdge(N2);
+    E1->next = N1->firstEdge;
+    N1->firstEdge = E1;
+
+    adrEdge E2 = alokasiEdge(N1);
+    E2->next = N2->firstEdge;
+    N2->firstEdge = E2;
+}
+
+void PrintInfoGraph(Graph G) {
+    adrNode P = G.first;
+    while (P != NULL) {
+        cout << P->info << " : ";
+        adrEdge E = P->firstEdge;
+        while (E != NULL) {
+            cout << E->tujuan->info << " ";
+            E = E->next;
+        }
+        cout << endl;
+        P = P->next;
+    }
+}
+```
+```go
+#ifndef GRAPH_H
+#define GRAPH_H
+
+typedef char infograph;
+struct ElmNode;
+struct ElmEdge;
+
+typedef ElmNode* adrNode;
+typedef ElmEdge* adrEdge;
+
+struct ElmNode {
+    infograph info;
+    int visited;
+    adrEdge firstEdge;
+    adrNode next;
+};
+
+struct ElmEdge {
+    adrNode tujuan;
+    adrEdge next;
+};
+
+struct Graph {
+    adrNode first;
+};
+
+void CreateGraph(Graph &G);
+void InsertNode(Graph &G, infograph X);
+void ConnectNode(Graph &G, infograph A, infograph B);
+void PrintInfoGraph(Graph G);
+
+#endif
+```
+```go
+#include <iostream>
+#include "graph.h"
+using namespace std;
+
+int main() {
+    Graph G;
+    CreateGraph(G);
+
+    InsertNode(G, 'H');
+    InsertNode(G, 'G');
+    InsertNode(G, 'F');
+    InsertNode(G, 'E');
+    InsertNode(G, 'D');
+    InsertNode(G, 'C');
+    InsertNode(G, 'B');
+    InsertNode(G, 'A');
+
+    ConnectNode(G, 'A', 'B');
+    ConnectNode(G, 'A', 'C');
+    ConnectNode(G, 'B', 'D');
+    ConnectNode(G, 'B', 'E');
+    ConnectNode(G, 'C', 'F');
+    ConnectNode(G, 'C', 'G');
+    ConnectNode(G, 'D', 'H');
+    ConnectNode(G, 'E', 'H');
+    ConnectNode(G, 'F', 'H');
+    ConnectNode(G, 'G', 'H');
+
+    cout << "Struktur Graph:\n";
+    PrintInfoGraph(G);
+
     return 0;
 }
 ```
 
 > Output
-> ![Screenshot bagian x](output/{E48EADCA-AAAF-42F9-824D-3AAD108DFF77}.png)
+> ![Screenshot bagian x](output/{D6880C9E-32D7-4CE2-90A0-ED0094529E0C}.png)
 
-Program ini adalah program aritmatika sederhana yang menghitung hasil penjumlahan, pengurangan, perkalian, dan pembagian. Saya menggunakan double karena double adalah float untuk win64
+Program tersebut adalah implementasi Graph tak berarah (Undirected Graph) dengan Adjacency List memakai linked list. Node disimpan dalam list induk, sedangkan edge disimpan dalam list tetangga tiap node. Insert node dilakukan di awal list, dan koneksi antar node dibuat dua arah. Print menampilkan hubungan tiap node dengan tetangganya (DFS/BFS tidak dipanggil di main).
 
 ### Soal 2
 
-Buatlah sebuah program yang menerima masukan angka dan mengeluarkan output nilai angka tersebut dalam bentuk tulisan. Angka yang akan di-input-kan user adalah bilangan bulat positif mulai dari 0 s.d 100
-contoh:
-79: tujuh puluh Sembilan
+Buatlah prosedur untuk menampilkanhasil penelusuran DFS.
+
+prosedur PrintDFS (Graph G, adrNode N);
 
 ```go
 #include <iostream>
@@ -298,12 +425,13 @@ int main()
 > Output
 > ![Screenshot bagian x](output/WhatsAppImage2025-10-07at11.36.09.jpeg)
 
-Program ini mengkonversi angka menjadi latin. Di sini saya menggunakan fungsi dan array
+Program di atas menambahkan fungsi PrintDFS untuk menelusuri graph dengan algoritma Depth-First Search (DFS). Fungsi ini memakai rekursi, menandai node sebagai visited, lalu mencetak info node tersebut. Setelah itu, program mengecek semua edge yang terhubung dan memanggil dirinya kembali ke node tujuan yang belum dikunjungi. Output yang dihasilkan adalah urutan kunjungan node mulai dari titik awal hingga semua jalur terdalam selesai dieksplorasi.
 
 ### Soal 3
 
-Buatlah program yang dapat memberikan input dan output sbb.
-> ![Screenshot bagian x](output/{F626FCED-9EB9-4D1E-8A7F-21D9194D1611}.png)
+Buatlah prosedur untuk menampilkanhasil penelusuran DFS.
+
+prosedur PrintBFS (Graph G, adrNode N);
 
 ```go
 #include <iostream>
@@ -342,7 +470,7 @@ int main() {
 > Output
 > ![Screenshot bagian x](output/{78A35B0E-8CB4-4DF5-A70B-D94521A279D9}.png)
 
-Program ini menampilkan pola angka simetris dengan bintang di tengahnya, berdasarkan input angka n. Program ini menggeser pola ke kanan setiap baris dengan penambahan spasi. Saya di sini menggunakan nested loop
+Program PrintBFS melakukan penelusuran graph dengan algoritma Breadth-First Search. Node awal dimasukkan ke queue, lalu diproses satu per satu. Jika node belum dikunjungi, program menandainya visited dan mencetak nilainya, kemudian semua tetangganya dimasukkan ke queue. Hasilnya adalah urutan kunjungan graph secara melebar(per level).
 
 ## Referensi
 
