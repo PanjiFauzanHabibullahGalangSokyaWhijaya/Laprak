@@ -208,6 +208,7 @@ Program ini membuat struktur graph tak berarah dengan model adjacency list mengg
 
 Buatlah ADT Graph tidak berarah file “graph.h”:
 > ![Screenshot bagian x](output/{347E67F1-236F-42D9-BD87-9D68B312F666}.png)
+
 Buatlah implementasi ADT Graph pada file “graph.cpp” dan cobalah hasil implementasi ADT
 pada file “main.cpp”.
 > ![Screenshot bagian x](output/{A038F6F3-E487-4856-8AC3-A88B17DAE49D}.png)
