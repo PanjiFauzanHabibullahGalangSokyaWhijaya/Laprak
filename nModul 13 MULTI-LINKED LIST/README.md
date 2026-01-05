@@ -524,7 +524,6 @@ berikut pada file “main.cpp”.
 > ![Screenshot bagian x](output/{E48EADCA-AAAF-42F9-824D-3AAD108DFF77}.png)
 Cobalah hasil implementasi ADT pada file “main.cpp”
 > ![Screenshot bagian x](output/{E48EADCA-AAAF-42F9-824D-3AAD108DFF77}.png)
-> ![Screenshot bagian x](output/{E48EADCA-AAAF-42F9-824D-3AAD108DFF77}.png)
 
 ```go
 #include <iostream>
