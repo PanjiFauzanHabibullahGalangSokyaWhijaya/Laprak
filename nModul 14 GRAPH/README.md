@@ -3,11 +3,24 @@
 
 ## Dasar Teori
 
-C++ adalah bahasa pemrograman komputer yang dikembangkan oleh Bjarne Stroustrup sebagai pengembangan dari bahasa C, yang sebelumnya dibuat oleh Dennis Ritchie di Bell Labs. Pada awal 1970-an, bahasa C sendiri merupakan penyempurnaan dari bahasa B.
+Dalam C++, graph (graf) merupakan struktur data non-linear yang dipakai untuk memodelkan hubungan antar berbagai objek. Graph didefinisikan sebagai kumpulan simpul (vertex) dan penghubung antar simpul (edge). Artikel ini menjelaskan cara mengimplementasikan struktur data graph dalam C++.
 
-Awalnya, C++ dirancang untuk berjalan di sistem Unix. Seiring perkembangannya, standar ANSI C (American National Standards Institute) menjadi acuan utama, meskipun kini penggunaannya jarang ditemui dalam pengembangan sistem jaringan maupun sistem tertanam (embedded). Karena sifatnya yang fleksibel, C++ termasuk dalam kategori bahasa pemrograman tujuan umum (general-purpose programming language).
+Implementasi Struktur Data Graph di C++
 
-Stroustrup mulai mengembangkan C++ pada awal 1980-an di Bell Labs dengan menambahkan efisiensi dan dukungan untuk pemrograman tingkat rendah. Bahasa ini juga memperkenalkan konsep baru seperti class, inheritance, dan overloading. Perbedaan utama antara C dan C++ adalah dukungan penuh C++ terhadap paradigma pemrograman berorientasi objek (OOP).
+Ada dua metode utama untuk merepresentasikan atau mengimplementasikan graph di C++:
+1. Menggunakan Adjacency Matrix (Matriks Ketetanggaan)
+
+Adjacency matrix adalah array 2 dimensi berukuran n × n, dengan n adalah jumlah node/simpul pada graph.
+Aturannya:
+- a[i][j] = 1 jika ada edge antara vertex ke-i dan ke-j (vᵢ, vⱼ)
+- a[i][j] = 0 jika tidak ada edge di antara keduanya
+
+Matriks ini digunakan untuk mengetahui apakah ada hubungan (edge) antara dua simpul tertentu.
+2. Menggunakan Adjacency List (Daftar Ketetanggaan)
+
+Pada metode adjacency matrix, graph membutuhkan n² ruang memori, sedangkan adjacency list hadir sebagai solusi yang jauh lebih hemat memori karena hanya menyimpan node yang saling terhubung.
+
+Adjacency list adalah representasi berbasis node. Pada metode ini, setiap simpul memiliki daftar simpul lain yang bertetangga (terhubung langsung). Biasanya digunakan array untuk menyimpan daftar tersebut, sehingga akses ke adjacency list dari simpul tertentu dapat dilakukan secara acak (random access).
 
 ## Guided
 
@@ -406,5 +419,5 @@ Program ini menampilkan pola angka simetris dengan bintang di tengahnya, berdasa
 ## Referensi
 
 1. https://en.wikipedia.org/wiki/Data_structure (diakses blablabla)
-2. https://learn.microsoft.com/id-id/cpp/cpp/void-cpp?view=msvc-170
-3. https://www.duniailkom.com/tutorial-belajar-c-plus-plus-tipe-data-float-dan-double-bahasa-c-plus-plus/
+2. https://www.geeksforgeeks.org/cpp/implementation-of-graph-in-cpp/
+3. https://takeuforward.org/graph/graph-representation-in-c
