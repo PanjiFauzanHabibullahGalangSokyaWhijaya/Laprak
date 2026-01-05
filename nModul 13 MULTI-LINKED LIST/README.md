@@ -516,6 +516,7 @@ Keterangan :
   * fungsi mengembalikan elemen dengan dengan info nim == x.nim jika ditemukan
   * fungsi mengembalikan NIL jika tidak ditemukan
 > ![Screenshot bagian x](output/{C2A08C61-A31E-4AC9-9D1C-7DF71CFF5A7C}.png)
+
 Buatlah implementasi ADT Doubly Linked list pada file “circularlist.cpp”. Tambahkan fungsi/prosedur
 berikut pada file “main.cpp”.
 - fungsi create ( in nama, nim : string, jenis_kelamin : char, ipk : float)
