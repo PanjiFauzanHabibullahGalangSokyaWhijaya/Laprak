@@ -527,56 +527,227 @@ berikut pada file “main.cpp”.
 Cobalah hasil implementasi ADT pada file “main.cpp”
 > ![Screenshot bagian x](output/{4B24A3A8-701E-4C57-877E-801B50C88E62}.png)
 
+circularlist.cpp, circularlist.h, dan main.cpp
 ```go
+#include "circularlist.h"
 #include <iostream>
-using namespace std;
 
-string angkaKeTulisan(int n)
-{
-    string satuan[] = {"", "Satu", "Dua", "Tiga", "Empat", "Lima",
-                       "Enam", "Tujuh", "Delapan", "Sembilan"};
+void createList(List &L) {
+    L.first = NULL;
+}
 
-    if (n == 0)
-        return "Nol";
-    else if (n == 10)
-        return "Sepuluh";
-    else if (n == 11)
-        return "Sebelas";
-    else if (n == 100)
-        return "Seratus";
-    else if (n < 10)
-        return satuan[n];
-    else if (n < 20)
-    {
-        int belas = n%10;
-        string hasil = satuan[belas] + " Belas";
-        return hasil;
-    }
-    else
-    {
-        int puluh = n / 10;
-        int sisa = n % 10;
-        string hasil = satuan[puluh] + " Puluh";
-        if (sisa > 0)
-            hasil += " " + satuan[sisa];
-        return hasil;
+address alokasi(infotype x) {
+    address P = new ElmList;
+    P->info = x;
+    P->next = NULL;
+    return P;
+}
+
+void dealokasi(address P) {
+    delete P;
+}
+
+address createData(string nama, string nim, char jk, float ipk) {
+    infotype x;
+    x.nama = nama;
+    x.nim = nim;
+    x.jenis_kelamin = jk;
+    x.ipk = ipk;
+    return alokasi(x);
+}
+
+void insertFirst(List &L, address P) {
+    if (L.first == NULL) {
+        L.first = P;
+        P->next = P;
+    } else {
+        address last = L.first;
+        while (last->next != L.first)
+            last = last->next;
+        P->next = L.first;
+        last->next = P;
+        L.first = P;
     }
 }
 
-int main()
-{
-    int angka;
-    cout << "Masukkan angka (0-100): ";
-    cin >> angka;
+void insertLast(List &L, address P) {
+    if (L.first == NULL) {
+        insertFirst(L, P);
+    } else {
+        address last = L.first;
+        while (last->next != L.first)
+            last = last->next;
+        last->next = P;
+        P->next = L.first;
+    }
+}
 
-    if (angka < 0 || angka > 100)
-    {
-        cout << "Angka di luar jangkauan!" << endl;
+void insertAfter(List &L, address Prec, address P) {
+    if (Prec != NULL) {
+        P->next = Prec->next;
+        Prec->next = P;
     }
-    else
-    {
-        cout << angka << ": " << angkaKeTulisan(angka) << endl;
+}
+
+address findElm(List L, infotype x) {
+    if (L.first == NULL) return NULL;
+
+    address P = L.first;
+    do {
+        if (P->info.nim == x.nim)
+            return P;
+        P = P->next;
+    } while (P != L.first);
+
+    return NULL;
+}
+
+void deleteFirst(List &L, address &P) {
+    if (L.first != NULL) {
+        P = L.first;
+        if (P->next == P) {
+            L.first = NULL;
+        } else {
+            address last = L.first;
+            while (last->next != L.first)
+                last = last->next;
+            L.first = P->next;
+            last->next = L.first;
+        }
+        P->next = NULL;
     }
+}
+
+void deleteLast(List &L, address &P) {
+    if (L.first != NULL) {
+        address last = L.first;
+        address prec = NULL;
+        while (last->next != L.first) {
+            prec = last;
+            last = last->next;
+        }
+        P = last;
+        if (prec == NULL) {
+            L.first = NULL;
+        } else {
+            prec->next = L.first;
+        }
+        P->next = NULL;
+    }
+}
+
+void deleteAfter(List &L, address Prec, address &P) {
+    if (Prec != NULL) {
+        P = Prec->next;
+        Prec->next = P->next;
+        P->next = NULL;
+    }
+}
+
+void printInfo(List L) {
+    if (L.first != NULL) {
+        address P = L.first;
+        do {
+            cout << "Nama : " << P->info.nama << endl;
+            cout << "NIM  : " << P->info.nim << endl;
+            cout << "L/P  : " << P->info.jenis_kelamin << endl;
+            cout << "IPK  : " << P->info.ipk << endl;
+            cout << endl;
+            P = P->next;
+        } while (P != L.first);
+    }
+}
+```
+```go
+#ifndef CIRCULARLIST_H
+#define CIRCULARLIST_H
+
+#include <string>
+using namespace std;
+
+struct mahasiswa {
+    string nim;
+    string nama;
+    char jenis_kelamin;
+    float ipk;
+};
+
+typedef mahasiswa infotype;
+typedef struct ElmList *address;
+
+struct ElmList {
+    infotype info;
+    address next;
+};
+
+struct List {
+    address first;
+};
+
+void createList(List &L);
+address alokasi(infotype x);
+void dealokasi(address P);
+
+void insertFirst(List &L, address P);
+void insertAfter(List &L, address Prec, address P);
+void insertLast(List &L, address P);
+
+void deleteFirst(List &L, address &P);
+void deleteAfter(List &L, address Prec, address &P);
+void deleteLast(List &L, address &P);
+
+address findElm(List L, infotype x);
+void printInfo(List L);
+
+address createData(string nama, string nim, char jk, float ipk);
+
+#endif
+```
+```go
+#include <iostream>
+#include "circularlist.h"
+using namespace std;
+
+int main() {
+    List L;
+    address P1, P2;
+    infotype x;
+
+    createList(L);
+
+    cout << "coba insert first, last, dan after\n" << endl;
+
+    P1 = createData("Danu", "04", 'l', 4.0);
+    insertFirst(L, P1);
+
+    P1 = createData("Fahmi", "06", 'l', 3.45);
+    insertLast(L, P1);
+
+    P1 = createData("Bobi", "02", 'l', 3.71);
+    insertFirst(L, P1);
+
+    P1 = createData("Ali", "01", 'l', 3.3);
+    insertFirst(L, P1);
+
+    P1 = createData("Gita", "07", 'p', 3.75);
+    insertLast(L, P1);
+
+    x.nim = "07";
+    P1 = findElm(L, x);
+    P2 = createData("Cindi", "03", 'p', 3.5);
+    insertAfter(L, P1, P2);
+
+    x.nim = "02";
+    P1 = findElm(L, x);
+    P2 = createData("Hilmi", "08", 'p', 3.3);
+    insertAfter(L, P1, P2);
+
+    x.nim = "04";
+    P1 = findElm(L, x);
+    P2 = createData("Eli", "05", 'p', 3.4);
+    insertAfter(L, P1, P2);
+
+    printInfo(L);
 
     return 0;
 }
@@ -585,7 +756,9 @@ int main()
 > Output
 > ![Screenshot bagian x](output/{A1AEF66B-81BA-437E-B263-CF0C2D3719BF}.png)
 
-Program ini mengkonversi angka menjadi latin. Di sini saya menggunakan fungsi dan array
+Program ini mengimplementasikan Circular Linked List untuk menyimpan data mahasiswa (nim, nama, jenis_kelamin, ipk).
+Node saling terhubung melingkar, di mana node terakhir menunjuk kembali ke node pertama.
+Fitur utamanya: alokasi/dealokasi memori, insert di awal/akhir/di tengah (after), pencarian data berdasarkan NIM, dan menampilkan isi list.
 
 ## Referensi
 
