@@ -368,63 +368,180 @@ Buatlah prosedur untuk menampilkanhasil penelusuran DFS.
 
 prosedur PrintDFS (Graph G, adrNode N);
 
+graph.cpp, graph.h, dan main.cpp
 ```go
+#include "graph.h"
 #include <iostream>
 using namespace std;
 
-string angkaKeTulisan(int n)
-{
-    string satuan[] = {"", "Satu", "Dua", "Tiga", "Empat", "Lima",
-                       "Enam", "Tujuh", "Delapan", "Sembilan"};
+void CreateGraph(Graph &G) {
+    G.first = NULL;
+}
 
-    if (n == 0)
-        return "Nol";
-    else if (n == 10)
-        return "Sepuluh";
-    else if (n == 11)
-        return "Sebelas";
-    else if (n == 100)
-        return "Seratus";
-    else if (n < 10)
-        return satuan[n];
-    else if (n < 20)
-    {
-        int belas = n%10;
-        string hasil = satuan[belas] + " Belas";
-        return hasil;
+adrNode alokasiNode(infograph X) {
+    adrNode P = new ElmNode;
+    P->info = X;
+    P->visited = 0;
+    P->firstEdge = NULL;
+    P->next = NULL;
+    return P;
+}
+
+adrEdge alokasiEdge(adrNode tujuan) {
+    adrEdge P = new ElmEdge;
+    P->tujuan = tujuan;
+    P->next = NULL;
+    return P;
+}
+
+void InsertNode(Graph &G, infograph X) {
+    adrNode P = alokasiNode(X);
+    P->next = G.first;
+    G.first = P;
+}
+
+adrNode FindNode(Graph G, infograph X) {
+    adrNode P = G.first;
+    while (P != NULL) {
+        if (P->info == X)
+            return P;
+        P = P->next;
     }
-    else
-    {
-        int puluh = n / 10;
-        int sisa = n % 10;
-        string hasil = satuan[puluh] + " Puluh";
-        if (sisa > 0)
-            hasil += " " + satuan[sisa];
-        return hasil;
+    return NULL;
+}
+
+void ConnectNode(Graph &G, infograph A, infograph B) {
+    adrNode N1 = FindNode(G, A);
+    adrNode N2 = FindNode(G, B);
+
+    if (N1 == NULL || N2 == NULL) {
+        cout << "Node tidak ditemukan!\n";
+        return;
+    }
+
+    adrEdge E1 = alokasiEdge(N2);
+    E1->next = N1->firstEdge;
+    N1->firstEdge = E1;
+
+    adrEdge E2 = alokasiEdge(N1);
+    E2->next = N2->firstEdge;
+    N2->firstEdge = E2;
+}
+
+void PrintInfoGraph(Graph G) {
+    adrNode P = G.first;
+    while (P != NULL) {
+        cout << P->info << " : ";
+        adrEdge E = P->firstEdge;
+        while (E != NULL) {
+            cout << E->tujuan->info << " ";
+            E = E->next;
+        }
+        cout << endl;
+        P = P->next;
     }
 }
 
-int main()
-{
-    int angka;
-    cout << "Masukkan angka (0-100): ";
-    cin >> angka;
-
-    if (angka < 0 || angka > 100)
-    {
-        cout << "Angka di luar jangkauan!" << endl;
+void PrintDFS(Graph &G, adrNode N) {
+    if (N == NULL) return;
+    N->visited = 1;
+    cout << N->info << " ";
+    adrEdge E = N->firstEdge;
+    while (E != NULL) {
+        if (E->tujuan->visited == 0)
+            PrintDFS(G, E->tujuan);
+        E = E->next;
     }
-    else
-    {
-        cout << angka << ": " << angkaKeTulisan(angka) << endl;
-    }
+}
 
+void ResetVisited(Graph &G) {
+    adrNode P = G.first;
+    while (P != NULL) {
+        P->visited = 0;
+        P = P->next;
+    }
+}
+```
+```go
+#ifndef GRAPH_H
+#define GRAPH_H
+
+typedef char infotype;
+typedef char infograph;
+struct ElmNode;
+struct ElmEdge;
+
+typedef ElmNode* adrNode;
+typedef ElmEdge* adrEdge;
+
+struct ElmNode {
+    infograph info;
+    int visited;
+    adrEdge firstEdge;
+    adrNode next;
+};
+
+struct ElmEdge {
+    adrNode tujuan;
+    adrEdge next;
+};
+
+struct Graph {
+    adrNode first;
+};
+
+void CreateGraph(Graph &G);
+void InsertNode(Graph &G, infograph X);
+void ConnectNode(Graph &G, infograph A, infograph B);
+void PrintInfoGraph(Graph G);
+void PrintDFS(Graph &G, adrNode N);
+void ResetVisited(Graph &G);
+adrNode FindNode(Graph G, infotype X);
+
+#endif
+```
+```go
+#include <iostream>
+#include "graph.h"
+using namespace std;
+
+int main() {
+    Graph G;
+    CreateGraph(G);
+
+    InsertNode(G, 'H');
+    InsertNode(G, 'G');
+    InsertNode(G, 'F');
+    InsertNode(G, 'E');
+    InsertNode(G, 'D');
+    InsertNode(G, 'C');
+    InsertNode(G, 'B');
+    InsertNode(G, 'A');
+
+    ConnectNode(G, 'A', 'B');
+    ConnectNode(G, 'A', 'C');
+    ConnectNode(G, 'B', 'D');
+    ConnectNode(G, 'B', 'E');
+    ConnectNode(G, 'C', 'F');
+    ConnectNode(G, 'C', 'G');
+    ConnectNode(G, 'D', 'H');
+    ConnectNode(G, 'E', 'H');
+    ConnectNode(G, 'F', 'H');
+    ConnectNode(G, 'G', 'H');
+
+    cout << "Struktur Graph:\n";
+    PrintInfoGraph(G);
+
+    cout << "\nDFS dari A:\n";
+    ResetVisited(G);
+    PrintDFS(G, FindNode(G, 'A'));
+    
     return 0;
 }
 ```
 
 > Output
-> ![Screenshot bagian x](output/WhatsAppImage2025-10-07at11.36.09.jpeg)
+> ![Screenshot bagian x](output/{6621B264-FD66-415D-A8E2-5E0FFE3579A1}.png)
 
 Program di atas menambahkan fungsi PrintDFS untuk menelusuri graph dengan algoritma Depth-First Search (DFS). Fungsi ini memakai rekursi, menandai node sebagai visited, lalu mencetak info node tersebut. Setelah itu, program mengecek semua edge yang terhubung dan memanggil dirinya kembali ke node tujuan yang belum dikunjungi. Output yang dihasilkan adalah urutan kunjungan node mulai dari titik awal hingga semua jalur terdalam selesai dieksplorasi.
 
@@ -434,42 +551,207 @@ Buatlah prosedur untuk menampilkanhasil penelusuran DFS.
 
 prosedur PrintBFS (Graph G, adrNode N);
 
+graph.cpp, graph.h, dan main.cpp
+```go
+#include "graph.h"
+#include <iostream>
+#include <queue>
+using namespace std;
+
+void CreateGraph(Graph &G) {
+    G.first = NULL;
+}
+
+adrNode alokasiNode(infograph X) {
+    adrNode P = new ElmNode;
+    P->info = X;
+    P->visited = 0;
+    P->firstEdge = NULL;
+    P->next = NULL;
+    return P;
+}
+
+adrEdge alokasiEdge(adrNode tujuan) {
+    adrEdge P = new ElmEdge;
+    P->tujuan = tujuan;
+    P->next = NULL;
+    return P;
+}
+
+void InsertNode(Graph &G, infograph X) {
+    adrNode P = alokasiNode(X);
+    P->next = G.first;
+    G.first = P;
+}
+
+adrNode FindNode(Graph G, infograph X) {
+    adrNode P = G.first;
+    while (P != NULL) {
+        if (P->info == X)
+            return P;
+        P = P->next;
+    }
+    return NULL;
+}
+
+void ConnectNode(Graph &G, infograph A, infograph B) {
+    adrNode N1 = FindNode(G, A);
+    adrNode N2 = FindNode(G, B);
+
+    if (N1 == NULL || N2 == NULL) {
+        cout << "Node tidak ditemukan!\n";
+        return;
+    }
+
+    adrEdge E1 = alokasiEdge(N2);
+    E1->next = N1->firstEdge;
+    N1->firstEdge = E1;
+
+    adrEdge E2 = alokasiEdge(N1);
+    E2->next = N2->firstEdge;
+    N2->firstEdge = E2;
+}
+
+void PrintInfoGraph(Graph G) {
+    adrNode P = G.first;
+    while (P != NULL) {
+        cout << P->info << " : ";
+        adrEdge E = P->firstEdge;
+        while (E != NULL) {
+            cout << E->tujuan->info << " ";
+            E = E->next;
+        }
+        cout << endl;
+        P = P->next;
+    }
+}
+
+void PrintDFS(Graph &G, adrNode N) {
+    if (N == NULL) return;
+    N->visited = 1;
+    cout << N->info << " ";
+    adrEdge E = N->firstEdge;
+    while (E != NULL) {
+        if (E->tujuan->visited == 0)
+            PrintDFS(G, E->tujuan);
+        E = E->next;
+    }
+}
+
+void ResetVisited(Graph &G) {
+    adrNode P = G.first;
+    while (P != NULL) {
+        P->visited = 0;
+        P = P->next;
+    }
+}
+
+void PrintBFS(Graph &G, adrNode N) {
+    if (N == NULL) return;
+    queue<adrNode> Q;
+    Q.push(N);
+    while (!Q.empty()) {
+        adrNode curr = Q.front();
+        Q.pop();
+        if (!curr->visited) {
+            curr->visited = true;
+            cout << curr->info << " ";
+            adrEdge E = curr->firstEdge;
+            while (E != NULL) {
+                if (!E->tujuan->visited)
+                    Q.push(E->tujuan);
+                E = E->next;
+            }
+        }
+    }
+}
+```
+```go
+#ifndef GRAPH_H
+#define GRAPH_H
+
+typedef char infotype;
+typedef char infograph;
+struct ElmNode;
+struct ElmEdge;
+
+typedef ElmNode* adrNode;
+typedef ElmEdge* adrEdge;
+
+struct ElmNode {
+    infograph info;
+    int visited;
+    adrEdge firstEdge;
+    adrNode next;
+};
+
+struct ElmEdge {
+    adrNode tujuan;
+    adrEdge next;
+};
+
+struct Graph {
+    adrNode first;
+};
+
+void CreateGraph(Graph &G);
+void InsertNode(Graph &G, infograph X);
+void ConnectNode(Graph &G, infograph A, infograph B);
+void PrintInfoGraph(Graph G);
+void PrintDFS(Graph &G, adrNode N);
+void ResetVisited(Graph &G);
+adrNode FindNode(Graph G, infotype X);
+void PrintBFS(Graph &G, adrNode N);
+
+#endif
+```
 ```go
 #include <iostream>
+#include "graph.h"
 using namespace std;
 
 int main() {
-    int n;
-    cout << "Input: ";
-    cin >> n;
-    cout << "Output: "<<endl;
+    Graph G;
+    CreateGraph(G);
 
-    for (int i = n; i >= 1; i--) {
+    InsertNode(G, 'H');
+    InsertNode(G, 'G');
+    InsertNode(G, 'F');
+    InsertNode(G, 'E');
+    InsertNode(G, 'D');
+    InsertNode(G, 'C');
+    InsertNode(G, 'B');
+    InsertNode(G, 'A');
 
-        for (int s = 0; s < (n - i); s++) {
-            cout << "  ";
-        }
-        for (int j = i; j >= 1; j--) {
-            cout << j << " ";
-        }
-        cout << "* ";
-        for (int j = 1; j <= i; j++) {
-            cout << j << " ";
-        }
-        cout << endl;
-    }
+    ConnectNode(G, 'A', 'B');
+    ConnectNode(G, 'A', 'C');
+    ConnectNode(G, 'B', 'D');
+    ConnectNode(G, 'B', 'E');
+    ConnectNode(G, 'C', 'F');
+    ConnectNode(G, 'C', 'G');
+    ConnectNode(G, 'D', 'H');
+    ConnectNode(G, 'E', 'H');
+    ConnectNode(G, 'F', 'H');
+    ConnectNode(G, 'G', 'H');
 
-    for (int s = 0; s < n; s++) {
-        cout << "  ";
-    }
-    cout << "*" << endl;
+    cout << "Struktur Graph:\n";
+    PrintInfoGraph(G);
 
+    cout << "\nDFS dari A:\n";
+    ResetVisited(G);
+    PrintDFS(G, FindNode(G, 'A'));
+    
+    cout << "\nBFS dari A:\n";
+    ResetVisited(G);
+    PrintBFS(G, FindNode(G, 'A'));
+    cout << endl;
+    
     return 0;
 }
 ```
 
 > Output
-> ![Screenshot bagian x](output/{78A35B0E-8CB4-4DF5-A70B-D94521A279D9}.png)
+> ![Screenshot bagian x](output/{E7C92949-FBFD-48A3-B603-4A8F4FA1E5D7}.png)
 
 Program PrintBFS melakukan penelusuran graph dengan algoritma Breadth-First Search. Node awal dimasukkan ke queue, lalu diproses satu per satu. Jika node belum dikunjungi, program menandainya visited dan mencetak nilainya, kemudian semua tetangganya dimasukkan ke queue. Hasilnya adalah urutan kunjungan graph secara melebar(per level).
 
